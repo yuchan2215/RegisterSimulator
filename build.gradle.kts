@@ -5,6 +5,18 @@ plugins {
     id("org.jetbrains.kotlin.android") version "1.7.10" apply false
 }
 
+buildscript {
+    val navVersion by extra("2.5.1")
+
+    repositories {
+        google()
+    }
+    dependencies {
+        // Navigation Safe Args
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
+    }
+}
+
 task<Delete>("clean") {
     delete(rootProject.buildDir)
 }
