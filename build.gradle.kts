@@ -6,12 +6,12 @@ plugins {
 }
 
 buildscript {
+    val navVersion by extra("2.5.1")
+
     repositories {
         google()
     }
     dependencies {
-        val navVersion = "2.5.1"
-
         // Navigation Safe Args
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
     }
