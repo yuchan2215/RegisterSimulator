@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-
-    </data>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
         android:id="@+id/setting_linear_layout"
@@ -14,6 +11,13 @@
         android:divider="?android:dividerHorizontal"
         android:orientation="vertical"
         android:showDividers="middle">
+
+        <xyz.miyayu.android.registersimulator.views.IconListItem
+            android:id="@+id/store_items"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bodyText="@string/open_items_setting"
+            app:startIcon="@drawable/category" />
 
     </LinearLayout>
 </layout>
