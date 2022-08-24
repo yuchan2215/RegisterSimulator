@@ -25,5 +25,14 @@
         android:id="@+id/settingFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.SettingFragment"
         android:label="SettingFragment"
-        tools:layout="@layout/setting_fragment" />
+        tools:layout="@layout/setting_fragment">
+        <action
+            android:id="@+id/openTaxSetting"
+            app:destination="@id/taxSettingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/taxSettingFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.TaxSettingFragment"
+        android:label="TaxSettingFragment"
+        tools:layout="@layout/tax_setting_fragment" />
 </navigation>
