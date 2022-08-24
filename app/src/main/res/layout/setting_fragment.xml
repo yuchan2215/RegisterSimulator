@@ -19,5 +19,12 @@
             app:bodyText="@string/open_items_setting"
             app:startIcon="@drawable/category" />
 
+        <xyz.miyayu.android.registersimulator.views.IconListItem
+            android:id="@+id/store_categories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:bodyText="@string/open_categories_setting"
+            app:startIcon="@drawable/folder" />
+
     </LinearLayout>
 </layout>
