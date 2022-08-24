@@ -12,10 +12,18 @@
         <action
             android:id="@+id/openRegister"
             app:destination="@id/registerTopFragment" />
+        <action
+            android:id="@+id/action_topFragment_to_settingFragment"
+            app:destination="@id/settingFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerTopFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.RegisterTopFragment"
         android:label="RegisterTopFragment"
         tools:layout="@layout/register_top_fragment" />
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.SettingFragment"
+        android:label="SettingFragment"
+        tools:layout="@layout/setting_fragment" />
 </navigation>

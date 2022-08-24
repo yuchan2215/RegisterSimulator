@@ -13,5 +13,9 @@ class TopFragment : Fragment(R.layout.top_fragment) {
         binding.openRegisterButton.setOnClickListener {
             view.findNavController().navigate(TopFragmentDirections.openRegister())
         }
+        binding.openSettingsButton.setOnClickListener {
+            view.findNavController()
+                .navigate(TopFragmentDirections.actionTopFragmentToSettingFragment())
+        }
     }
 }
