@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -8,7 +9,8 @@ android {
 
     defaultConfig {
         applicationId = "xyz.miyayu.android.registersimulator"
-        minSdk = 21
+        //Zxingが24以上を必要としている
+        minSdk = 24
         targetSdk = 32
         versionCode = 1
         versionName = "1.0"
@@ -32,11 +34,14 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
 
-    val navVersion = "2.5.1"
+    val navVersion: String by project
 
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.5.0")
@@ -49,4 +54,7 @@ dependencies {
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+
+    //Zxing
+    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 }
