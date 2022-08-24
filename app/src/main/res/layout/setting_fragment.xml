@@ -16,6 +16,9 @@
             android:id="@+id/store_items"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:bodyText="@string/open_items_setting"
             app:startIcon="@drawable/category" />
 
@@ -23,6 +26,9 @@
             android:id="@+id/store_categories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:bodyText="@string/open_categories_setting"
             app:startIcon="@drawable/folder" />
 
@@ -30,6 +36,9 @@
             android:id="@+id/tax_setting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             app:bodyText="@string/open_tax_setting"
             app:startIcon="@drawable/dollar" />
 
