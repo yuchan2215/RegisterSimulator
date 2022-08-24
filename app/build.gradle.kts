@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("androidx.navigation.safeargs.kotlin")
+    id("kotlin-kapt")
 }
 
 android {
@@ -39,6 +40,7 @@ android {
 dependencies {
 
     val navVersion: String by project
+    val roomVersion = "2.4.3"
 
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.5.0")
@@ -54,4 +56,10 @@ dependencies {
 
     //Zxing
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+
+    //Room
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
+
 }
