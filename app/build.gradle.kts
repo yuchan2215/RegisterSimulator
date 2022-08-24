@@ -41,6 +41,7 @@ dependencies {
 
     val navVersion: String by project
     val roomVersion = "2.4.3"
+    val lifecycleVersion = "2.5.1"
 
     implementation("androidx.core:core-ktx:1.8.0")
     implementation("androidx.appcompat:appcompat:1.5.0")
@@ -61,5 +62,9 @@ dependencies {
     implementation("androidx.room:room-runtime:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
+
+    // Lifecycle libraries
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
 
 }
