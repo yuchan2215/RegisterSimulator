@@ -22,6 +22,8 @@ class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
                 settingItem.setLabel(getString(R.string.tax_rate_label, index + 1))
                 settingItem.visibility = View.VISIBLE
             }
+            // View側から最新情報を書き込むので、オブザーブは解除する。
+            taxSettingViewModel.taxRates.removeObservers(viewLifecycleOwner)
         }
     }
 }
