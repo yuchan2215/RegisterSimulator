@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="top_button_width">200sp</dimen>
+    <dimen name="setting_list_item_min_height">60dp</dimen>
 </resources>

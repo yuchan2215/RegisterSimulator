@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="IconListItem">
+        <attr name="bodyText" format="string" />
+        <attr name="startIcon" format="reference" />
+    </declare-styleable>
+</resources>

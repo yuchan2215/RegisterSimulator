@@ -2,4 +2,17 @@
     <string name="app_name">RegisterSimulator</string>
     <string name="open_cash_register_button">Cash register</string>
     <string name="open_settings_button">Settings</string>
+    <string name="open_items_setting">Items</string>
+    <string name="open_categories_setting">Categories</string>
+    <string name="open_tax_setting">Tax</string>
+    <string name="tax_name_hint">Tax Title</string>
+    <string name="percent">%</string>
+    <string name="tax_rate_hint">Tax rate</string>
+    <string name="tax_rate_label">Rate %d</string>
+    <string name="home_label">Home</string>
+    <string name="register_label">Cash Register</string>
+    <string name="settings_label">Settings</string>
+    <string name="tax_settings_label">Tax Settings</string>
+    <string name="save_btn_description">Save</string>
+    <string name="saved_message">Saved.</string>
 </resources>
