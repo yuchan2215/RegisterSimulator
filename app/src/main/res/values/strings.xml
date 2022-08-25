@@ -9,4 +9,8 @@
     <string name="percent">%</string>
     <string name="tax_rate_hint">Tax rate</string>
     <string name="tax_rate_label">Rate %d</string>
+    <string name="home_label">Home</string>
+    <string name="register_label">Cash Register</string>
+    <string name="settings_label">Settings</string>
+    <string name="tax_settings_label">Tax Settings</string>
 </resources>

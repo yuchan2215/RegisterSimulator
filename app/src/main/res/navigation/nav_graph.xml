@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/topFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.TopFragment"
-        android:label="TopFragment"
+        android:label="@string/home_label"
         tools:layout="@layout/top_fragment">
         <action
             android:id="@+id/openRegister"
@@ -19,12 +19,12 @@
     <fragment
         android:id="@+id/registerTopFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.RegisterTopFragment"
-        android:label="RegisterTopFragment"
+        android:label="@string/register_label"
         tools:layout="@layout/register_top_fragment" />
     <fragment
         android:id="@+id/settingFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.SettingFragment"
-        android:label="SettingFragment"
+        android:label="@string/settings_label"
         tools:layout="@layout/setting_fragment">
         <action
             android:id="@+id/openTaxSetting"
@@ -33,6 +33,6 @@
     <fragment
         android:id="@+id/taxSettingFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.TaxSettingFragment"
-        android:label="TaxSettingFragment"
+        android:label="@string/tax_settings_label"
         tools:layout="@layout/tax_setting_fragment" />
 </navigation>
