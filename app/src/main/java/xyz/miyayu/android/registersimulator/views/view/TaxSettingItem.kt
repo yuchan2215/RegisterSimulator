@@ -3,7 +3,9 @@ package xyz.miyayu.android.registersimulator.views.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import com.google.android.material.textfield.TextInputEditText
 import xyz.miyayu.android.registersimulator.R
 
 class TaxSettingItem(context: Context, attrs: AttributeSet) :
@@ -12,5 +14,17 @@ class TaxSettingItem(context: Context, attrs: AttributeSet) :
         LayoutInflater.from(context).inflate(
             R.layout.tax_setting_item, this, true
         )
+    }
+
+    fun setTitle(title: String) {
+        this.findViewById<TextInputEditText>(R.id.tax_title_input_edit).setText(title)
+    }
+
+    fun setRate(rate: String) {
+        this.findViewById<TextInputEditText>(R.id.tax_rate_input_edit).setText(rate)
+    }
+
+    fun setLabel(label: String) {
+        this.findViewById<TextView>(R.id.rate_label).setText(label)
     }
 }
