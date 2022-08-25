@@ -13,4 +13,5 @@
     <string name="register_label">Cash Register</string>
     <string name="settings_label">Settings</string>
     <string name="tax_settings_label">Tax Settings</string>
+    <string name="save_btn_description">Save</string>
 </resources>
