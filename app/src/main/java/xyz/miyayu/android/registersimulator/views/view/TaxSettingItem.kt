@@ -1,6 +1,7 @@
 package xyz.miyayu.android.registersimulator.views.view
 
 import android.content.Context
+import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.TextView
@@ -26,5 +27,23 @@ class TaxSettingItem(context: Context, attrs: AttributeSet) :
 
     fun setLabel(label: String) {
         this.findViewById<TextView>(R.id.rate_label).setText(label)
+    }
+
+    //private var titleTextWatcher: TextWatcher? = null
+    fun setTitleTextChangedListener(textWatcher: TextWatcher) {
+        //this.titleTextWatcher = textWatcher
+        this.findViewById<TextInputEditText>(R.id.tax_title_input_edit)
+            .addTextChangedListener(textWatcher)
+    }
+
+    /**
+    fun removeTitleTextChangedListener() {
+    this.findViewById<TextInputEditText>(R.id.tax_title_input_edit)
+    .removeTextChangedListener(titleTextWatcher)
+    }**/
+
+    fun setRateTextChangedListener(textWatcher: TextWatcher) {
+        this.findViewById<TextInputEditText>(R.id.tax_rate_input_edit)
+            .addTextChangedListener(textWatcher)
     }
 }

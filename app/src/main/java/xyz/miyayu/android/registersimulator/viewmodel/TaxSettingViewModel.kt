@@ -19,6 +19,26 @@ class TaxSettingViewModel : ViewModel() {
         }
     }
 
+    fun setTaxTitle(editId: Int, title: String) {
+        _taxRates.value = _taxRates.value?.map {
+            if (editId == it.id) {
+                it.copy(title = title)
+            } else {
+                it
+            }
+        }
+    }
+
+    fun setTaxRate(editId: Int, taxRate: String) {
+        _taxRates.value = _taxRates.value?.map {
+            if (editId == it.id) {
+                it.copy(rate = taxRate)
+            } else {
+                it
+            }
+        }
+    }
+
     init {
         fetchTaxRates()
     }
