@@ -19,6 +19,14 @@ class TaxSettingViewModel : ViewModel() {
         }
     }
 
+    fun saveTaxRates() {
+        taxRates.value?.also {
+            viewModelScope.launch(Dispatchers.IO) {
+                TaxRateRepository.saveTaxRates(it)
+            }
+        }
+    }
+
     fun setTaxTitle(editId: Int, title: String) {
         _taxRates.value = _taxRates.value?.map {
             if (editId == it.id) {

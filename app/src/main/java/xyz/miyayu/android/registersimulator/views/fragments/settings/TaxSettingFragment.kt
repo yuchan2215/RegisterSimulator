@@ -1,10 +1,13 @@
 package xyz.miyayu.android.registersimulator.views.fragments.settings
 
+import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.google.android.material.snackbar.Snackbar
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.TaxSettingFragmentBinding
 import xyz.miyayu.android.registersimulator.util.SimpleTextWatcher
@@ -42,6 +45,21 @@ class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
             }
             // View側から最新情報を書き込むので、オブザーブは解除する。
             taxSettingViewModel.taxRates.removeObservers(viewLifecycleOwner)
+        }
+        binding.floatingSaveButton.setOnClickListener {
+            hideKeyboard()
+            taxSettingViewModel.saveTaxRates()
+            Snackbar.make(it, R.string.saved_message, Snackbar.LENGTH_LONG).show()
+        }
+    }
+
+    //参考：https://qiita.com/bassaer/items/0e412d9f36b2113ee8d0
+    private fun hideKeyboard() {
+        val view = requireActivity().currentFocus
+        if (view != null) {
+            val manager =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            manager.hideSoftInputFromWindow(view.windowToken, 0)
         }
     }
 }

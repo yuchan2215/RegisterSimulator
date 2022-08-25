@@ -22,4 +22,11 @@ object TaxRateRepository {
             return@map dao.getTaxRate(it.id) ?: it
         }
     }
+
+    suspend fun saveTaxRates(taxRates: List<TaxRate>) {
+        val dao = getTaxRateDao()
+        taxRates.forEach {
+            dao.insert(it)
+        }
+    }
 }
