@@ -11,33 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:id="@+id/tax_linear_layout"
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
-            <xyz.miyayu.android.registersimulator.views.view.TaxSettingItem
-                android:id="@+id/tax_setting_1"
+            <LinearLayout
+                android:id="@+id/tax_linear_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="invisible"
-                tools:visibility="visible" />
+                android:orientation="vertical">
 
-            <xyz.miyayu.android.registersimulator.views.view.TaxSettingItem
-                android:id="@+id/tax_setting_2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                tools:visibility="visible" />
+                <xyz.miyayu.android.registersimulator.views.view.TaxSettingItem
+                    android:id="@+id/tax_setting_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
 
-            <xyz.miyayu.android.registersimulator.views.view.TaxSettingItem
-                android:id="@+id/tax_setting_3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="invisible"
-                tools:visibility="visible" />
-        </LinearLayout>
+                <xyz.miyayu.android.registersimulator.views.view.TaxSettingItem
+                    android:id="@+id/tax_setting_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
+
+                <xyz.miyayu.android.registersimulator.views.view.TaxSettingItem
+                    android:id="@+id/tax_setting_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="invisible"
+                    tools:visibility="visible" />
+            </LinearLayout>
+        </ScrollView>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_save_button"
