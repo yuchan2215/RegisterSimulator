@@ -4,7 +4,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    class="xyz.miyayu.android.registersimulator.views.IconListItem"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:minHeight="@dimen/setting_list_item_min_height">
