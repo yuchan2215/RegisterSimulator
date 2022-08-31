@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class Category(
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    val categoryId: Int,
+    val categoryId: Int? = null,
     val name: String,
     @ColumnInfo(name = "default_tax_rate_id")
     val defaultTaxRateId: Int?,

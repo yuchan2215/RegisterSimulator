@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "c074ebe30826e310c7107a18ec0b4359",
+    "identityHash": "b49c733d6a2144575a5e5a97dd039d58",
     "entities": [
       {
         "tableName": "taxes",
@@ -38,13 +38,13 @@
       },
       {
         "tableName": "categories",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `default_tax_rate_id` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `default_tax_rate_id` INTEGER)",
         "fields": [
           {
             "fieldPath": "categoryId",
             "columnName": "id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "name",
@@ -72,7 +72,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c074ebe30826e310c7107a18ec0b4359')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b49c733d6a2144575a5e5a97dd039d58')"
     ]
   }
 }

@@ -27,8 +27,9 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
 
         val adapter = object : CategoryListAdapter() {
             override fun onItemClicked(item: CategoryAndTaxRate) {
+                val categoryId = item.category.categoryId ?: throw NullPointerException("")
                 view.findNavController()
-                    .navigate(CategorySettingFragmentDirections.openCategoryInput(item.category.categoryId))
+                    .navigate(CategorySettingFragmentDirections.openCategoryInput(categoryId))
             }
         }
 
