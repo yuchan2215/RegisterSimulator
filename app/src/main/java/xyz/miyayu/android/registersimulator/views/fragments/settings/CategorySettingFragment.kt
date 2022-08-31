@@ -50,7 +50,8 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
             ItemTouchHelper.ACTION_STATE_IDLE, ItemTouchHelper.RIGHT
         ) {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                //TODO スワイプした時の処理
+                val item = adapter.currentList[viewHolder.adapterPosition]
+                viewModel.deleteItem(item)
             }
 
             override fun onMove(
