@@ -17,4 +17,5 @@
     <string name="saved_message">Saved.</string>
     <string name="add_button_description">Add Button</string>
     <string name="category_settings_label">Category Settings</string>
+    <string name="category_tax_preview">%s(%s%%)</string>
 </resources>

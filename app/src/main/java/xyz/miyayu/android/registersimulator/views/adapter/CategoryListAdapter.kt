@@ -5,6 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.RegisterApplication
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingItemBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
 
@@ -34,8 +36,15 @@ abstract class CategoryListAdapter :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CategoryAndTaxRate) {
             binding.apply {
+                val taxPreview = item.taxRate?.let {
+                    RegisterApplication.instance.getString(
+                        R.string.category_tax_preview,
+                        it.title,
+                        it.rate
+                    )
+                } ?: ""
                 categoryName.text = item.category.name
-                //TODO 税率を表示させる
+                categoryTaxPreview.text = taxPreview
             }
         }
     }
