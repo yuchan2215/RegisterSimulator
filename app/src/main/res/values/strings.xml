@@ -16,4 +16,5 @@
     <string name="save_btn_description">Save</string>
     <string name="saved_message">Saved.</string>
     <string name="add_button_description">Add Button</string>
+    <string name="category_settings_label">Category Settings</string>
 </resources>
