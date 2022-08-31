@@ -25,4 +25,6 @@ object CategoryRepository {
     suspend fun getCategoriesAndTaxRates() = getCategoryDao().getCategoriesAndTaxRates()
 
     fun getCategoriesAndTaxRatesFlow() = getCategoryDao().getCategoriesAndTaxRatesFlow()
+
+    suspend fun getCategory(categoryId: Int) = getCategoryDao().getCategory(categoryId)
 }
