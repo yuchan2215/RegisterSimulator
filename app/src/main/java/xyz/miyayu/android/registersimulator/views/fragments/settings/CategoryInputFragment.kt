@@ -41,6 +41,12 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
         viewmodel.category.observe(viewLifecycleOwner) {
             if (it == null) return@observe
 
+            // チェックした時のアニメーションを無効化する
+            val animationClearListener = RadioGroup.OnCheckedChangeListener { _, _ ->
+                binding.categoryTaxGroup.jumpDrawablesToCurrentState()
+            }
+            binding.categoryTaxGroup.setOnCheckedChangeListener(animationClearListener)
+
             binding.categoryNameInput.setText(it.name)
             binding.categoryTaxGroup.check(getTaxRateLayoutId(it.defaultTaxRateId))
             binding.categoryNameLayout.isHintAnimationEnabled = true
