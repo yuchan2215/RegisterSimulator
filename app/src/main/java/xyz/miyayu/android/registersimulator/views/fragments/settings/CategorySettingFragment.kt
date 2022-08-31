@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,7 +27,8 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
 
         val adapter = object : CategoryListAdapter() {
             override fun onItemClicked(item: CategoryAndTaxRate) {
-                //TODO クリックされた時の処理
+                view.findNavController()
+                    .navigate(CategorySettingFragmentDirections.openCategoryInput(item.category.categoryId))
             }
         }
 
@@ -38,6 +40,11 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
             recyclerView.layoutManager = LinearLayoutManager(requireContext())
             recyclerView.addItemDecoration(decoration)
             getSwipeToDismissTouchHelper(adapter).attachToRecyclerView(recyclerView)
+
+            addItemButton.setOnClickListener {
+                view.findNavController()
+                    .navigate(CategorySettingFragmentDirections.openCategoryInput())
+            }
         }
 
         viewModel.categoryList.observe(this.viewLifecycleOwner) { items ->

@@ -42,5 +42,19 @@
         android:id="@+id/categorySettingFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.CategorySettingFragment"
         android:label="@string/category_settings_label"
-        tools:layout="@layout/category_setting_fragment" />
+        tools:layout="@layout/category_setting_fragment">
+        <action
+            android:id="@+id/openCategoryInput"
+            app:destination="@id/categoryInputFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/categoryInputFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.CategoryInputFragment"
+        android:label="@string/category_input_label"
+        tools:layout="@layout/category_input_fragment">
+        <argument
+            android:name="categoryId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
 </navigation>

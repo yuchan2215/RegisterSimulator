@@ -21,4 +21,5 @@
     <string name="category_tax_preview">%s(%s%%)</string>
     <string name="category_name_field_title">Category Name</string>
     <string name="category_tax_choice_message">Choice Tax Rate</string>
+    <string name="category_input_label">Category Input</string>
 </resources>
