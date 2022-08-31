@@ -6,7 +6,7 @@
     <string name="open_categories_setting">Categories</string>
     <string name="open_tax_setting">Tax</string>
     <string name="tax_name_hint">Tax Title</string>
-    <string name="percent">%</string>
+    <string name="percent" translatable="false">%</string>
     <string name="tax_rate_hint">Tax rate</string>
     <string name="tax_rate_label">Rate %d</string>
     <string name="home_label">Home</string>
@@ -18,7 +18,7 @@
     <string name="saved_message">Saved.</string>
     <string name="add_button_description">Add Button</string>
     <string name="category_settings_label">Category Settings</string>
-    <string name="category_tax_preview">%s(%s%%)</string>
+    <string name="category_tax_preview" translatable="false">%s(%s%%)</string>
     <string name="category_name_field_title">Category Name</string>
     <string name="category_tax_choice_message">Choice Tax Rate</string>
     <string name="category_input_label">Category Input</string>

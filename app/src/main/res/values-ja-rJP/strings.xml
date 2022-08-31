@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">レジシミュレーター</string>
+    <string name="open_cash_register_button">レジ</string>
+    <string name="open_settings_button">設定</string>
+    <string name="open_items_setting">商品</string>
+    <string name="open_categories_setting">カテゴリ</string>
+    <string name="open_tax_setting">税</string>
+    <string name="tax_name_hint">税の名前</string>
+    <string name="tax_rate_hint">税率</string>
+    <string name="tax_rate_label">レート %d</string>
+    <string name="home_label">ホーム</string>
+    <string name="register_label">レジ</string>
+    <string name="settings_label">設定</string>
+    <string name="tax_settings_label">税設定</string>
+    <string name="save_btn_description">保存</string>
+    <string name="cancel_btn_description">キャンセル</string>
+    <string name="saved_message">保存しました</string>
+    <string name="add_button_description">追加ボタン</string>
+    <string name="category_settings_label">カテゴリ設定</string>
+    <string name="category_name_field_title">カテゴリ名</string>
+    <string name="category_tax_choice_message">税率選択</string>
+    <string name="category_input_label">カテゴリ入力</string>
+</resources>
