@@ -34,6 +34,7 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
             }
 
             viewmodel.taxRates.removeObservers(viewLifecycleOwner)
+            binding.categoryTaxGroup.visibility = View.VISIBLE
         }
 
         //カテゴリを読み込む
@@ -59,6 +60,7 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
 
             binding.categoryNameInput.addTextChangedListener(titleChangedListener)
             binding.categoryTaxGroup.setOnCheckedChangeListener(radioChangedListener)
+            binding.categoryNameLayout.visibility = View.VISIBLE
         }
 
         //セーブボタンの処理

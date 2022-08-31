@@ -19,7 +19,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/category_name_field_title"
-                app:startIconDrawable="@drawable/category">
+                android:visibility="invisible"
+                app:startIconDrawable="@drawable/category"
+                tools:visibility="visible">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/category_name_input"
@@ -38,7 +40,9 @@
                 android:id="@+id/category_tax_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@id/category_tax_1">
+                android:checkedButton="@id/category_tax_1"
+                android:visibility="invisible"
+                tools:visibility="visible">
 
                 <RadioButton
                     android:id="@+id/category_tax_1"
