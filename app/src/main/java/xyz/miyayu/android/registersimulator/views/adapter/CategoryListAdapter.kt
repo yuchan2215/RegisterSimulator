@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingItemBinding
-import xyz.miyayu.android.registersimulator.model.entity.Category
+import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
 
 abstract class CategoryListAdapter :
-    ListAdapter<Category, CategoryListAdapter.CategoryViewHolder>(DiffCallback) {
-    abstract fun onItemClicked(category: Category)
+    ListAdapter<CategoryAndTaxRate, CategoryListAdapter.CategoryViewHolder>(DiffCallback) {
+    abstract fun onItemClicked(item: CategoryAndTaxRate)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
         return CategoryViewHolder(
@@ -32,21 +32,24 @@ abstract class CategoryListAdapter :
 
     class CategoryViewHolder(private val binding: CategorySettingItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(category: Category) {
+        fun bind(item: CategoryAndTaxRate) {
             binding.apply {
-                categoryName.text = category.name
+                categoryName.text = item.category.name
                 //TODO 税率を表示させる
             }
         }
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<Category>() {
-            override fun areContentsTheSame(oldItem: Category, newItem: Category) =
+        private val DiffCallback = object : DiffUtil.ItemCallback<CategoryAndTaxRate>() {
+            override fun areContentsTheSame(
+                oldItem: CategoryAndTaxRate,
+                newItem: CategoryAndTaxRate
+            ) =
                 oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: Category, newItem: Category) =
-                oldItem.categoryId == newItem.categoryId
+            override fun areItemsTheSame(oldItem: CategoryAndTaxRate, newItem: CategoryAndTaxRate) =
+                oldItem.category.categoryId == newItem.category.categoryId
         }
     }
 }

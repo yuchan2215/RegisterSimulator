@@ -5,5 +5,5 @@ import androidx.lifecycle.asLiveData
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 
 class CategorySettingViewModel : ViewModel() {
-    val categoryList = CategoryRepository.getCategoriesFlow().asLiveData()
+    val categoryList = CategoryRepository.getCategoriesAndTaxRatesFlow().asLiveData()
 }

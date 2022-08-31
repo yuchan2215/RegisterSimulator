@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingFragmentBinding
-import xyz.miyayu.android.registersimulator.model.entity.Category
+import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.viewmodel.CategorySettingViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.CategoryListAdapter
 
@@ -19,7 +19,7 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
         super.onViewCreated(view, savedInstanceState)
 
         val adapter = object : CategoryListAdapter() {
-            override fun onItemClicked(category: Category) {
+            override fun onItemClicked(item: CategoryAndTaxRate) {
                 //TODO クリックされた時の処理
             }
         }
