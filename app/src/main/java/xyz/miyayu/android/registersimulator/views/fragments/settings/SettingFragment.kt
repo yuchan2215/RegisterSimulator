@@ -13,6 +13,9 @@ class SettingFragment : Fragment(R.layout.setting_fragment) {
             taxSetting.setOnClickListener {
                 view.findNavController().navigate(SettingFragmentDirections.openTaxSetting())
             }
+            storeCategories.setOnClickListener {
+                view.findNavController().navigate(SettingFragmentDirections.openCategorySetting())
+            }
         }
     }
 }
