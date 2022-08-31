@@ -29,4 +29,9 @@ object TaxRateRepository {
             dao.insert(it)
         }
     }
+
+    suspend fun initialization() {
+        val rates = getTaxRates()
+        saveTaxRates(rates)
+    }
 }
