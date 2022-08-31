@@ -14,11 +14,15 @@ object CategoryRepository {
         getCategoryDao().delete(category)
     }
 
-    suspend fun update(category: Category){
+    suspend fun update(category: Category) {
         getCategoryDao().update(category)
     }
 
     suspend fun getCategories() = getCategoryDao().getCategories()
 
     fun getCategoriesFlow() = getCategoryDao().getCategoriesFlow()
+
+    suspend fun getCategoriesAndTaxRates() = getCategoryDao().getCategoriesAndTaxRates()
+
+    fun getCategoriesAndTaxRatesFlow() = getCategoryDao().getCategoriesAndTaxRatesFlow()
 }

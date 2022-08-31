@@ -3,6 +3,7 @@ package xyz.miyayu.android.registersimulator.model.dao
 import androidx.room.*
 import kotlinx.coroutines.flow.Flow
 import xyz.miyayu.android.registersimulator.model.entity.Category
+import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
 
 @Dao
 interface CategoryDao {
@@ -20,6 +21,14 @@ interface CategoryDao {
 
     @Query(GET_CATEGORIES_QUERY)
     fun getCategoriesFlow(): Flow<List<Category>>
+
+    @Transaction
+    @Query(GET_CATEGORIES_QUERY)
+    suspend fun getCategoriesAndTaxRates(): List<CategoryAndTaxRate>
+
+    @Transaction
+    @Query(GET_CATEGORIES_QUERY)
+    fun getCategoriesAndTaxRatesFlow(): Flow<List<CategoryAndTaxRate>>
 
     companion object {
         const val GET_CATEGORIES_QUERY = "SELECT * FROM categories ORDER BY id ASC"
