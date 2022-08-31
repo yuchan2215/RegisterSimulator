@@ -32,12 +32,12 @@ class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
                 //リスナーを作成し、ViewModelに反映させる
                 val titleTextChangedListener = object : SimpleTextWatcher() {
                     override fun afterTextChanged(s: Editable?) {
-                        taxSettingViewModel.setTaxTitle(index, s.toString())
+                        taxSettingViewModel.setTaxTitle(taxRate.id, s.toString())
                     }
                 }
                 val taxTextChangedListener = object : SimpleTextWatcher() {
                     override fun afterTextChanged(s: Editable?) {
-                        taxSettingViewModel.setTaxRate(index, s.toString())
+                        taxSettingViewModel.setTaxRate(taxRate.id, s.toString())
                     }
                 }
                 settingItem.setTitleTextChangedListener(titleTextChangedListener)
