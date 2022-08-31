@@ -5,9 +5,9 @@ import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 
 object TaxRateRepository {
     private val default_tax_rates = listOf(
-        TaxRate(id = 0, title = "標準税率", rate = "10"),
-        TaxRate(id = 1, title = "軽減税率", rate = "8"),
-        TaxRate(id = 2, title = "予備税率", rate = "20")
+        TaxRate(id = 1, title = "標準税率", rate = "10"),
+        TaxRate(id = 2, title = "軽減税率", rate = "8"),
+        TaxRate(id = 3, title = "予備税率", rate = "20")
     )
 
     private fun getTaxRateDao() = RegisterApplication.instance.database.taxRateDao()
