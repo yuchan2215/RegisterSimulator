@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:orientation="vertical"
+            android:showDividers="middle">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/category_name_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/category_name_field_title"
+                app:startIconDrawable="@drawable/category">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/category_name_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/category_tax_choice_message"
+                android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
+
+            <RadioGroup
+                android:id="@+id/category_tax_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@id/category_tax_1">
+
+                <RadioButton
+                    android:id="@+id/category_tax_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="税率１(3%)" />
+
+                <RadioButton
+                    android:id="@+id/category_tax_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="税率２(3%)" />
+
+                <RadioButton
+                    android:id="@+id/category_tax_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="税率３(3%)" />
+            </RadioGroup>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/save_button"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/save_btn_description" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancel_button"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel_btn_description" />
+        </LinearLayout>
+    </ScrollView>
+</layout>

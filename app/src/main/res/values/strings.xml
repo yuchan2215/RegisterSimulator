@@ -14,8 +14,11 @@
     <string name="settings_label">Settings</string>
     <string name="tax_settings_label">Tax Settings</string>
     <string name="save_btn_description">Save</string>
+    <string name="cancel_btn_description">Cancel</string>
     <string name="saved_message">Saved.</string>
     <string name="add_button_description">Add Button</string>
     <string name="category_settings_label">Category Settings</string>
     <string name="category_tax_preview">%s(%s%%)</string>
+    <string name="category_name_field_title">Category Name</string>
+    <string name="category_tax_choice_message">Choice Tax Rate</string>
 </resources>
