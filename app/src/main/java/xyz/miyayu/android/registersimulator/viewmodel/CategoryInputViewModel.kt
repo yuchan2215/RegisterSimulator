@@ -15,6 +15,10 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
     private val _taxRates: MutableLiveData<List<TaxRate>> = MutableLiveData()
     val taxRates: LiveData<List<TaxRate>> = _taxRates
 
+    val canSave: LiveData<Boolean> = _category.map {
+        it?.name?.isNotEmpty() ?: false
+    }
+
     private val categoryId = navigationArgs.categoryId
     private val isNewly = categoryId == -1
 

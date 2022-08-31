@@ -71,6 +71,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
+                android:enabled="false"
                 android:text="@string/save_btn_description" />
 
             <com.google.android.material.button.MaterialButton

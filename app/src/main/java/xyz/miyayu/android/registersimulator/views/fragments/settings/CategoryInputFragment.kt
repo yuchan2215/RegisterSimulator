@@ -69,6 +69,11 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
             binding.categoryTaxGroup.setOnCheckedChangeListener(radioChangedListener)
             binding.categoryNameLayout.visibility = View.VISIBLE
         }
+        
+        //セーブできるか
+        viewmodel.canSave.observe(viewLifecycleOwner) {
+            binding.saveButton.isEnabled = it
+        }
 
         //セーブボタンの処理
         binding.saveButton.setOnClickListener {
