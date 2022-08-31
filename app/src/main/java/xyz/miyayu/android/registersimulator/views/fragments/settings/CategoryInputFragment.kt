@@ -43,6 +43,7 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
 
             binding.categoryNameInput.setText(it.name)
             binding.categoryTaxGroup.check(getTaxRateLayoutId(it.defaultTaxRateId))
+            binding.categoryNameLayout.isHintAnimationEnabled = true
 
             viewmodel.category.removeObservers(viewLifecycleOwner)
 

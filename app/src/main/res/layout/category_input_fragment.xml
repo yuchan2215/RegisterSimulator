@@ -20,6 +20,7 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/category_name_field_title"
                 android:visibility="invisible"
+                app:hintAnimationEnabled="false"
                 app:startIconDrawable="@drawable/category"
                 tools:visibility="visible">
 
