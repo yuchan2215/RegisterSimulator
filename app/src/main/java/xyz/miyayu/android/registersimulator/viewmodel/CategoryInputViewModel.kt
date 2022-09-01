@@ -37,6 +37,33 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
     }
 
     /**
+     * 初期化の検証。
+     */
+    val isInitialized = MediatorLiveData<Boolean>().apply {
+        this.value = false
+
+        val viewModels = listOf(_taxRates, categoryName, choseTaxRateLayoutId)
+
+        val changedObserver = Observer<Any> {
+            val nameValidate = categoryName.value != null
+            val choseValidate = choseTaxRateLayoutId.value != null
+            val taxRateValidate = _taxRates.value != null
+            this.value = nameValidate && taxRateValidate && choseValidate
+
+            //もしTrueになったらソースを削除する。
+            if (this.value == true) {
+                viewModels.forEach {
+                    removeSource(it)
+                }
+            }
+        }
+        //ソース追加
+        viewModels.forEach {
+            addSource(it, changedObserver)
+        }
+    }
+
+    /**
      * 入力内容の検証。
      * カテゴリ名が空ではない　かつ　税率が設定されていることを確認する。
      */

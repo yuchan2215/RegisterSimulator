@@ -23,6 +23,23 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
+        viewModel.isInitialized.observe(viewLifecycleOwner) {
+            binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ ->
+                //アニメーションを無効にする
+                if (it != true) {
+                    binding.categoryTaxGroup.jumpDrawablesToCurrentState()
+                }
+            }
+            if (it == true) {
+                //アニメーションを有効にする
+                binding.categoryNameLayout.isHintAnimationEnabled = true
+                binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ -> }
+
+                //オブザーブを解除する
+                viewModel.isInitialized.removeObservers(viewLifecycleOwner)
+            }
+        }
+
         //セーブボタンの処理
         binding.saveButton.setOnClickListener {
             viewModel.save()
