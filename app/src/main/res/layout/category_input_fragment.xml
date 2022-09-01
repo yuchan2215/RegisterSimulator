@@ -3,31 +3,41 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="xyz.miyayu.android.registersimulator.viewmodel.CategoryInputViewModel" />
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/input_fragment_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
-            android:showDividers="middle">
+            android:showDividers="middle"
+            android:visibility="invisible"
+            tools:visibility="visible">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/category_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/category_name_field_title"
-                android:visibility="invisible"
                 app:hintAnimationEnabled="false"
-                app:startIconDrawable="@drawable/category"
-                tools:visibility="visible">
+                app:startIconDrawable="@drawable/category">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/category_name_input"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:text="@={viewModel.categoryName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -41,26 +51,27 @@
                 android:id="@+id/category_tax_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@id/category_tax_1"
-                android:visibility="invisible"
-                tools:visibility="visible">
+                android:checkedButton="@={viewModel.choseTaxRateLayoutId}">
 
                 <RadioButton
                     android:id="@+id/category_tax_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@{viewModel.taxRatePreviews.get(0)}"
                     tools:text="税率１(3%)" />
 
                 <RadioButton
                     android:id="@+id/category_tax_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@{viewModel.taxRatePreviews.get(1)}"
                     tools:text="税率２(3%)" />
 
                 <RadioButton
                     android:id="@+id/category_tax_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@{viewModel.taxRatePreviews.get(2)}"
                     tools:text="税率３(3%)" />
             </RadioGroup>
 
@@ -71,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:enabled="false"
+                android:enabled="@{viewModel.isValidated}"
                 android:text="@string/save_btn_description" />
 
             <com.google.android.material.button.MaterialButton
