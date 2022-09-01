@@ -35,6 +35,14 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
                 binding.categoryNameLayout.isHintAnimationEnabled = true
                 binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ -> }
 
+                //表示アニメーション
+                binding.inputFragmentLinearLayout.alpha = 0.0f
+                binding.inputFragmentLinearLayout.visibility = View.VISIBLE
+                @Suppress("UsePropertyAccessSyntax")
+                binding.inputFragmentLinearLayout.animate()
+                    .alpha(1.0f)
+                    .setDuration(100)
+
                 //オブザーブを解除する
                 viewModel.isInitialized.removeObservers(viewLifecycleOwner)
             }

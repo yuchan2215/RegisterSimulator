@@ -15,11 +15,15 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/input_fragment_linear_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
+            android:animateLayoutChanges="true"
             android:orientation="vertical"
-            android:showDividers="middle">
+            android:showDividers="middle"
+            android:visibility="invisible"
+            tools:visibility="visible">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/category_name_layout"
