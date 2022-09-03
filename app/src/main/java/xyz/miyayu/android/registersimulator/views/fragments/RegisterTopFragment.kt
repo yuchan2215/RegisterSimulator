@@ -36,6 +36,6 @@ class RegisterTopFragment : Fragment(R.layout.register_top_fragment), BarcodeCal
 
     override fun barcodeResult(result: BarcodeResult?) {
         Log.i("BarcodeResult", result.toString())
-        //TODO
+        // TODO
     }
 }

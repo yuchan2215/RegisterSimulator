@@ -33,7 +33,7 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
             }
         }
 
-        //RecyclerViewで項目を区切るデコレーション
+        // RecyclerViewで項目を区切るデコレーション
         val decoration = DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL)
 
         CategorySettingFragmentBinding.bind(view).apply {
@@ -57,77 +57,77 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.ACTION_STATE_IDLE, ItemTouchHelper.RIGHT
         ) {
-            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
-                val item = adapter.currentList[viewHolder.adapterPosition]
-                viewModel.deleteItem(item)
-            }
-
-            override fun onMove(
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                target: RecyclerView.ViewHolder
-            ): Boolean {
-                return false
-            }
-
-            override fun onChildDraw(
-                c: Canvas,
-                recyclerView: RecyclerView,
-                viewHolder: RecyclerView.ViewHolder,
-                dX: Float,
-                dY: Float,
-                actionState: Int,
-                isCurrentlyActive: Boolean
-            ) {
-                super.onChildDraw(
-                    c,
-                    recyclerView,
-                    viewHolder,
-                    dX,
-                    dY,
-                    actionState,
-                    isCurrentlyActive
-                )
-
-                val iconColor = ThemeColorUtil.getThemedColor(
-                    requireContext(),
-                    com.google.android.material.R.attr.colorOnError
-                )
-
-                val backgroundColor = ThemeColorUtil.getThemedColor(
-                    requireContext(),
-                    com.google.android.material.R.attr.colorError
-                )
-
-                val itemView = viewHolder.itemView
-                val background = ColorDrawable(backgroundColor)
-
-                val deleteIcon = AppCompatResources.getDrawable(requireContext(), R.drawable.delete)
-                    ?: throw NullPointerException()
-
-                deleteIcon.setTint(iconColor)
-
-                val iconMarginVertical = (itemView.height - deleteIcon.intrinsicHeight) / 2
-
-                //もし０なら描画しない
-                if (dX == 0f) {
-                    return
+                override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                    val item = adapter.currentList[viewHolder.adapterPosition]
+                    viewModel.deleteItem(item)
                 }
-                background.setBounds(
-                    itemView.left,
-                    itemView.top,
-                    itemView.left + dX.toInt(),
-                    itemView.bottom
-                )
-                deleteIcon.setBounds(
-                    itemView.left + iconMarginVertical,
-                    itemView.top + iconMarginVertical,
-                    itemView.left + iconMarginVertical + deleteIcon.intrinsicWidth,
-                    itemView.bottom - iconMarginVertical
-                )
 
-                background.draw(c)
-                deleteIcon.draw(c)
-            }
-        })
+                override fun onMove(
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    target: RecyclerView.ViewHolder
+                ): Boolean {
+                    return false
+                }
+
+                override fun onChildDraw(
+                    c: Canvas,
+                    recyclerView: RecyclerView,
+                    viewHolder: RecyclerView.ViewHolder,
+                    dX: Float,
+                    dY: Float,
+                    actionState: Int,
+                    isCurrentlyActive: Boolean
+                ) {
+                    super.onChildDraw(
+                        c,
+                        recyclerView,
+                        viewHolder,
+                        dX,
+                        dY,
+                        actionState,
+                        isCurrentlyActive
+                    )
+
+                    val iconColor = ThemeColorUtil.getThemedColor(
+                        requireContext(),
+                        com.google.android.material.R.attr.colorOnError
+                    )
+
+                    val backgroundColor = ThemeColorUtil.getThemedColor(
+                        requireContext(),
+                        com.google.android.material.R.attr.colorError
+                    )
+
+                    val itemView = viewHolder.itemView
+                    val background = ColorDrawable(backgroundColor)
+
+                    val deleteIcon = AppCompatResources.getDrawable(requireContext(), R.drawable.delete)
+                        ?: throw NullPointerException()
+
+                    deleteIcon.setTint(iconColor)
+
+                    val iconMarginVertical = (itemView.height - deleteIcon.intrinsicHeight) / 2
+
+                    // もし０なら描画しない
+                    if (dX == 0f) {
+                        return
+                    }
+                    background.setBounds(
+                        itemView.left,
+                        itemView.top,
+                        itemView.left + dX.toInt(),
+                        itemView.bottom
+                    )
+                    deleteIcon.setBounds(
+                        itemView.left + iconMarginVertical,
+                        itemView.top + iconMarginVertical,
+                        itemView.left + iconMarginVertical + deleteIcon.intrinsicWidth,
+                        itemView.bottom - iconMarginVertical
+                    )
+
+                    background.draw(c)
+                    deleteIcon.draw(c)
+                }
+            })
 }
