@@ -1,6 +1,13 @@
 package xyz.miyayu.android.registersimulator.viewmodel
 
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.RegisterApplication
@@ -26,7 +33,7 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
             taxRates?.getOrNull(1),
             taxRates?.getOrNull(2)
         ).map { taxRate ->
-            //Nullなら空欄
+            // Nullなら空欄
             if (taxRate == null) ""
             else RegisterApplication.instance.getString(
                 R.string.category_tax_preview,
@@ -50,14 +57,14 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
             val taxRateValidate = _taxRates.value != null
             this.value = nameValidate && taxRateValidate && choseValidate
 
-            //もしTrueになったらソースを削除する。
+            // もしTrueになったらソースを削除する。
             if (this.value == true) {
                 viewModels.forEach {
                     removeSource(it)
                 }
             }
         }
-        //ソース追加
+        // ソース追加
         viewModels.forEach {
             addSource(it, changedObserver)
         }

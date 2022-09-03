@@ -6,11 +6,11 @@ import xyz.miyayu.android.registersimulator.model.entity.Category
 object CategoryRepository {
     private fun getCategoryDao() = RegisterApplication.instance.database.categoryDao()
 
-    suspend fun insert(category: Category){
+    suspend fun insert(category: Category) {
         getCategoryDao().insert(category)
     }
 
-    suspend fun delete(category: Category){
+    suspend fun delete(category: Category) {
         getCategoryDao().delete(category)
     }
 

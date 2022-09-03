@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="UnusedResources">
     <color name="seed">#6750A4</color>
     <color name="md_theme_light_surfaceTint">#6750A4</color>
     <color name="md_theme_light_surfaceTintColor">#6750A4</color>
