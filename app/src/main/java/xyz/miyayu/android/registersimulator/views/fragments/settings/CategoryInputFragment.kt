@@ -25,17 +25,17 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
 
         viewModel.isInitialized.observe(viewLifecycleOwner) {
             binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ ->
-                //アニメーションを無効にする
+                // アニメーションを無効にする
                 if (it != true) {
                     binding.categoryTaxGroup.jumpDrawablesToCurrentState()
                 }
             }
             if (it == true) {
-                //アニメーションを有効にする
+                // アニメーションを有効にする
                 binding.categoryNameLayout.isHintAnimationEnabled = true
                 binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ -> }
 
-                //表示アニメーション
+                // 表示アニメーション
                 binding.inputFragmentLinearLayout.alpha = 0.0f
                 binding.inputFragmentLinearLayout.visibility = View.VISIBLE
                 @Suppress("UsePropertyAccessSyntax")
@@ -43,20 +43,19 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
                     .alpha(1.0f)
                     .setDuration(100)
 
-                //オブザーブを解除する
+                // オブザーブを解除する
                 viewModel.isInitialized.removeObservers(viewLifecycleOwner)
             }
         }
 
-        //セーブボタンの処理
+        // セーブボタンの処理
         binding.saveButton.setOnClickListener {
             viewModel.save()
             view.findNavController().popBackStack()
         }
-        //キャンセルボタンの処理
+        // キャンセルボタンの処理
         binding.cancelButton.setOnClickListener {
             view.findNavController().popBackStack()
         }
     }
-
 }

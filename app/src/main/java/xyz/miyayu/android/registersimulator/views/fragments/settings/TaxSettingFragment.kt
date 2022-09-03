@@ -21,15 +21,15 @@ class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
         taxSettingViewModel.taxRates.observe(viewLifecycleOwner) {
             if (it == null) return@observe
             it.forEachIndexed { index, taxRate ->
-                //ViewModelから受け取った値をViewに反映させる
+                // ViewModelから受け取った値をViewに反映させる
                 val settingItem = settingItems[index]
                 settingItem.setTitle(taxRate.title)
                 settingItem.setRate(taxRate.rate)
                 settingItem.setLabel(getString(R.string.tax_rate_label, index + 1))
-                //読み込みが終わったので見えるようにする
+                // 読み込みが終わったので見えるようにする
                 settingItem.visibility = View.VISIBLE
 
-                //リスナーを作成し、ViewModelに反映させる
+                // リスナーを作成し、ViewModelに反映させる
                 val titleTextChangedListener = object : SimpleTextWatcher() {
                     override fun afterTextChanged(s: Editable?) {
                         taxSettingViewModel.setTaxTitle(taxRate.id, s.toString())
@@ -53,7 +53,7 @@ class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
         }
     }
 
-    //参考：https://qiita.com/bassaer/items/0e412d9f36b2113ee8d0
+    // 参考：https://qiita.com/bassaer/items/0e412d9f36b2113ee8d0
     private fun hideKeyboard() {
         val view = requireActivity().currentFocus
         if (view != null) {

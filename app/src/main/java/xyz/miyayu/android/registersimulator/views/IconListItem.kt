@@ -20,7 +20,6 @@ class IconListItem(context: Context, attrs: AttributeSet) :
                 val bodyText = getString(R.styleable.IconListItem_bodyText)
                 val startIcon = getResourceId(R.styleable.IconListItem_startIcon, 0)
 
-
                 setText(bodyText)
                 setResource(startIcon)
                 this@IconListItem.contentDescription = bodyText
@@ -36,6 +35,4 @@ class IconListItem(context: Context, attrs: AttributeSet) :
     private fun setResource(@DrawableRes id: Int) {
         imageView.setImageResource(id)
     }
-
-
 }

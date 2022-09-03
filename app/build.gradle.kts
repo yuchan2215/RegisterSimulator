@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId = "xyz.miyayu.android.registersimulator"
-        //Zxingが24以上を必要としている
+        // Zxingが24以上を必要としている
         minSdk = 24
         targetSdk = 32
         versionCode = 1
@@ -67,10 +67,10 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
-    //Zxing
+    // Zxing
     implementation("com.journeyapps:zxing-android-embedded:4.3.0")
 
-    //Room
+    // Room
     implementation("androidx.room:room-runtime:$roomVersion")
     kapt("androidx.room:room-compiler:$roomVersion")
     implementation("androidx.room:room-ktx:$roomVersion")
@@ -78,5 +78,4 @@ dependencies {
     // Lifecycle libraries
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
-
 }

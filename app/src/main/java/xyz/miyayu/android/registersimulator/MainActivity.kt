@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             .setupWithNavController(navController, appBarConfiguration)
 
         lifecycleScope.launch {
-            //初期化をして消費税一覧を登録する。
+            // 初期化をして消費税一覧を登録する。
             TaxRateRepository.initialization()
         }
     }
