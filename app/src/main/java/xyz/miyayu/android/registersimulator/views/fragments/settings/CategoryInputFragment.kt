@@ -6,15 +6,25 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.CategoryInputFragmentBinding
 import xyz.miyayu.android.registersimulator.viewmodel.CategoryInputViewModel
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
+    @Inject
+    lateinit var viewModelFactory: CategoryInputViewModel.Factory
+
     private val navigationArgs: CategoryInputFragmentArgs by navArgs()
-    private val viewModel: CategoryInputViewModel by viewModels {
-        CategoryInputViewModel.Factory(navigationArgs)
-    }
+    private val viewModel: CategoryInputViewModel by viewModels(
+        ownerProducer = { this },
+        factoryProducer = {
+            val args = navigationArgs
+            CategoryInputViewModel.provideFactory(viewModelFactory, args)
+        }
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

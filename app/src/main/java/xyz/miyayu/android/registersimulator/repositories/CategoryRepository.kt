@@ -1,30 +1,45 @@
 package xyz.miyayu.android.registersimulator.repositories
 
-import xyz.miyayu.android.registersimulator.RegisterApplication
+import kotlinx.coroutines.flow.Flow
+import xyz.miyayu.android.registersimulator.model.dao.CategoryDao
 import xyz.miyayu.android.registersimulator.model.entity.Category
+import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
+import javax.inject.Inject
 
-object CategoryRepository {
-    private fun getCategoryDao() = RegisterApplication.instance.database.categoryDao()
+interface CategoryRepository {
+    suspend fun insert(category: Category)
+    suspend fun delete(category: Category)
+    suspend fun update(category: Category)
+    suspend fun getCategories(): List<Category>
+    fun getCategoriesFlow(): Flow<List<Category>>
+    suspend fun getCategoriesAndTaxRates(): List<CategoryAndTaxRate>
+    fun getCategoriesAndTaxRatesFlow(): Flow<List<CategoryAndTaxRate>>
+    suspend fun getCategory(categoryId: Int): Category
+}
 
-    suspend fun insert(category: Category) {
-        getCategoryDao().insert(category)
+class CategoryRepositoryImpl @Inject constructor(
+    private val categoryDao: CategoryDao
+) : CategoryRepository {
+
+    override suspend fun insert(category: Category) {
+        categoryDao.insert(category)
     }
 
-    suspend fun delete(category: Category) {
-        getCategoryDao().delete(category)
+    override suspend fun delete(category: Category) {
+        categoryDao.delete(category)
     }
 
-    suspend fun update(category: Category) {
-        getCategoryDao().update(category)
+    override suspend fun update(category: Category) {
+        categoryDao.update(category)
     }
 
-    suspend fun getCategories() = getCategoryDao().getCategories()
+    override suspend fun getCategories() = categoryDao.getCategories()
 
-    fun getCategoriesFlow() = getCategoryDao().getCategoriesFlow()
+    override fun getCategoriesFlow() = categoryDao.getCategoriesFlow()
 
-    suspend fun getCategoriesAndTaxRates() = getCategoryDao().getCategoriesAndTaxRates()
+    override suspend fun getCategoriesAndTaxRates() = categoryDao.getCategoriesAndTaxRates()
 
-    fun getCategoriesAndTaxRatesFlow() = getCategoryDao().getCategoriesAndTaxRatesFlow()
+    override fun getCategoriesAndTaxRatesFlow() = categoryDao.getCategoriesAndTaxRatesFlow()
 
-    suspend fun getCategory(categoryId: Int) = getCategoryDao().getCategory(categoryId)
+    override suspend fun getCategory(categoryId: Int) = categoryDao.getCategory(categoryId)
 }
