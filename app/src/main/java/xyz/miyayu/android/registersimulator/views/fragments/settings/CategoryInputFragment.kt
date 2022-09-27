@@ -34,16 +34,9 @@ class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
         binding.viewModel = viewModel
 
         viewModel.isInitialized.observe(viewLifecycleOwner) {
-            binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ ->
-                // アニメーションを無効にする
-                if (it != true) {
-                    binding.categoryTaxGroup.jumpDrawablesToCurrentState()
-                }
-            }
             if (it == true) {
                 // アニメーションを有効にする
                 binding.categoryNameLayout.isHintAnimationEnabled = true
-                binding.categoryTaxGroup.setOnCheckedChangeListener { _, _ -> }
 
                 // 表示アニメーション
                 binding.inputFragmentLinearLayout.alpha = 0.0f
