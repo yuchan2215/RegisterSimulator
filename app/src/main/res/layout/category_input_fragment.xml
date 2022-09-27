@@ -51,7 +51,8 @@
                 android:id="@+id/category_tax_group"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:checkedButton="@={viewModel.choseTaxRateLayoutId}">
+                android:checkedButton="@={viewModel.choseTaxRateLayoutId}"
+                android:onCheckedChanged="@{() -> viewModel.onCheckedChangeListener}">
 
                 <RadioButton
                     android:id="@+id/category_tax_1"

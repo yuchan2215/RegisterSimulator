@@ -1,5 +1,6 @@
 package xyz.miyayu.android.registersimulator.viewmodel
 
+import android.widget.RadioGroup.OnCheckedChangeListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -40,6 +41,12 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
                 taxRate.title,
                 taxRate.rate
             )
+        }
+    }
+
+    val onCheckedChangeListener = OnCheckedChangeListener { group, _ ->
+        if (isInitialized.value == false) {
+            group?.jumpDrawablesToCurrentState()
         }
     }
 
