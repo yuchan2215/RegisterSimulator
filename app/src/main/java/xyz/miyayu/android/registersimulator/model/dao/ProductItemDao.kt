@@ -5,9 +5,11 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import xyz.miyayu.android.registersimulator.model.entity.ProductItem
+import xyz.miyayu.android.registersimulator.model.entity.ProductItemDetail
 
 @Dao
 interface ProductItemDao {
@@ -37,6 +39,30 @@ interface ProductItemDao {
 
     @Query(GET_ITEM_QUERY)
     fun getItemFlow(id: Int): Flow<ProductItem>
+
+    @Transaction
+    @Query(GET_ALL_ITEMS_QUERY)
+    suspend fun getAllItemDetails(): List<ProductItemDetail>
+
+    @Transaction
+    @Query(GET_ALL_ITEMS_QUERY)
+    fun getAllItemDetailsFlow(): Flow<List<ProductItemDetail>>
+
+    @Transaction
+    @Query(GET_ITEMS_QUERY)
+    suspend fun getItemDetails(janCode: Long): List<ProductItemDetail>
+
+    @Transaction
+    @Query(GET_ITEMS_QUERY)
+    fun getItemDetailsFlow(janCode: Long): Flow<List<ProductItemDetail>>
+
+    @Transaction
+    @Query(GET_ITEM_QUERY)
+    suspend fun getItemDetail(id: Int): ProductItemDetail
+
+    @Transaction
+    @Query(GET_ITEM_QUERY)
+    fun getItemDetailFlow(id: Int): Flow<ProductItemDetail>
 
     companion object {
         const val GET_ALL_ITEMS_QUERY = "SELECT * FROM items ORDER BY id ASC"
