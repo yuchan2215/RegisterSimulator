@@ -1,5 +1,6 @@
 package xyz.miyayu.android.registersimulator.viewmodel
 
+import android.widget.RadioGroup.OnCheckedChangeListener
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -8,16 +9,42 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
+import dagger.assisted.Assisted
+import dagger.assisted.AssistedFactory
+import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.RegisterApplication
 import xyz.miyayu.android.registersimulator.model.entity.Category
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
+import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.views.fragments.settings.CategoryInputFragmentArgs
 
-class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewModel() {
+class CategoryInputViewModel @AssistedInject constructor(
+    private val taxRateRepository: TaxRateRepository,
+    private val categoryRepository: CategoryRepository,
+    private val resourceService: ResourceService,
+    @Assisted navigationArgs: CategoryInputFragmentArgs
+) : ViewModel() {
+
+    @AssistedFactory
+    interface Factory {
+        fun create(navigationArgs: CategoryInputFragmentArgs): CategoryInputViewModel
+    }
+
+    companion object {
+        const val DEFAULT_TAX_RATE_ID = 1
+        fun provideFactory(
+            assistedFactory: Factory,
+            navigationArgs: CategoryInputFragmentArgs
+        ) = object : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                @Suppress("UNCHECKED_CAST")
+                return assistedFactory.create(navigationArgs) as T
+            }
+        }
+    }
 
     val categoryName = MutableLiveData<String>(null)
     val choseTaxRateLayoutId = MutableLiveData<Int>(null)
@@ -35,11 +62,17 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
         ).map { taxRate ->
             // Nullなら空欄
             if (taxRate == null) ""
-            else RegisterApplication.instance.getString(
+            else resourceService.getResources().getString(
                 R.string.category_tax_preview,
                 taxRate.title,
                 taxRate.rate
             )
+        }
+    }
+
+    val onCheckedChangeListener = OnCheckedChangeListener { group, _ ->
+        if (isInitialized.value == false) {
+            group?.jumpDrawablesToCurrentState()
         }
     }
 
@@ -110,7 +143,7 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
             return
         }
         viewModelScope.launch {
-            val category = CategoryRepository.getCategory(categoryId)
+            val category = categoryRepository.getCategory(categoryId)
             categoryName.value = category.name
             choseTaxRateLayoutId.value =
                 getTaxRateLayoutId(category.defaultTaxRateId)
@@ -119,7 +152,7 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
 
     private fun fetchTaxRates() {
         viewModelScope.launch {
-            _taxRates.value = TaxRateRepository.getTaxRates()
+            _taxRates.value = taxRateRepository.getTaxRates()
         }
     }
 
@@ -129,9 +162,9 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
         val category = Category(categoryId, safeCategoryName, safeCategoryDefaultTaxRateId)
         viewModelScope.launch {
             if (categoryId == null) {
-                CategoryRepository.insert(category)
+                categoryRepository.insert(category)
             } else {
-                CategoryRepository.update(category)
+                categoryRepository.update(category)
             }
         }
     }
@@ -160,20 +193,5 @@ class CategoryInputViewModel(navigationArgs: CategoryInputFragmentArgs) : ViewMo
             3 -> R.id.category_tax_3
             else -> throw IllegalStateException()
         }
-    }
-
-    class Factory(private val navigationArgs: CategoryInputFragmentArgs) :
-        ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            if (modelClass.isAssignableFrom(CategoryInputViewModel::class.java)) {
-                @Suppress("UNCHECKED_CAST")
-                return CategoryInputViewModel(navigationArgs) as T
-            }
-            throw IllegalArgumentException("Unknown ViewModel class")
-        }
-    }
-
-    companion object {
-        const val DEFAULT_TAX_RATE_ID = 1
     }
 }

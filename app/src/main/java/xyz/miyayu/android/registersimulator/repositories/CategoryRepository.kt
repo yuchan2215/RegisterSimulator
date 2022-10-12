@@ -1,30 +1,34 @@
 package xyz.miyayu.android.registersimulator.repositories
 
-import xyz.miyayu.android.registersimulator.RegisterApplication
+import xyz.miyayu.android.registersimulator.model.dao.CategoryDao
 import xyz.miyayu.android.registersimulator.model.entity.Category
+import javax.inject.Inject
+import javax.inject.Singleton
 
-object CategoryRepository {
-    private fun getCategoryDao() = RegisterApplication.instance.database.categoryDao()
+@Singleton
+class CategoryRepository @Inject constructor(
+    private val categoryDao: CategoryDao
+) {
 
     suspend fun insert(category: Category) {
-        getCategoryDao().insert(category)
+        categoryDao.insert(category)
     }
 
     suspend fun delete(category: Category) {
-        getCategoryDao().delete(category)
+        categoryDao.delete(category)
     }
 
     suspend fun update(category: Category) {
-        getCategoryDao().update(category)
+        categoryDao.update(category)
     }
 
-    suspend fun getCategories() = getCategoryDao().getCategories()
+    suspend fun getCategories() = categoryDao.getCategories()
 
-    fun getCategoriesFlow() = getCategoryDao().getCategoriesFlow()
+    fun getCategoriesFlow() = categoryDao.getCategoriesFlow()
 
-    suspend fun getCategoriesAndTaxRates() = getCategoryDao().getCategoriesAndTaxRates()
+    suspend fun getCategoriesAndTaxRates() = categoryDao.getCategoriesAndTaxRates()
 
-    fun getCategoriesAndTaxRatesFlow() = getCategoryDao().getCategoriesAndTaxRatesFlow()
+    fun getCategoriesAndTaxRatesFlow() = categoryDao.getCategoriesAndTaxRatesFlow()
 
-    suspend fun getCategory(categoryId: Int) = getCategoryDao().getCategory(categoryId)
+    suspend fun getCategory(categoryId: Int) = categoryDao.getCategory(categoryId)
 }
