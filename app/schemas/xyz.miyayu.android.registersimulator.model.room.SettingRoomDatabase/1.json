@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b49c733d6a2144575a5e5a97dd039d58",
+    "identityHash": "17baf30b454d5ea9ea9cbca8d61ca399",
     "entities": [
       {
         "tableName": "taxes",
@@ -67,12 +67,74 @@
         },
         "indices": [],
         "foreignKeys": []
+      },
+      {
+        "tableName": "items",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `jan` INTEGER, `name` TEXT NOT NULL, `categoryId` INTEGER, `price` INTEGER NOT NULL, `taxId` INTEGER, `make_date_long` INTEGER NOT NULL, `update_date_long` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "janCode",
+            "columnName": "jan",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "itemName",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "categoryId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "price",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taxId",
+            "columnName": "taxId",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "makeDate",
+            "columnName": "make_date_long",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDate",
+            "columnName": "update_date_long",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
       }
     ],
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b49c733d6a2144575a5e5a97dd039d58')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '17baf30b454d5ea9ea9cbca8d61ca399')"
     ]
   }
 }

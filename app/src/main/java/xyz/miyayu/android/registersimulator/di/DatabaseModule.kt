@@ -8,6 +8,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import xyz.miyayu.android.registersimulator.model.dao.CategoryDao
+import xyz.miyayu.android.registersimulator.model.dao.ProductItemDao
 import xyz.miyayu.android.registersimulator.model.dao.TaxRateDao
 import xyz.miyayu.android.registersimulator.model.room.SettingRoomDatabase
 import javax.inject.Singleton
@@ -40,5 +41,11 @@ object DatabaseModule {
     @Provides
     fun provideTaxRateDao(database: SettingRoomDatabase): TaxRateDao {
         return database.taxRateDao()
+    }
+
+    @Singleton
+    @Provides
+    fun provideItemDao(database: SettingRoomDatabase): ProductItemDao {
+        return database.productItem()
     }
 }
