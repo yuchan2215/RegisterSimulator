@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
@@ -19,6 +20,7 @@ import xyz.miyayu.android.registersimulator.util.ThemeColorUtil
 import xyz.miyayu.android.registersimulator.viewmodel.CategorySettingViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.CategoryListAdapter
 
+@AndroidEntryPoint
 class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
     private val viewModel: CategorySettingViewModel by viewModels()
 

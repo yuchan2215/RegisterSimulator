@@ -8,11 +8,13 @@ import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
+import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.TaxSettingFragmentBinding
 import xyz.miyayu.android.registersimulator.util.SimpleTextWatcher
 import xyz.miyayu.android.registersimulator.viewmodel.TaxSettingViewModel
 
+@AndroidEntryPoint
 class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
     private val taxSettingViewModel: TaxSettingViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

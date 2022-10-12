@@ -4,25 +4,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
+import javax.inject.Inject
 
-class TaxSettingViewModel : ViewModel() {
+@HiltViewModel
+class TaxSettingViewModel @Inject constructor(
+    private val taxRateRepository: TaxRateRepository
+) : ViewModel() {
     private val _taxRates: MutableLiveData<List<TaxRate>?> = MutableLiveData(null)
     val taxRates: LiveData<List<TaxRate>?> = _taxRates
 
     private fun fetchTaxRates() {
         viewModelScope.launch(Dispatchers.Main) {
-            _taxRates.value = TaxRateRepository.getTaxRates()
+            _taxRates.value = taxRateRepository.getTaxRates()
         }
     }
 
     fun saveTaxRates() {
         taxRates.value?.also {
             viewModelScope.launch(Dispatchers.IO) {
-                TaxRateRepository.saveTaxRates(it)
+                taxRateRepository.saveTaxRates(it)
             }
         }
     }
