@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "17baf30b454d5ea9ea9cbca8d61ca399",
+    "identityHash": "6a209fdcc44aca3a1ac8be822eb35579",
     "entities": [
       {
         "tableName": "taxes",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "categories",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `default_tax_rate_id` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `default_tax_rate_id` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "categoryId",
@@ -56,7 +56,7 @@
             "fieldPath": "defaultTaxRateId",
             "columnName": "default_tax_rate_id",
             "affinity": "INTEGER",
-            "notNull": false
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -70,13 +70,13 @@
       },
       {
         "tableName": "items",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `jan` INTEGER, `name` TEXT NOT NULL, `categoryId` INTEGER, `price` INTEGER NOT NULL, `taxId` INTEGER, `make_date_long` INTEGER NOT NULL, `update_date_long` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `jan` INTEGER, `name` TEXT NOT NULL, `category_id` INTEGER NOT NULL, `price` INTEGER NOT NULL, `tax_id` INTEGER, `make_date_long` INTEGER NOT NULL, `update_date_long` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
             "columnName": "id",
             "affinity": "INTEGER",
-            "notNull": true
+            "notNull": false
           },
           {
             "fieldPath": "janCode",
@@ -92,9 +92,9 @@
           },
           {
             "fieldPath": "categoryId",
-            "columnName": "categoryId",
+            "columnName": "category_id",
             "affinity": "INTEGER",
-            "notNull": false
+            "notNull": true
           },
           {
             "fieldPath": "price",
@@ -104,7 +104,7 @@
           },
           {
             "fieldPath": "taxId",
-            "columnName": "taxId",
+            "columnName": "tax_id",
             "affinity": "INTEGER",
             "notNull": false
           },
@@ -134,7 +134,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '17baf30b454d5ea9ea9cbca8d61ca399')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6a209fdcc44aca3a1ac8be822eb35579')"
     ]
   }
 }

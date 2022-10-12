@@ -11,5 +11,5 @@ data class Category(
     val categoryId: Int? = null,
     val name: String,
     @ColumnInfo(name = "default_tax_rate_id")
-    val defaultTaxRateId: Int?,
+    val defaultTaxRateId: Int,
 )
