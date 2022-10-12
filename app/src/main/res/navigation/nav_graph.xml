@@ -32,6 +32,9 @@
         <action
             android:id="@+id/openCategorySetting"
             app:destination="@id/categorySettingFragment" />
+        <action
+            android:id="@+id/openItemList"
+            app:destination="@id/itemListFragment" />
     </fragment>
     <fragment
         android:id="@+id/taxSettingFragment"
@@ -57,4 +60,9 @@
             android:defaultValue="-1"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemListFragment"
+        android:label="@string/item_list_label"
+        tools:layout="@layout/item_list_fragment" />
 </navigation>
