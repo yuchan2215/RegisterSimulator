@@ -1,24 +1,14 @@
 package xyz.miyayu.android.registersimulator.repositories
 
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.model.dao.TaxRateDao
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import javax.inject.Inject
 import javax.inject.Singleton
 
-@OptIn(DelicateCoroutinesApi::class)
 @Singleton
 class TaxRateRepository @Inject constructor(
     private val taxRateDao: TaxRateDao
 ) {
-    init {
-        GlobalScope.launch(Dispatchers.IO) {
-            initialization()
-        }
-    }
 
     private val defaultTaxRates = listOf(
         TaxRate(id = 1, title = "標準税率", rate = "10"),
@@ -40,10 +30,5 @@ class TaxRateRepository @Inject constructor(
         taxRates.forEach {
             taxRateDao.insert(it)
         }
-    }
-
-    private suspend fun initialization() {
-        val rates = getTaxRates()
-        saveTaxRates(rates)
     }
 }
