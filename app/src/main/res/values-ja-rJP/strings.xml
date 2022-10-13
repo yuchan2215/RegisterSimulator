@@ -23,4 +23,10 @@
     <string name="category_input_label">カテゴリ入力</string>
     <string name="item_list_label">商品一覧</string>
     <string name="add_item_button_description">商品を追加</string>
+    <string name="import_jancode_description">カメラからJanコードを読み込む</string>
+    <string name="item_name_hint">商品名</string>
+    <string name="price_hint">価格</string>
+    <string name="jan_code_hint">JANコード</string>
+    <string name="select_tax_section_description">税率選択</string>
+    <string name="select_category_description">カテゴリ選択</string>
 </resources>

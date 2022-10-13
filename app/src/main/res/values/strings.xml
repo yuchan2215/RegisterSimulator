@@ -24,4 +24,10 @@
     <string name="category_input_label">Category Input</string>
     <string name="item_list_label">Items List</string>
     <string name="add_item_button_description">add item</string>
+    <string name="jan_code_hint">JAN Code</string>
+    <string name="import_jancode_description">Import JanCode from Camera</string>
+    <string name="item_name_hint">Item Name</string>
+    <string name="price_hint">Price</string>
+    <string name="select_tax_section_description">Select Tax section</string>
+    <string name="select_category_description">Select Category</string>
 </resources>
