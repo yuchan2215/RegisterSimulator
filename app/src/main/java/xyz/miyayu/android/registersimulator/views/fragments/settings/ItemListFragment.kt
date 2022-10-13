@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -30,6 +31,12 @@ class ItemListFragment : Fragment(R.layout.item_list_fragment) {
             itemRecyclerView.adapter = adapter
             itemRecyclerView.layoutManager = LinearLayoutManager(requireContext())
             itemRecyclerView.addItemDecoration(decoration)
+
+            addItemButton.setOnClickListener {
+                view.findNavController().navigate(
+                    ItemListFragmentDirections.openItemAdd()
+                )
+            }
         }
 
         viewModel.allItems.observe(viewLifecycleOwner) {

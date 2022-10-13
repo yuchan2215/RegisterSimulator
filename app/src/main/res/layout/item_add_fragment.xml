@@ -87,12 +87,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
                     <TextView
                         android:id="@+id/category_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                        tools:text="ジャンル"/>
+                        tools:text="カテゴリ" />
                     <TextView
                         android:id="@+id/category_tax_preview"
                         android:layout_width="match_parent"

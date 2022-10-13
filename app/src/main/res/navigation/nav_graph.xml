@@ -64,5 +64,19 @@
         android:id="@+id/itemListFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemListFragment"
         android:label="@string/item_list_label"
-        tools:layout="@layout/item_list_fragment" />
+        tools:layout="@layout/item_list_fragment">
+        <action
+            android:id="@+id/openItemAdd"
+            app:destination="@id/itemAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemAddFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragment"
+        android:label="ItemAddFragment"
+        tools:layout="@layout/item_add_fragment">
+        <argument
+            android:name="itemId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+    </fragment>
 </navigation>
