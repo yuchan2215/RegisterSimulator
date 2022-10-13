@@ -22,4 +22,5 @@
     <string name="category_tax_choice_message">税率選択</string>
     <string name="category_input_label">カテゴリ入力</string>
     <string name="item_list_label">商品一覧</string>
+    <string name="add_item_button_description">商品を追加</string>
 </resources>
