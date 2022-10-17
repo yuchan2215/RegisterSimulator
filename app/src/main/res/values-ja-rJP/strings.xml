@@ -29,4 +29,8 @@
     <string name="jan_code_hint">JANコード</string>
     <string name="select_tax_section_description">税率選択</string>
     <string name="select_category_description">カテゴリ選択</string>
+    <string name="tax_rate_not_set_display">カテゴリの標準税率を使用します</string>
+    <string name="override_category_taxrate">カテゴリの標準税率を上書きします。</string>
+    <string name="tax_preview">税: %s 円</string>
+    <string name="price_preview">税込: %s 円</string>
 </resources>

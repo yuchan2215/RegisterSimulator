@@ -6,6 +6,9 @@
 
     <data>
 
+        <variable
+            name="viewModel"
+            type="xyz.miyayu.android.registersimulator.viewmodel.ItemAddViewModel" />
     </data>
 
     <ScrollView
@@ -34,7 +37,8 @@
                         android:id="@+id/jan_edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number" />
+                        android:inputType="number"
+                        android:text="@={viewModel.inputJanCode}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -55,11 +59,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/item_name_hint">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/item_name_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:text="@={viewModel.inputItemName}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -68,11 +74,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:hint="@string/price_hint">
+
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/price_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number"/>
+                    android:inputType="number"
+                    android:text="@={viewModel.inputPrice}" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -92,14 +100,17 @@
                         android:id="@+id/category_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{viewModel.categoryDetails.category.name}"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                         tools:text="カテゴリ" />
+
                     <TextView
                         android:id="@+id/category_tax_preview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{viewModel.categoryTaxRatePreview}"
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        tools:text="標準税率(8%)"/>
+                        tools:text="標準税率(8%)" />
                 </LinearLayout>
 
                 <Button
@@ -119,24 +130,37 @@
                 android:layout_marginTop="8dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
+
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/override_category_taxrate"
+                        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+                        android:textColor="?attr/colorTertiary"
+                        android:visibility="@{viewModel.selectedTaxRate.selectedTaxRateVisibility}" />
+
                     <TextView
                         android:id="@+id/selected_tex"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:text="@{viewModel.selectedTaxRate.name}"
                         android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
-                        tools:text="カテゴリの標準税率を利用する"/>
+                        tools:text="カテゴリの標準税率を利用する" />
+
                     <TextView
                         android:id="@+id/illegal_tax_preview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:text="@{viewModel.selectedTaxRate.preview}"
                         android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-                        android:visibility="gone"
-                        tools:text="8%"/>
+                        android:visibility="@{viewModel.selectedTaxRate.selectedTaxRateVisibility}"
+                        tools:text="8%" />
                 </LinearLayout>
                 <Button
                     android:id="@+id/select_tax_button"
@@ -153,6 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="end"
+                android:text="@{viewModel.currentTaxFormattedString}"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 tools:text="消費税：132.4円"/>
             <TextView
@@ -160,6 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
+                android:text="@{viewModel.currentSumPriceFormattedString}"
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 tools:text="4240円"/>
 
