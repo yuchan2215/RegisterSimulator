@@ -1,15 +1,28 @@
 package xyz.miyayu.android.registersimulator.util
 
 import java.math.BigDecimal
+import java.math.RoundingMode
 import java.text.DecimalFormat
 
 object DecimalUtils {
     private val decimalFormat = DecimalFormat("#,###.##")
-    fun getSplit(bigDecimal: BigDecimal?): String {
-        return decimalFormat.format(bigDecimal ?: "0".toBigDecimal())
+    private fun getFormatted(bigDecimal: BigDecimal): String {
+        return decimalFormat.format(bigDecimal)
     }
 
-    fun BigDecimal?.getSplitString(): String {
-        return getSplit(this)
+    fun BigDecimal.toFormattedString(): String {
+        return getFormatted(this)
+    }
+
+    fun BigDecimal.convertToDecimalPoint(): BigDecimal {
+        return this.divide(
+            100.toBigDecimal(),
+            2,
+            RoundingMode.HALF_EVEN
+        )
+    }
+
+    fun BigDecimal?.convertZeroIfNull(): BigDecimal {
+        return this ?: "0".toBigDecimal()
     }
 }

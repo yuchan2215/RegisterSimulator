@@ -17,14 +17,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
+import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 import xyz.miyayu.android.registersimulator.repositories.ItemRepository
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
-import xyz.miyayu.android.registersimulator.util.DecimalUtils
+import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertToDecimalPoint
+import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertZeroIfNull
+import xyz.miyayu.android.registersimulator.util.DecimalUtils.toFormattedString
 import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragmentArgs
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 class ItemAddViewModel @AssistedInject constructor(
     private val itemRepository: ItemRepository,
@@ -97,10 +99,7 @@ class ItemAddViewModel @AssistedInject constructor(
             .getString(R.string.tax_rate_not_set_display)
 
         /**税率のプレビュー*/
-        val preview: String? = taxRate?.let {
-            resourceService.getResources()
-                .getString(R.string.category_tax_preview, it.title, it.rate)
-        }
+        val preview: String? = taxRate?.getPreview(resourceService)
 
         /**選択されている税率を表示するかどうか*/
         val selectedTaxRateVisibility = if (preview == null) View.GONE else View.VISIBLE
@@ -126,8 +125,9 @@ class ItemAddViewModel @AssistedInject constructor(
     val currentTaxRate by lazy {
         object : MediatorLiveData<BigDecimal?>() {
             val observer = Observer<Any?> {
-                val selectedTaxRate = selectedTaxRate.value?.taxRate?.getBigDecimalRate()
-                val selectedCategoryTaxRate = categoryDetails.value?.taxRate?.getBigDecimalRate()
+                val selectedTaxRate = selectedTaxRate.value?.taxRate?.getBigDecimalPercentRate()
+                val selectedCategoryTaxRate =
+                    categoryDetails.value?.taxRate?.getBigDecimalPercentRate()
                 this.value = selectedTaxRate ?: selectedCategoryTaxRate ?: "0".toBigDecimal()
             }
         }.apply {
@@ -140,12 +140,8 @@ class ItemAddViewModel @AssistedInject constructor(
     val currentTax by lazy {
         object : MediatorLiveData<BigDecimal?>() {
             val observer = Observer<Any?> {
-                val input = priceBigDecimal.value ?: "0".toBigDecimal()
-                val taxRate = (currentTaxRate.value ?: 0.toBigDecimal()).divide(
-                    100.toBigDecimal(),
-                    2,
-                    RoundingMode.HALF_EVEN
-                )
+                val input = priceBigDecimal.value.convertZeroIfNull()
+                val taxRate = currentTaxRate.value.convertZeroIfNull().convertToDecimalPoint()
                 val tax = input * taxRate
                 this.value = tax
             }
@@ -157,7 +153,7 @@ class ItemAddViewModel @AssistedInject constructor(
     }
 
     val currentTaxFormattedString = currentTax.map {
-        val tax = DecimalUtils.getSplit(it)
+        val tax = it.convertZeroIfNull().toFormattedString()
         resourceService.getResources().getString(R.string.tax_preview, tax)
     }
 
@@ -174,9 +170,10 @@ class ItemAddViewModel @AssistedInject constructor(
             addSource(priceBigDecimal, observer)
         }
     }
-    val currentSumPriceFormattedString = currentSumPrice.map {
-        val sum = DecimalUtils.getSplit(it)
-        resourceService.getResources().getString(R.string.price_preview, sum)
+
+    val currentSumPriceFormattedString = currentSumPrice.map { sumPrice ->
+        val sum = sumPrice.convertZeroIfNull().toFormattedString()
+        return@map resourceService.getResources().getString(R.string.price_preview, sum)
     }
 
     val canSave by lazy {

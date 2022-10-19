@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.ItemSettingItemBinding
 import xyz.miyayu.android.registersimulator.model.entity.ProductItemDetail
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.getSplitString
+import xyz.miyayu.android.registersimulator.util.DecimalUtils.toFormattedString
 import xyz.miyayu.android.registersimulator.util.ResourceService
 
 abstract class ItemListAdapter(private val resourceService: ResourceService) :
@@ -43,11 +43,11 @@ abstract class ItemListAdapter(private val resourceService: ResourceService) :
                 categoryName.text = item.defaultCategoryDetail.category.name
                 price.text = resourceService.getResources().getString(
                     R.string.without_tax_price,
-                    item.item.getBigDecimalPrice().getSplitString()
+                    item.item.getBigDecimalPrice().toFormattedString()
                 )
                 priceWithTax.text = resourceService.getResources().getString(
                     R.string.price_preview,
-                    item.getTaxIncludedPrice().getSplitString()
+                    item.getTaxIncludedPrice().toFormattedString()
                 )
                 errorText.isVisible = item.taxRate != null
                 errorText.text =

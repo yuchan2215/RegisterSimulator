@@ -2,8 +2,9 @@ package xyz.miyayu.android.registersimulator.model.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertToDecimalPoint
+import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertZeroIfNull
 import java.math.BigDecimal
-import java.math.RoundingMode
 
 data class ProductItemDetail(
     @Embedded val item: ProductItem,
@@ -18,17 +19,18 @@ data class ProductItemDetail(
         entityColumn = "id"
     ) val taxRate: TaxRate? = null
 ) {
+    /**使用する税率を取得する。*/
     private fun getUseTaxRate(): TaxRate? = taxRate ?: defaultCategoryDetail.taxRate
 
+    /**消費税を計算*/
+    @Suppress("MemberVisibilityCanBePrivate")
     fun getTax(): BigDecimal {
-        val useTaxRate = getUseTaxRate()?.getBigDecimalRate()?.divide(
-            100.toBigDecimal(),
-            2,
-            RoundingMode.HALF_EVEN
-        ) ?: "0".toBigDecimal()
+        val useTaxRate =
+            getUseTaxRate()?.getBigDecimalPercentRate().convertZeroIfNull().convertToDecimalPoint()
         return item.getBigDecimalPrice() * useTaxRate
     }
 
+    /**税込価格を計算*/
     fun getTaxIncludedPrice(): BigDecimal {
         return item.getBigDecimalPrice() + getTax()
     }
