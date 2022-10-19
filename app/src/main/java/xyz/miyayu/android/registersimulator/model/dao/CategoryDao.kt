@@ -39,6 +39,7 @@ interface CategoryDao {
     @Query(GET_CATEGORY_QUERY)
     suspend fun getCategory(categoryId: Int): Category
 
+    @Transaction
     @Query(GET_CATEGORY_QUERY)
     suspend fun getCategoryAndTaxRate(categoryId: Int): CategoryAndTaxRate
 
