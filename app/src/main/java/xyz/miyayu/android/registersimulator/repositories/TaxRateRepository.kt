@@ -26,6 +26,12 @@ class TaxRateRepository @Inject constructor(
         }
     }
 
+    suspend fun getTaxRate(taxRateId: Int): TaxRate? {
+        return getTaxRates().singleOrNull {
+            it.id == taxRateId
+        }
+    }
+
     suspend fun saveTaxRates(taxRates: List<TaxRate>) {
         taxRates.forEach {
             taxRateDao.insert(it)
