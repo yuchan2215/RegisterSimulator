@@ -14,7 +14,7 @@ class ItemRepository @Inject constructor(
     fun getAllItemDetailsFlow() = productItemDao.getAllItemDetailsFlow()
 
     suspend fun addItem(
-        janCode: Long,
+        janCode: Long?,
         itemName: String,
         price: BigDecimal,
         categoryId: Int,

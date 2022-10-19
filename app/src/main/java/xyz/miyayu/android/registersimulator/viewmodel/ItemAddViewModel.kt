@@ -179,17 +179,14 @@ class ItemAddViewModel @AssistedInject constructor(
     val canSave by lazy {
         object : MediatorLiveData<Boolean?>() {
             val observer = Observer<Any?> {
-                val janCodeValidate = !inputJanCode.value.isNullOrEmpty()
                 val itemNameValidate = !inputItemName.value.isNullOrEmpty()
                 val itemPriceValidate = !inputPrice.value.isNullOrEmpty()
                 val categoryIdValidate = selectedCategoryId.value != null
 
-                this.value =
-                    janCodeValidate && itemNameValidate && itemPriceValidate && categoryIdValidate
+                this.value = itemNameValidate && itemPriceValidate && categoryIdValidate
             }
         }.apply {
             this.value = null
-            addSource(inputJanCode, observer)
             addSource(inputItemName, observer)
             addSource(inputPrice, observer)
             addSource(selectedCategoryId, observer)
@@ -200,7 +197,7 @@ class ItemAddViewModel @AssistedInject constructor(
     fun save() {
         viewModelScope.launch(Dispatchers.IO) {
             itemRepository.addItem(
-                inputJanCode.value?.toLongOrNull() ?: throw IllegalStateException("janCodeが不正です"),
+                inputJanCode.value?.toLongOrNull(),
                 inputItemName.value ?: throw IllegalStateException("商品名が入力されていません"),
                 inputPrice.value?.toBigDecimalOrNull() ?: throw IllegalStateException("価格が不正です"),
                 selectedCategoryId.value ?: throw IllegalStateException("カテゴリが選択されていません"),
