@@ -15,7 +15,9 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.model.entity.ProductItem
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
@@ -33,7 +35,7 @@ class ItemAddViewModel @AssistedInject constructor(
     private val taxRateRepository: TaxRateRepository,
     private val categoryRepository: CategoryRepository,
     private val resourceService: ResourceService,
-    @Assisted navigationArgs: ItemAddFragmentArgs
+    @Assisted private val navigationArgs: ItemAddFragmentArgs
 ) : ViewModel() {
     @AssistedFactory
     interface Factory {
@@ -203,6 +205,23 @@ class ItemAddViewModel @AssistedInject constructor(
                 selectedCategoryId.value ?: throw IllegalStateException("カテゴリが選択されていません"),
                 selectedTaxRateId.value
             )
+        }
+    }
+
+    var oldItem: ProductItem? = null
+    fun load() {
+        val id = navigationArgs.itemId
+        if (id == -1) return
+        viewModelScope.launch(Dispatchers.Main) {
+            val item = withContext(viewModelScope.coroutineContext + Dispatchers.IO) {
+                itemRepository.getItem(id)
+            }
+            inputJanCode.value = item.janCode?.toString() ?: ""
+            inputItemName.value = item.itemName
+            inputPrice.value = item.price.toString()
+            selectedCategoryId.value = item.categoryId
+            selectedTaxRateId.value = item.taxId
+            oldItem = item
         }
     }
 }

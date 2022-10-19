@@ -13,6 +13,8 @@ class ItemRepository @Inject constructor(
 ) {
     fun getAllItemDetailsFlow() = productItemDao.getAllItemDetailsFlow()
 
+    suspend fun getItem(id: Int) = productItemDao.getItem(id)
+
     suspend fun addItem(
         janCode: Long?,
         itemName: String,

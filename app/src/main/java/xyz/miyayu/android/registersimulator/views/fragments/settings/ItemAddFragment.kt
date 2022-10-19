@@ -42,6 +42,7 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
         val binding = ItemAddFragmentBinding.bind(view)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        viewModel.load()
         binding.selectTaxButton.setOnClickListener {
             lifecycleScope.launch(Dispatchers.Main) {
                 val taxRates = withContext(lifecycleScope.coroutineContext + Dispatchers.IO) {

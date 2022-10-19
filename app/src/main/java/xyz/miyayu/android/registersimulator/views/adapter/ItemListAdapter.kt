@@ -28,6 +28,9 @@ abstract class ItemListAdapter(private val resourceService: ResourceService) :
 
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val current = getItem(position)
+        holder.itemView.setOnClickListener {
+            onItemClicked(current)
+        }
         holder.bind(current)
     }
 

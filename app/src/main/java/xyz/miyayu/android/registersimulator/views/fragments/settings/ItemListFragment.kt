@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -26,7 +27,9 @@ class ItemListFragment : Fragment(R.layout.item_list_fragment) {
         super.onViewCreated(view, savedInstanceState)
         val adapter = object : ItemListAdapter(resourceService) {
             override fun onItemClicked(item: ProductItemDetail) {
-                // TODO
+                findNavController().navigate(
+                    ItemListFragmentDirections.openItemAdd(item.item.id ?: -1)
+                )
             }
         }
 
