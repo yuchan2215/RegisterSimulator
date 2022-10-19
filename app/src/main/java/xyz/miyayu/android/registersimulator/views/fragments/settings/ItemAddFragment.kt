@@ -72,5 +72,12 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
         )?.observe(viewLifecycleOwner) {
             viewModel.setSelectedCategoryId(it)
         }
+        binding.saveButton.setOnClickListener {
+            try {
+                viewModel.save()
+                findNavController().popBackStack()
+            } catch (_: IllegalStateException) {
+            }
+        }
     }
 }

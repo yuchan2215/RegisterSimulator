@@ -14,6 +14,7 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
@@ -81,6 +82,7 @@ class ItemAddViewModel @AssistedInject constructor(
             emit(result)
         }
     }
+
     // カテゴリ標準の税率
     val categoryTaxRatePreview = categoryDetails.map {
         if (it?.taxRate == null) return@map ""
@@ -93,11 +95,13 @@ class ItemAddViewModel @AssistedInject constructor(
         /**税率名*/
         val name: String = taxRate?.title ?: resourceService.getResources()
             .getString(R.string.tax_rate_not_set_display)
+
         /**税率のプレビュー*/
         val preview: String? = taxRate?.let {
             resourceService.getResources()
                 .getString(R.string.category_tax_preview, it.title, it.rate)
         }
+
         /**選択されている税率を表示するかどうか*/
         val selectedTaxRateVisibility = if (preview == null) View.GONE else View.VISIBLE
     }
@@ -192,6 +196,19 @@ class ItemAddViewModel @AssistedInject constructor(
             addSource(inputItemName, observer)
             addSource(inputPrice, observer)
             addSource(selectedCategoryId, observer)
+        }
+    }
+
+    @Throws(IllegalStateException::class)
+    fun save() {
+        viewModelScope.launch(Dispatchers.IO) {
+            itemRepository.addItem(
+                inputJanCode.value?.toLongOrNull() ?: throw IllegalStateException("janCodeが不正です"),
+                inputItemName.value ?: throw IllegalStateException("商品名が入力されていません"),
+                inputPrice.value?.toBigDecimalOrNull() ?: throw IllegalStateException("価格が不正です"),
+                selectedCategoryId.value ?: throw IllegalStateException("カテゴリが選択されていません"),
+                selectedTaxRateId.value
+            )
         }
     }
 }
