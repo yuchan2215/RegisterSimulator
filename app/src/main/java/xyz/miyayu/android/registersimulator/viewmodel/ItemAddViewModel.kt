@@ -100,7 +100,7 @@ class ItemAddViewModel @AssistedInject constructor(
             if (it == null) {
                 emit(TaxRateModel(null))
             } else {
-                val result = taxRateRepository.getTaxRates().getOrNull(it)
+                val result = taxRateRepository.getTaxRate(it)
                 emit(TaxRateModel(result))
             }
         }
