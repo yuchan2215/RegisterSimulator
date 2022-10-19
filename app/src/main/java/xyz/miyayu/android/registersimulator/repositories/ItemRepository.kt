@@ -16,19 +16,22 @@ class ItemRepository @Inject constructor(
     suspend fun getItem(id: Int) = productItemDao.getItem(id)
 
     suspend fun addItem(
+        itemId: Int? = null,
         janCode: Long?,
         itemName: String,
         price: BigDecimal,
         categoryId: Int,
-        taxRateId: Int?
+        taxRateId: Int?,
+        makeDate: Date
     ) {
         val item = ProductItem(
+            id = itemId,
             janCode = janCode,
             itemName = itemName,
             price = price.toLong(),
             categoryId = categoryId,
             taxId = taxRateId,
-            makeDate = Date(),
+            makeDate = makeDate,
             updateDate = Date(),
         )
         productItemDao.insert(item)

@@ -29,6 +29,7 @@ import xyz.miyayu.android.registersimulator.util.DecimalUtils.toFormattedString
 import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragmentArgs
 import java.math.BigDecimal
+import java.util.Date
 
 class ItemAddViewModel @AssistedInject constructor(
     private val itemRepository: ItemRepository,
@@ -199,11 +200,15 @@ class ItemAddViewModel @AssistedInject constructor(
     fun save() {
         viewModelScope.launch(Dispatchers.IO) {
             itemRepository.addItem(
-                inputJanCode.value?.toLongOrNull(),
-                inputItemName.value ?: throw IllegalStateException("商品名が入力されていません"),
-                inputPrice.value?.toBigDecimalOrNull() ?: throw IllegalStateException("価格が不正です"),
-                selectedCategoryId.value ?: throw IllegalStateException("カテゴリが選択されていません"),
-                selectedTaxRateId.value
+                itemId = oldItem?.id,
+                janCode = inputJanCode.value?.toLongOrNull(),
+                itemName = inputItemName.value ?: throw IllegalStateException("商品名が入力されていません"),
+                price = inputPrice.value?.toBigDecimalOrNull()
+                    ?: throw IllegalStateException("価格が不正です"),
+                categoryId = selectedCategoryId.value
+                    ?: throw IllegalStateException("カテゴリが選択されていません"),
+                taxRateId = selectedTaxRateId.value,
+                makeDate = oldItem?.makeDate ?: Date()
             )
         }
     }
