@@ -174,4 +174,24 @@ class ItemAddViewModel @AssistedInject constructor(
         val sum = DecimalUtils.getSplit(it)
         resourceService.getResources().getString(R.string.price_preview, sum)
     }
+
+    val canSave by lazy {
+        object : MediatorLiveData<Boolean?>() {
+            val observer = Observer<Any?> {
+                val janCodeValidate = !inputJanCode.value.isNullOrEmpty()
+                val itemNameValidate = !inputItemName.value.isNullOrEmpty()
+                val itemPriceValidate = !inputPrice.value.isNullOrEmpty()
+                val categoryIdValidate = selectedCategoryId.value != null
+
+                this.value =
+                    janCodeValidate && itemNameValidate && itemPriceValidate && categoryIdValidate
+            }
+        }.apply {
+            this.value = null
+            addSource(inputJanCode, observer)
+            addSource(inputItemName, observer)
+            addSource(inputPrice, observer)
+            addSource(selectedCategoryId, observer)
+        }
+    }
 }
