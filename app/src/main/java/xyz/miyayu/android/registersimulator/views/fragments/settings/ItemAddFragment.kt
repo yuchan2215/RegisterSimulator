@@ -47,7 +47,10 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
                     taxRateRepository.getTaxRates()
                 }.toTypedArray()
                 findNavController().navigate(
-                    ItemAddFragmentDirections.actionItemAddFragmentToTaxSelectFragment(taxRates)
+                    ItemAddFragmentDirections.actionItemAddFragmentToTaxSelectFragment(
+                        taxRates,
+                        viewModel.selectedTaxRate.value?.taxRate
+                    )
                 )
             }
         }

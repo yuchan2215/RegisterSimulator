@@ -42,9 +42,11 @@ class TaxSelectFragment : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val taxRateIndex = taxRates.indexOf(navArgs.selectedTaxRate)
+        val checkedNum = if (taxRateIndex == -1) 0 else taxRateIndex + 1 // 選択しないという選択肢があるため、１つ足す。
         val builder = MaterialAlertDialogBuilder(requireContext())
             .setTitle(getString(R.string.select_tax_title))
-            .setSingleChoiceItems(choiceItems, 0, null)
+            .setSingleChoiceItems(choiceItems, checkedNum, null)
             .setPositiveButton(getString(R.string.ok_button), positiveListener)
             .setNegativeButton(R.string.cancel_btn_description) { _, _ -> }
         return builder.create()

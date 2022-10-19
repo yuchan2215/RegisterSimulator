@@ -89,5 +89,10 @@
         <argument
             android:name="taxRates"
             app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate[]" />
+        <argument
+            android:name="selectedTaxRate"
+            android:defaultValue="@null"
+            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate"
+            app:nullable="true" />
     </dialog>
 </navigation>
