@@ -81,6 +81,9 @@
         <action
             android:id="@+id/action_itemAddFragment_to_taxSelectFragment"
             app:destination="@id/taxSelectFragment" />
+        <action
+            android:id="@+id/action_itemAddFragment_to_categorySearchFragment"
+            app:destination="@id/categorySearchFragment" />
     </fragment>
     <dialog
         android:id="@+id/taxSelectFragment"
@@ -95,4 +98,9 @@
             app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate"
             app:nullable="true" />
     </dialog>
+    <fragment
+        android:id="@+id/categorySearchFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment"
+        android:label="@string/select_category"
+        tools:layout="@layout/category_search_fragment" />
 </navigation>

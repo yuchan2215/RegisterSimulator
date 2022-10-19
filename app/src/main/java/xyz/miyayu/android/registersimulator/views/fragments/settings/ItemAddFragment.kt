@@ -54,6 +54,11 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
                 )
             }
         }
+        binding.selectCategoryButton.setOnClickListener {
+            findNavController().navigate(
+                ItemAddFragmentDirections.actionItemAddFragmentToCategorySearchFragment()
+            )
+        }
         // 税率選択を受け取る。
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<TaxRate?>(
             TaxSelectFragment.savedStateHandleKey
