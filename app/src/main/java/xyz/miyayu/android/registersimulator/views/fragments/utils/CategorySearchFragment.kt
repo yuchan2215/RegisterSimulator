@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,6 +23,11 @@ class CategorySearchFragment : Fragment(R.layout.category_search_fragment) {
             override fun onItemClicked(item: CategoryAndTaxRate) {
                 val categoryId = item.category.categoryId ?: throw NullPointerException("")
                 Log.d(this::class.simpleName, categoryId.toString())
+                findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                    savedStateHandleKey,
+                    categoryId
+                )
+                findNavController().popBackStack()
             }
         }
 
@@ -36,5 +42,9 @@ class CategorySearchFragment : Fragment(R.layout.category_search_fragment) {
         viewModel.categoryList.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
+    }
+
+    companion object {
+        val savedStateHandleKey: String = CategorySearchFragment::class.java.name
     }
 }

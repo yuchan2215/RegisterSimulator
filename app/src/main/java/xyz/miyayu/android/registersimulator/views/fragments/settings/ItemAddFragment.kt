@@ -16,6 +16,7 @@ import xyz.miyayu.android.registersimulator.databinding.ItemAddFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import xyz.miyayu.android.registersimulator.viewmodel.ItemAddViewModel
+import xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -64,6 +65,12 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
             TaxSelectFragment.savedStateHandleKey
         )?.observe(viewLifecycleOwner) {
             viewModel.setSelectedTaxRateId(it?.id)
+        }
+        // カテゴリ選択を受け取る
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Int?>(
+            CategorySearchFragment.savedStateHandleKey
+        )?.observe(viewLifecycleOwner) {
+            viewModel.setSelectedCategoryId(it)
         }
     }
 }
