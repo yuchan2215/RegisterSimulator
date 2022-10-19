@@ -55,6 +55,10 @@ class ItemAddViewModel @AssistedInject constructor(
     private val selectedCategoryId = MutableLiveData<Int?>(null)
     private val selectedTaxRateId = MutableLiveData<Int?>(null)
 
+    fun setSelectedTaxRateId(taxRateId: Int?) {
+        selectedTaxRateId.value = taxRateId
+    }
+
     val priceBigDecimal = inputPrice.map {
         return@map if (it.isNullOrEmpty()) {
             BigDecimal("0")

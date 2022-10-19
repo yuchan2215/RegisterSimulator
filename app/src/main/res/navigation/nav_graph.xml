@@ -78,5 +78,16 @@
             android:name="itemId"
             android:defaultValue="-1"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_itemAddFragment_to_taxSelectFragment"
+            app:destination="@id/taxSelectFragment" />
     </fragment>
+    <dialog
+        android:id="@+id/taxSelectFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.TaxSelectFragment"
+        android:label="TaxSelectFragment">
+        <argument
+            android:name="taxRates"
+            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate[]" />
+    </dialog>
 </navigation>
