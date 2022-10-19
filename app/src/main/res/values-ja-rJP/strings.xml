@@ -38,4 +38,6 @@
     <string name="cancel_button">キャンセル</string>
     <string name="deselection_option">選択しない</string>
     <string name="select_category">カテゴリ選択</string>
+    <string name="without_tax_price">%s 円+税</string>
+    <string name="category_override_message">カテゴリ税率を上書きしています。</string>
 </resources>
