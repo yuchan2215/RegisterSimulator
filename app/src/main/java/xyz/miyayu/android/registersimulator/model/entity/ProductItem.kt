@@ -15,4 +15,6 @@ data class ProductItem(
     @ColumnInfo(name = "tax_id") val taxId: Int? = null, // カテゴリのデフォルト税率を利用する際はnullになる。
     @ColumnInfo(name = "make_date_long") val makeDate: Date,
     @ColumnInfo(name = "update_date_long") val updateDate: Date
-)
+) {
+    fun getBigDecimalPrice() = price.toBigDecimal()
+}

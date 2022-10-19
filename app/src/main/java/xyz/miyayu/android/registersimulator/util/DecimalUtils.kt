@@ -8,4 +8,8 @@ object DecimalUtils {
     fun getSplit(bigDecimal: BigDecimal?): String {
         return decimalFormat.format(bigDecimal ?: "0".toBigDecimal())
     }
+
+    fun BigDecimal?.getSplitString(): String {
+        return getSplit(this)
+    }
 }

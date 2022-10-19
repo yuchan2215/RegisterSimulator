@@ -2,6 +2,8 @@ package xyz.miyayu.android.registersimulator.model.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
+import java.math.BigDecimal
+import java.math.RoundingMode
 
 data class ProductItemDetail(
     @Embedded val item: ProductItem,
@@ -15,4 +17,19 @@ data class ProductItemDetail(
         parentColumn = "tax_id",
         entityColumn = "id"
     ) val taxRate: TaxRate? = null
-)
+) {
+    private fun getUseTaxRate(): TaxRate? = taxRate ?: defaultCategoryDetail.taxRate
+
+    fun getTax(): BigDecimal {
+        val useTaxRate = getUseTaxRate()?.getBigDecimalRate()?.divide(
+            100.toBigDecimal(),
+            2,
+            RoundingMode.HALF_EVEN
+        ) ?: "0".toBigDecimal()
+        return item.getBigDecimalPrice() * useTaxRate
+    }
+
+    fun getTaxIncludedPrice(): BigDecimal {
+        return item.getBigDecimalPrice() + getTax()
+    }
+}
