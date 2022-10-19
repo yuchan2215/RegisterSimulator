@@ -17,8 +17,9 @@
             android:id="@+id/item_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/price"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="９０００年かけて作りました！秘伝のタレから製作した激うまお好み焼きについて語る本" />
@@ -28,9 +29,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
             android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
-            app:layout_constraintEnd_toStartOf="@id/price"
+            app:layout_constraintEnd_toEndOf="@id/item_title"
             app:layout_constraintStart_toStartOf="@id/item_title"
             app:layout_constraintTop_toBottomOf="@id/item_title"
             tools:text="書籍（よくわからないニッチなジャンルを語る同人誌）" />
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/category_name"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="1,980円+税" />
 
         <TextView
