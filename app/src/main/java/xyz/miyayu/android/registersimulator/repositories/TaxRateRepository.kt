@@ -37,4 +37,8 @@ class TaxRateRepository @Inject constructor(
             taxRateDao.insert(it)
         }
     }
+
+    suspend fun init() {
+        saveTaxRates(getTaxRates())
+    }
 }
