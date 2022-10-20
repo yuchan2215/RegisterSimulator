@@ -208,7 +208,10 @@ class ItemAddViewModel @AssistedInject constructor(
     }
 
     var oldItem: ProductItem? = null
+    private val isLoaded = MutableLiveData<Boolean>(false)
     fun load() {
+        if (isLoaded.value == true) return
+        isLoaded.value = true
         val id = navigationArgs.itemId
         if (id == -1) return
         viewModelScope.launch(Dispatchers.Main) {
