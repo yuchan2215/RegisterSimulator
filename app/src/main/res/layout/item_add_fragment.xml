@@ -177,7 +177,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="end"
-                android:text="@{viewModel.currentTaxFormattedString}"
+                android:text="@{viewModel.taxPriceString}"
                 android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
                 tools:text="消費税：132.4円"/>
             <TextView
@@ -185,7 +185,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="end"
-                android:text="@{viewModel.currentSumPriceFormattedString}"
+                android:text="@{viewModel.taxIncludedPriceString}"
                 android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
                 tools:text="4240円"/>
 

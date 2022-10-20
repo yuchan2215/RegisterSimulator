@@ -2,9 +2,7 @@ package xyz.miyayu.android.registersimulator.model.entity
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertToDecimalPoint
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertZeroIfNull
-import java.math.BigDecimal
+import xyz.miyayu.android.registersimulator.model.entity.price.TaxIncludedPrice
 
 data class ProductItemDetail(
     @Embedded val item: ProductItem,
@@ -22,16 +20,17 @@ data class ProductItemDetail(
     /**使用する税率を取得する。*/
     private fun getUseTaxRate(): TaxRate? = taxRate ?: defaultCategoryDetail.taxRate
 
-    /**消費税を計算*/
-    @Suppress("MemberVisibilityCanBePrivate")
-    fun getTax(): BigDecimal {
-        val useTaxRate =
-            getUseTaxRate()?.getBigDecimalPercentRate().convertZeroIfNull().convertToDecimalPoint()
-        return item.getBigDecimalPrice() * useTaxRate
-    }
+    /**
+     /**消費税を計算*/
+     @Suppress("MemberVisibilityCanBePrivate")
+     fun getTax(): BigDecimal {
+     val useTaxRate =
+     getUseTaxRate()?.getBigDecimalPercentRate().convertZeroIfNull().convertToDecimalPoint()
+     return item.price.amount * useTaxRate
+     }**/
 
     /**税込価格を計算*/
-    fun getTaxIncludedPrice(): BigDecimal {
-        return item.getBigDecimalPrice() + getTax()
+    fun getTaxIncludedPrice(): TaxIncludedPrice {
+        return TaxIncludedPrice(item.price, getUseTaxRate())
     }
 }

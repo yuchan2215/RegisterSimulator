@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6a209fdcc44aca3a1ac8be822eb35579",
+    "identityHash": "3608e3da3129729a05db2887bb74b176",
     "entities": [
       {
         "tableName": "taxes",
@@ -70,7 +70,7 @@
       },
       {
         "tableName": "items",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `jan` INTEGER, `name` TEXT NOT NULL, `category_id` INTEGER NOT NULL, `price` INTEGER NOT NULL, `tax_id` INTEGER, `make_date_long` INTEGER NOT NULL, `update_date_long` INTEGER NOT NULL)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `jan` INTEGER, `name` TEXT NOT NULL, `category_id` INTEGER NOT NULL, `price` TEXT NOT NULL, `tax_id` INTEGER, `make_date_long` INTEGER NOT NULL, `update_date_long` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -99,7 +99,7 @@
           {
             "fieldPath": "price",
             "columnName": "price",
-            "affinity": "INTEGER",
+            "affinity": "TEXT",
             "notNull": true
           },
           {
@@ -134,7 +134,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6a209fdcc44aca3a1ac8be822eb35579')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3608e3da3129729a05db2887bb74b176')"
     ]
   }
 }

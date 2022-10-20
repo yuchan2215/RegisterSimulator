@@ -12,13 +12,14 @@ import xyz.miyayu.android.registersimulator.model.entity.Category
 import xyz.miyayu.android.registersimulator.model.entity.ProductItem
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.model.room.converter.DateConverter
+import xyz.miyayu.android.registersimulator.model.room.converter.PriceConverter
 
 @Database(
     version = 1,
     exportSchema = true,
     entities = [TaxRate::class, Category::class, ProductItem::class]
 )
-@TypeConverters(DateConverter::class)
+@TypeConverters(DateConverter::class, PriceConverter::class)
 abstract class SettingRoomDatabase : RoomDatabase() {
     abstract fun taxRateDao(): TaxRateDao
     abstract fun categoryDao(): CategoryDao

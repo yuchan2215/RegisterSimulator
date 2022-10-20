@@ -20,15 +20,16 @@ import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.model.entity.ProductItem
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.model.entity.price.Price.Companion.getFormattedString
+import xyz.miyayu.android.registersimulator.model.entity.price.TaxIncludedPrice
+import xyz.miyayu.android.registersimulator.model.entity.price.TaxPrice
+import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice
+import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice.Companion.convertToWithOutTaxPrice
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 import xyz.miyayu.android.registersimulator.repositories.ItemRepository
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertToDecimalPoint
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertZeroIfNull
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.toFormattedString
 import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragmentArgs
-import java.math.BigDecimal
 import java.util.Date
 
 class ItemAddViewModel @AssistedInject constructor(
@@ -69,12 +70,8 @@ class ItemAddViewModel @AssistedInject constructor(
         selectedCategoryId.value = categoryId
     }
 
-    val priceBigDecimal = inputPrice.map {
-        return@map if (it.isNullOrEmpty()) {
-            BigDecimal("0")
-        } else {
-            BigDecimal(it)
-        }
+    val priceWithOutTax = inputPrice.map {
+        return@map WithoutTaxPrice(it)
     }
 
     val categoryDetails = selectedCategoryId.switchMap {
@@ -92,8 +89,7 @@ class ItemAddViewModel @AssistedInject constructor(
     val categoryTaxRatePreview = categoryDetails.map {
         if (it?.taxRate == null) return@map ""
         val taxRate = it.taxRate
-        resourceService.getResources()
-            .getString(R.string.category_tax_preview, taxRate.title, taxRate.rate)
+        return@map taxRate.getPreview(resourceService)
     }
 
     inner class TaxRateModel(val taxRate: TaxRate?) {
@@ -125,13 +121,12 @@ class ItemAddViewModel @AssistedInject constructor(
      * 税率がマニュアルで設定されていればそちらを利用し、設定されていなければカテゴリ標準を利用する。
      * ただし、どちらもnullなら0とする。
      */
-    val currentTaxRate by lazy {
-        object : MediatorLiveData<BigDecimal?>() {
+    private val currentTaxRate by lazy {
+        object : MediatorLiveData<TaxRate?>() {
             val observer = Observer<Any?> {
-                val selectedTaxRate = selectedTaxRate.value?.taxRate?.getBigDecimalPercentRate()
-                val selectedCategoryTaxRate =
-                    categoryDetails.value?.taxRate?.getBigDecimalPercentRate()
-                this.value = selectedTaxRate ?: selectedCategoryTaxRate ?: "0".toBigDecimal()
+                val selectedTaxRate = selectedTaxRate.value?.taxRate
+                val selectedCategoryTaxRate = categoryDetails.value?.taxRate
+                this.value = selectedTaxRate ?: selectedCategoryTaxRate
             }
         }.apply {
             this.value = null
@@ -140,42 +135,41 @@ class ItemAddViewModel @AssistedInject constructor(
         }
     }
 
-    val currentTax by lazy {
-        object : MediatorLiveData<BigDecimal?>() {
+    private val taxPrice by lazy {
+        object : MediatorLiveData<TaxPrice?>() {
             val observer = Observer<Any?> {
-                val input = priceBigDecimal.value.convertZeroIfNull()
-                val taxRate = currentTaxRate.value.convertZeroIfNull().convertToDecimalPoint()
-                val tax = input * taxRate
-                this.value = tax
+                val price = priceWithOutTax.value
+                val taxRate = currentTaxRate.value
+                this.value = TaxPrice(price, taxRate)
             }
         }.apply {
             this.value = null
             addSource(currentTaxRate, observer)
-            addSource(priceBigDecimal, observer)
+            addSource(priceWithOutTax, observer)
         }
     }
 
-    val currentTaxFormattedString = currentTax.map {
-        val tax = it.convertZeroIfNull().toFormattedString()
+    val taxPriceString = taxPrice.map { taxPrice ->
+        val tax = taxPrice.getFormattedString()
         resourceService.getResources().getString(R.string.tax_preview, tax)
     }
 
-    private val currentSumPrice by lazy {
-        object : MediatorLiveData<BigDecimal?>() {
+    private val taxIncludedPrice by lazy {
+        object : MediatorLiveData<TaxIncludedPrice?>() {
             val observer = Observer<Any?> {
-                val input = priceBigDecimal.value ?: "0".toBigDecimal()
-                val tax = currentTax.value ?: "0".toBigDecimal()
-                this.value = input.plus(tax)
+                val taxPrice = priceWithOutTax.value
+                val taxRate = currentTaxRate.value
+                this.value = TaxIncludedPrice(taxPrice, taxRate)
             }
         }.apply {
             this.value = null
-            addSource(currentTax, observer)
-            addSource(priceBigDecimal, observer)
+            addSource(taxPrice, observer)
+            addSource(priceWithOutTax, observer)
         }
     }
 
-    val currentSumPriceFormattedString = currentSumPrice.map { sumPrice ->
-        val sum = sumPrice.convertZeroIfNull().toFormattedString()
+    val taxIncludedPriceString = taxIncludedPrice.map { taxIncludedPrice ->
+        val sum = taxIncludedPrice.getFormattedString()
         return@map resourceService.getResources().getString(R.string.price_preview, sum)
     }
 
@@ -203,7 +197,7 @@ class ItemAddViewModel @AssistedInject constructor(
                 itemId = oldItem?.id,
                 janCode = inputJanCode.value?.toLongOrNull(),
                 itemName = inputItemName.value ?: throw IllegalStateException("商品名が入力されていません"),
-                price = inputPrice.value?.toBigDecimalOrNull()
+                price = inputPrice.value?.toBigDecimalOrNull()?.convertToWithOutTaxPrice()
                     ?: throw IllegalStateException("価格が不正です"),
                 categoryId = selectedCategoryId.value
                     ?: throw IllegalStateException("カテゴリが選択されていません"),

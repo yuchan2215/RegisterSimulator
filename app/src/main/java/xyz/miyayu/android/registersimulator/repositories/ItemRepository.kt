@@ -2,7 +2,7 @@ package xyz.miyayu.android.registersimulator.repositories
 
 import xyz.miyayu.android.registersimulator.model.dao.ProductItemDao
 import xyz.miyayu.android.registersimulator.model.entity.ProductItem
-import java.math.BigDecimal
+import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice
 import java.util.Date
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -19,7 +19,7 @@ class ItemRepository @Inject constructor(
         itemId: Int? = null,
         janCode: Long?,
         itemName: String,
-        price: BigDecimal,
+        price: WithoutTaxPrice,
         categoryId: Int,
         taxRateId: Int?,
         makeDate: Date
@@ -28,7 +28,7 @@ class ItemRepository @Inject constructor(
             id = itemId,
             janCode = janCode,
             itemName = itemName,
-            price = price.toLong(),
+            price = price,
             categoryId = categoryId,
             taxId = taxRateId,
             makeDate = makeDate,
