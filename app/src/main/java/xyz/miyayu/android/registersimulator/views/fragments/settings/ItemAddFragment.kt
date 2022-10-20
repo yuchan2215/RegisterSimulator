@@ -1,6 +1,7 @@
 package xyz.miyayu.android.registersimulator.views.fragments.settings
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,6 +18,7 @@ import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import xyz.miyayu.android.registersimulator.viewmodel.ItemAddViewModel
 import xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment
+import xyz.miyayu.android.registersimulator.views.fragments.utils.SingleReadFragment
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -61,6 +63,11 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
                 ItemAddFragmentDirections.actionItemAddFragmentToCategorySearchFragment()
             )
         }
+        binding.importJanButton.setOnClickListener {
+            findNavController().navigate(
+                ItemAddFragmentDirections.actionItemAddFragmentToSingleReadFragment()
+            )
+        }
         // 税率選択を受け取る。
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<TaxRate?>(
             TaxSelectFragment.savedStateHandleKey
@@ -72,6 +79,13 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
             CategorySearchFragment.savedStateHandleKey
         )?.observe(viewLifecycleOwner) {
             viewModel.setSelectedCategoryId(it)
+        }
+
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String?>(
+            SingleReadFragment.savedStateHandleKey
+        )?.observe(viewLifecycleOwner) {
+            Log.d("Catch Qr Result!", it.toString())
+            viewModel.inputJanCode.value = it
         }
         binding.saveButton.setOnClickListener {
             try {

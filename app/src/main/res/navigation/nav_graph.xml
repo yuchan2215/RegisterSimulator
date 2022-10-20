@@ -84,6 +84,9 @@
         <action
             android:id="@+id/action_itemAddFragment_to_categorySearchFragment"
             app:destination="@id/categorySearchFragment" />
+        <action
+            android:id="@+id/action_itemAddFragment_to_singleReadFragment"
+            app:destination="@id/singleReadFragment" />
     </fragment>
     <dialog
         android:id="@+id/taxSelectFragment"
@@ -103,4 +106,8 @@
         android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment"
         android:label="@string/select_category"
         tools:layout="@layout/category_search_fragment" />
+    <fragment
+        android:id="@+id/singleReadFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.SingleReadFragment"
+        android:label="ほげ" />
 </navigation>
