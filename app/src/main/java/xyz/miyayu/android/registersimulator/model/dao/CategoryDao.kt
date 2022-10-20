@@ -36,10 +36,15 @@ interface CategoryDao {
     @Query(GET_CATEGORIES_QUERY)
     fun getCategoriesAndTaxRatesFlow(): Flow<List<CategoryAndTaxRate>>
 
-    @Query("SELECT * FROM categories WHERE id = :categoryId")
+    @Query(GET_CATEGORY_QUERY)
     suspend fun getCategory(categoryId: Int): Category
+
+    @Transaction
+    @Query(GET_CATEGORY_QUERY)
+    suspend fun getCategoryAndTaxRate(categoryId: Int): CategoryAndTaxRate
 
     companion object {
         const val GET_CATEGORIES_QUERY = "SELECT * FROM categories ORDER BY id ASC"
+        const val GET_CATEGORY_QUERY = "SELECT * FROM categories WHERE id = :categoryId"
     }
 }

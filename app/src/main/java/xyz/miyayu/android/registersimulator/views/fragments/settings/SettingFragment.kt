@@ -16,6 +16,9 @@ class SettingFragment : Fragment(R.layout.setting_fragment) {
             storeCategories.setOnClickListener {
                 view.findNavController().navigate(SettingFragmentDirections.openCategorySetting())
             }
+            storeItems.setOnClickListener {
+                view.findNavController().navigate(SettingFragmentDirections.openItemList())
+            }
         }
     }
 }

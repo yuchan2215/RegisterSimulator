@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="8dp"
+        android:paddingTop="8dp">
+
+        <TextView
+            android:id="@+id/item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            app:layout_constraintEnd_toStartOf="@id/price"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="９０００年かけて作りました！秘伝のタレから製作した激うまお好み焼きについて語る本" />
+
+        <TextView
+            android:id="@+id/category_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelMedium"
+            app:layout_constraintEnd_toEndOf="@id/item_title"
+            app:layout_constraintStart_toStartOf="@id/item_title"
+            app:layout_constraintTop_toBottomOf="@id/item_title"
+            tools:text="書籍（よくわからないニッチなジャンルを語る同人誌）" />
+
+        <!--もし税込価格のほうが税抜より横幅が大きくなるようであれば、レイアウト要調整-->
+
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.BodyMedium"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1,980円+税" />
+
+        <TextView
+            android:id="@+id/price_with_tax"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.BodySmall"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            tools:text="2,138.4円" />
+
+        <!--もう一個のBarrierへの制約追加を忘れずに！-->
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/option_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:barrierMargin="8dp"
+            app:constraint_referenced_ids="category_name,price_with_tax" />
+
+        <TextView
+            android:id="@+id/jan_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/option_barrier"
+            tools:text="12345678"
+            tools:visibility="visible" />
+
+        <TextView
+            android:id="@+id/error_text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
+            android:textColor="?attr/colorError"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/jan_code"
+            tools:text="税率が個別設定されている商品です"
+            tools:visibility="visible" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/bottom_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierAllowsGoneWidgets="false"
+            app:barrierDirection="bottom"
+            app:barrierMargin="8dp"
+            app:constraint_referenced_ids="category_name,price_with_tax,jan_code,error_text" />
+
+        <!--Barrierのマージンを作るためのスペース-->
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bottom_barrier" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

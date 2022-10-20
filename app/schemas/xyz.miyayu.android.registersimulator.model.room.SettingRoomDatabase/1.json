@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "b49c733d6a2144575a5e5a97dd039d58",
+    "identityHash": "3608e3da3129729a05db2887bb74b176",
     "entities": [
       {
         "tableName": "taxes",
@@ -38,7 +38,7 @@
       },
       {
         "tableName": "categories",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `default_tax_rate_id` INTEGER)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `default_tax_rate_id` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "categoryId",
@@ -56,7 +56,69 @@
             "fieldPath": "defaultTaxRateId",
             "columnName": "default_tax_rate_id",
             "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "items",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `jan` INTEGER, `name` TEXT NOT NULL, `category_id` INTEGER NOT NULL, `price` TEXT NOT NULL, `tax_id` INTEGER, `make_date_long` INTEGER NOT NULL, `update_date_long` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "janCode",
+            "columnName": "jan",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "itemName",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "categoryId",
+            "columnName": "category_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "price",
+            "columnName": "price",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "taxId",
+            "columnName": "tax_id",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "makeDate",
+            "columnName": "make_date_long",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "updateDate",
+            "columnName": "update_date_long",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -72,7 +134,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'b49c733d6a2144575a5e5a97dd039d58')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3608e3da3129729a05db2887bb74b176')"
     ]
   }
 }

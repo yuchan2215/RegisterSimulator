@@ -31,4 +31,7 @@ class CategoryRepository @Inject constructor(
     fun getCategoriesAndTaxRatesFlow() = categoryDao.getCategoriesAndTaxRatesFlow()
 
     suspend fun getCategory(categoryId: Int) = categoryDao.getCategory(categoryId)
+
+    suspend fun getCategoryAndTaxRate(categoryId: Int) =
+        categoryDao.getCategoryAndTaxRate(categoryId)
 }

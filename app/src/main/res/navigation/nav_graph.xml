@@ -32,6 +32,9 @@
         <action
             android:id="@+id/openCategorySetting"
             app:destination="@id/categorySettingFragment" />
+        <action
+            android:id="@+id/openItemList"
+            app:destination="@id/itemListFragment" />
     </fragment>
     <fragment
         android:id="@+id/taxSettingFragment"
@@ -57,4 +60,47 @@
             android:defaultValue="-1"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/itemListFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemListFragment"
+        android:label="@string/item_list_label"
+        tools:layout="@layout/item_list_fragment">
+        <action
+            android:id="@+id/openItemAdd"
+            app:destination="@id/itemAddFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemAddFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragment"
+        android:label="ItemAddFragment"
+        tools:layout="@layout/item_add_fragment">
+        <argument
+            android:name="itemId"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_itemAddFragment_to_taxSelectFragment"
+            app:destination="@id/taxSelectFragment" />
+        <action
+            android:id="@+id/action_itemAddFragment_to_categorySearchFragment"
+            app:destination="@id/categorySearchFragment" />
+    </fragment>
+    <dialog
+        android:id="@+id/taxSelectFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.TaxSelectFragment"
+        android:label="TaxSelectFragment">
+        <argument
+            android:name="taxRates"
+            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate[]" />
+        <argument
+            android:name="selectedTaxRate"
+            android:defaultValue="@null"
+            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate"
+            app:nullable="true" />
+    </dialog>
+    <fragment
+        android:id="@+id/categorySearchFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment"
+        android:label="@string/select_category"
+        tools:layout="@layout/category_search_fragment" />
 </navigation>
