@@ -16,18 +16,24 @@ import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.util.ThemeColorUtil
 import xyz.miyayu.android.registersimulator.viewmodel.CategorySettingViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.CategoryListAdapter
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
     private val viewModel: CategorySettingViewModel by viewModels()
 
+    @Inject
+    lateinit var resourceService: ResourceService
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = object : CategoryListAdapter() {
+        /**既存のアイテムがタップされたら、[CategoryInputFragment]を開いて編集する。*/
+        val adapter = object : CategoryListAdapter(resourceService) {
             override fun onItemClicked(item: CategoryAndTaxRate) {
                 val categoryId = item.category.categoryId ?: throw NullPointerException("")
                 view.findNavController()
@@ -55,6 +61,7 @@ class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
         }
     }
 
+    /**スワイプで削除できるようにするハンドラー*/
     private fun getSwipeToDismissTouchHelper(adapter: CategoryListAdapter) =
         ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
             ItemTouchHelper.ACTION_STATE_IDLE, ItemTouchHelper.RIGHT

@@ -103,7 +103,7 @@
     </dialog>
     <fragment
         android:id="@+id/categorySearchFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment"
+        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySelectFragment"
         android:label="@string/select_category"
         tools:layout="@layout/category_search_fragment" />
     <fragment

@@ -12,14 +12,24 @@ import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.CategorySearchFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.viewmodel.CategorySearchViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.CategorySearchItemAdapter
+import javax.inject.Inject
 
+/**
+ * カテゴリを選択するためのフラグメント。
+ */
 @AndroidEntryPoint
-class CategorySearchFragment : Fragment(R.layout.category_search_fragment) {
+class CategorySelectFragment : Fragment(R.layout.category_search_fragment) {
+    @Inject
+    lateinit var resourceService: ResourceService
+
     private val viewModel: CategorySearchViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val adapter = object : CategorySearchItemAdapter() {
+
+        /**選択されたらナビゲーション経由で選択されたものを返す。*/
+        val adapter = object : CategorySearchItemAdapter(resourceService) {
             override fun onItemClicked(item: CategoryAndTaxRate) {
                 val categoryId = item.category.categoryId ?: throw NullPointerException("")
                 Log.d(this::class.simpleName, categoryId.toString())
@@ -45,6 +55,6 @@ class CategorySearchFragment : Fragment(R.layout.category_search_fragment) {
     }
 
     companion object {
-        val savedStateHandleKey: String = CategorySearchFragment::class.java.name
+        val savedStateHandleKey: String = CategorySelectFragment::class.java.name
     }
 }

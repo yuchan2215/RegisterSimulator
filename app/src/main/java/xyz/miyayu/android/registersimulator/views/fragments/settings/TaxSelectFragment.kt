@@ -11,9 +11,15 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.util.ResourceService
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class TaxSelectFragment : DialogFragment() {
+
+    @Inject
+    lateinit var resourceService: ResourceService
     private val navArgs by navArgs<TaxSelectFragmentArgs>()
 
     private val taxRates by lazy {
@@ -22,7 +28,7 @@ class TaxSelectFragment : DialogFragment() {
 
     private val choiceItems by lazy {
         taxRates.map {
-            getString(R.string.category_tax_preview, it.title, it.rate)
+            it.getPreview(resourceService)
         }.toMutableList().apply {
             add(0, getString(R.string.deselection_option))
         }.toTypedArray()
