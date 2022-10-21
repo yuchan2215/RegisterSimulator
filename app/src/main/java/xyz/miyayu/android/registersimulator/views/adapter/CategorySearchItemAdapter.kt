@@ -5,11 +5,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.CategorySearchItemBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.util.ResourceService
 
-abstract class CategorySearchItemAdapter() :
+abstract class CategorySearchItemAdapter(private val resourceService: ResourceService) :
     ListAdapter<CategoryAndTaxRate, CategorySearchItemAdapter.CategoryViewHolder>(DiffCallback) {
     abstract fun onItemClicked(item: CategoryAndTaxRate)
 
@@ -31,17 +32,11 @@ abstract class CategorySearchItemAdapter() :
         holder.bind(current)
     }
 
-    class CategoryViewHolder(private val binding: CategorySearchItemBinding) :
+    inner class CategoryViewHolder(private val binding: CategorySearchItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(item: CategoryAndTaxRate) {
             binding.apply {
-                val taxPreview = item.taxRate?.let {
-                    this.root.context.getString(
-                        R.string.category_tax_preview,
-                        it.title,
-                        it.rate
-                    )
-                } ?: "NULL"
+                val taxPreview = item.taxRate?.getPreview(resourceService) ?: ""
                 categoryName.text = item.category.name
                 categoryTaxPreview.text = taxPreview
             }

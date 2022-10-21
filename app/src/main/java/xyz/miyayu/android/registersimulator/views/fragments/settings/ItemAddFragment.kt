@@ -17,7 +17,7 @@ import xyz.miyayu.android.registersimulator.databinding.ItemAddFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import xyz.miyayu.android.registersimulator.viewmodel.ItemAddViewModel
-import xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySearchFragment
+import xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySelectFragment
 import xyz.miyayu.android.registersimulator.views.fragments.utils.SingleReadFragment
 import javax.inject.Inject
 
@@ -46,6 +46,7 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
         binding.viewModel = viewModel
         viewModel.load()
         binding.selectTaxButton.setOnClickListener {
+            /**[TaxSelectFragment]を開く。*/
             lifecycleScope.launch(Dispatchers.Main) {
                 val taxRates = withContext(lifecycleScope.coroutineContext + Dispatchers.IO) {
                     taxRateRepository.getTaxRates()
@@ -76,11 +77,11 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
         }
         // カテゴリ選択を受け取る
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<Int?>(
-            CategorySearchFragment.savedStateHandleKey
+            CategorySelectFragment.savedStateHandleKey
         )?.observe(viewLifecycleOwner) {
             viewModel.setSelectedCategoryId(it)
         }
-
+        // JANコードを受け取る
         findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<String?>(
             SingleReadFragment.savedStateHandleKey
         )?.observe(viewLifecycleOwner) {
@@ -92,6 +93,7 @@ class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
                 viewModel.save()
                 findNavController().popBackStack()
             } catch (_: IllegalStateException) {
+                // TODO エラー処理
             }
         }
     }

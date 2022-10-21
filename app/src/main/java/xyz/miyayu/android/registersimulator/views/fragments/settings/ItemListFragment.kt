@@ -25,6 +25,8 @@ class ItemListFragment : Fragment(R.layout.item_list_fragment) {
     private val viewModel: ItemListViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        /**既存のアイテムがタップされたら修正する*/
         val adapter = object : ItemListAdapter(resourceService) {
             override fun onItemClicked(item: ProductItemDetail) {
                 findNavController().navigate(

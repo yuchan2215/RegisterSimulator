@@ -36,12 +36,6 @@ class TaxSettingItem(context: Context, attrs: AttributeSet) :
             .addTextChangedListener(textWatcher)
     }
 
-    /**
-     fun removeTitleTextChangedListener() {
-     this.findViewById<TextInputEditText>(R.id.tax_title_input_edit)
-     .removeTextChangedListener(titleTextWatcher)
-     }**/
-
     fun setRateTextChangedListener(textWatcher: TextWatcher) {
         this.findViewById<TextInputEditText>(R.id.tax_rate_input_edit)
             .addTextChangedListener(textWatcher)

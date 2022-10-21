@@ -7,6 +7,10 @@ import androidx.navigation.fragment.findNavController
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.SingleReadFragmentBinding
 
+/**
+ * 1回バーコードを読み込むためのフラグメント。
+ * バーコードを読み込んだらナビゲーション経由で一つ前の画面に値を渡す。
+ */
 class SingleReadFragment : Fragment(R.layout.single_read_fragment) {
     private var _binding: SingleReadFragmentBinding? = null
     val binding get() = _binding!!
@@ -32,6 +36,6 @@ class SingleReadFragment : Fragment(R.layout.single_read_fragment) {
     }
 
     companion object {
-        val savedStateHandleKey = this::class.java.name
+        val savedStateHandleKey: String = this::class.java.name
     }
 }

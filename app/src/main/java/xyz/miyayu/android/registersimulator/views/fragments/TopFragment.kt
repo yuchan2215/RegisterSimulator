@@ -20,6 +20,7 @@ class TopFragment : Fragment(R.layout.top_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = TopFragmentBinding.bind(view)
+        // 各種ナビゲーション処理
         binding.openRegisterButton.setOnClickListener {
             view.findNavController().navigate(TopFragmentDirections.openRegister())
         }
@@ -27,6 +28,8 @@ class TopFragment : Fragment(R.layout.top_fragment) {
             view.findNavController()
                 .navigate(TopFragmentDirections.actionTopFragmentToSettingFragment())
         }
+
+        // 税率を初期化しておく。
         lifecycleScope.launch(Dispatchers.IO) {
             taxRateRepository.init()
         }

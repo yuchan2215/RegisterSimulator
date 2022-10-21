@@ -12,6 +12,9 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
 import xyz.miyayu.android.registersimulator.databinding.ReaderViewBinding
 
+/**
+ * バーコードリーダーのView。レイアウト等を一括管理するためにViewとして管理する。
+ */
 class ReaderView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
     private var _binding: ReaderViewBinding? = null
     val binding get() = _binding!!
