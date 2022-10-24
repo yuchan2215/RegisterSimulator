@@ -4,7 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import xyz.miyayu.android.registersimulator.util.ResourceService
+import xyz.miyayu.android.registersimulator.ResourceService
 import javax.inject.Singleton
 
 @Module

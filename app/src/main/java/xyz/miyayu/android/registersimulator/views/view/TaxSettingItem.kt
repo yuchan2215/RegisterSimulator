@@ -26,7 +26,7 @@ class TaxSettingItem(context: Context, attrs: AttributeSet) :
     }
 
     fun setLabel(label: String) {
-        this.findViewById<TextView>(R.id.rate_label).setText(label)
+        this.findViewById<TextView>(R.id.rate_label).text = label
     }
 
     // private var titleTextWatcher: TextWatcher? = null

@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.util
+package xyz.miyayu.android.registersimulator
 
 import java.math.BigDecimal
 import java.math.RoundingMode

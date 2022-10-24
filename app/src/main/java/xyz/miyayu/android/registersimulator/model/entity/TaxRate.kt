@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.util.ResourceService
+import xyz.miyayu.android.registersimulator.ResourceService
 import java.math.BigDecimal
 
 /**

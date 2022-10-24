@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RegisterSimulator"
 include(":app")
+include(":utils")

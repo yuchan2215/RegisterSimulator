@@ -1,8 +1,8 @@
 package xyz.miyayu.android.registersimulator.model.entity.price
 
+import xyz.miyayu.android.registersimulator.DecimalUtils.convertToDecimalPoint
+import xyz.miyayu.android.registersimulator.DecimalUtils.convertZeroIfNull
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertToDecimalPoint
-import xyz.miyayu.android.registersimulator.util.DecimalUtils.convertZeroIfNull
 import java.math.BigDecimal
 
 class TaxPrice(

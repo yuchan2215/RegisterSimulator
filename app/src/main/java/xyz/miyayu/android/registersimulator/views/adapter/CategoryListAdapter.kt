@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingItemBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
-import xyz.miyayu.android.registersimulator.util.ResourceService
 
 abstract class CategoryListAdapter(private val resourceService: ResourceService) :
     ListAdapter<CategoryAndTaxRate, CategoryListAdapter.CategoryViewHolder>(DiffCallback) {

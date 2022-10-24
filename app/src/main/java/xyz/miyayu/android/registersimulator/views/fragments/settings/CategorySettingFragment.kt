@@ -14,10 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.ResourceService
+import xyz.miyayu.android.registersimulator.ThemeColorUtil
 import xyz.miyayu.android.registersimulator.databinding.CategorySettingFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
-import xyz.miyayu.android.registersimulator.util.ResourceService
-import xyz.miyayu.android.registersimulator.util.ThemeColorUtil
 import xyz.miyayu.android.registersimulator.viewmodel.CategorySettingViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.CategoryListAdapter
 import javax.inject.Inject

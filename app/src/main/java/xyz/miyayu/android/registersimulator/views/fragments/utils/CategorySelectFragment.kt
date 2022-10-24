@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.databinding.CategorySearchFragmentBinding
 import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
-import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.viewmodel.CategorySearchViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.CategorySearchItemAdapter
 import javax.inject.Inject

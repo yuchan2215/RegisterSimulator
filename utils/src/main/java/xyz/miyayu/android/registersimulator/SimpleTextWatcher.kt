@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.util
+package xyz.miyayu.android.registersimulator
 
 import android.text.Editable
 import android.text.TextWatcher

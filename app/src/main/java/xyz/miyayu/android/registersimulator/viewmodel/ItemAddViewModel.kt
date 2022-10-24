@@ -17,6 +17,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.model.entity.ProductItem
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
@@ -28,7 +29,6 @@ import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice.C
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 import xyz.miyayu.android.registersimulator.repositories.ItemRepository
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
-import xyz.miyayu.android.registersimulator.util.ResourceService
 import xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragmentArgs
 import java.util.Date
 

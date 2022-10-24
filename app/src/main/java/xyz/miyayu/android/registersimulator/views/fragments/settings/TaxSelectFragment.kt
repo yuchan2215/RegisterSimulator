@@ -11,8 +11,8 @@ import androidx.navigation.fragment.navArgs
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
-import xyz.miyayu.android.registersimulator.util.ResourceService
 import javax.inject.Inject
 
 @AndroidEntryPoint
