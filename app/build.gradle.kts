@@ -1,21 +1,20 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("androidx.navigation.safeargs.kotlin")
-    id("kotlin-kapt")
-    id("org.jlleitschuh.gradle.ktlint")
-    id("com.google.dagger.hilt.android")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.androidx.safeargs)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.lint.ktlint)
+    alias(libs.plugins.hilt)
     id("kotlin-parcelize")
 }
 
 android {
-    compileSdk = 32
-
+    compileSdk = libs.versions.targetSdk.get().toInt()
     defaultConfig {
         applicationId = "xyz.miyayu.android.registersimulator"
         // Zxingが24以上を必要としている
-        minSdk = 24
-        targetSdk = 32
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
 
@@ -53,36 +52,26 @@ android {
 
 dependencies {
 
-    val navVersion: String by project
-    val roomVersion = "2.4.3"
-    val lifecycleVersion = "2.5.1"
-    val hiltVersion = "2.44"
+    implementation(libs.bundles.core)
+    implementation(libs.material)
 
-    implementation("androidx.core:core-ktx:1.8.0")
-    implementation("androidx.appcompat:appcompat:1.5.0")
-    implementation("com.google.android.material:material:1.7.0-rc01")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.3")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    testImplementation(libs.test)
+    androidTestImplementation(libs.bundles.androidx.test)
 
     // Navigation
-    implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
-    implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
+    implementation(libs.bundles.navigation)
 
     // Zxing
-    implementation("com.journeyapps:zxing-android-embedded:4.3.0")
+    implementation(libs.zxing)
 
     // Room
-    implementation("androidx.room:room-runtime:$roomVersion")
-    kapt("androidx.room:room-compiler:$roomVersion")
-    implementation("androidx.room:room-ktx:$roomVersion")
+    implementation(libs.bundles.androidx.room)
+    kapt(libs.androidx.room.compiler)
 
     // Lifecycle libraries
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
+    implementation(libs.bundles.androidx.lifecycle)
 
     // hilt
-    implementation("com.google.dagger:hilt-android:$hiltVersion")
-    kapt("com.google.dagger:hilt-compiler:$hiltVersion")
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 }
