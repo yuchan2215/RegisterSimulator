@@ -49,7 +49,5 @@ dependencies {
     implementation(libs.bundles.androidx.room)
     kapt(libs.androidx.room.compiler)
 
-    implementation(project(":utils"))
-    implementation(project(":model"))
     implementation(project(":data:db"))
 }
