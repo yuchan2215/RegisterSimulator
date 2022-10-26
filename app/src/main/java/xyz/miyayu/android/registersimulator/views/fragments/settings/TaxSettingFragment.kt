@@ -10,8 +10,8 @@ import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.SimpleTextWatcher
 import xyz.miyayu.android.registersimulator.databinding.TaxSettingFragmentBinding
+import xyz.miyayu.android.registersimulator.utils.SimpleTextWatcher
 import xyz.miyayu.android.registersimulator.viewmodel.TaxSettingViewModel
 
 @AndroidEntryPoint

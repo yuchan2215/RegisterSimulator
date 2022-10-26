@@ -13,12 +13,13 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
-import xyz.miyayu.android.registersimulator.Category
-import xyz.miyayu.android.registersimulator.CategoryRepository
 import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.ResourceService
-import xyz.miyayu.android.registersimulator.TaxRate
-import xyz.miyayu.android.registersimulator.TaxRateRepository
+import xyz.miyayu.android.registersimulator.model.Category
+import xyz.miyayu.android.registersimulator.model.TaxRate
+import xyz.miyayu.android.registersimulator.model.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.repository.CategoryRepository
+import xyz.miyayu.android.registersimulator.repository.TaxRateRepository
+import xyz.miyayu.android.registersimulator.utils.ResourceService
 import xyz.miyayu.android.registersimulator.views.fragments.settings.CategoryInputFragmentArgs
 
 class CategoryInputViewModel @AssistedInject constructor(
@@ -61,12 +62,7 @@ class CategoryInputViewModel @AssistedInject constructor(
             taxRates?.getOrNull(2)
         ).map { taxRate ->
             // Nullなら空欄
-            if (taxRate == null) ""
-            else resourceService.getResources().getString(
-                R.string.category_tax_preview,
-                taxRate.title,
-                taxRate.rate
-            )
+            taxRate?.getPreview(resourceService) ?: ""
         }
     }
 

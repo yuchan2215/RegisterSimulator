@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import xyz.miyayu.android.registersimulator.CategoryAndTaxRate
-import xyz.miyayu.android.registersimulator.ResourceService
-import xyz.miyayu.android.registersimulator.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.databinding.CategorySearchItemBinding
+import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.model.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.utils.ResourceService
 
 abstract class CategorySearchItemAdapter(private val resourceService: ResourceService) :
     ListAdapter<CategoryAndTaxRate, CategorySearchItemAdapter.CategoryViewHolder>(

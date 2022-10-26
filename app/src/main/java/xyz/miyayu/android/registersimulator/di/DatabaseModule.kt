@@ -7,10 +7,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import xyz.miyayu.android.registersimulator.dao.CategoryDao
-import xyz.miyayu.android.registersimulator.dao.ProductItemDao
-import xyz.miyayu.android.registersimulator.dao.TaxRateDao
-import xyz.miyayu.android.registersimulator.room.SettingRoomDatabase
+import xyz.miyayu.android.registersimulator.db.dao.CategoryDao
+import xyz.miyayu.android.registersimulator.db.dao.ProductItemDao
+import xyz.miyayu.android.registersimulator.db.dao.TaxRateDao
+import xyz.miyayu.android.registersimulator.db.room.SettingRoomDatabase
 import javax.inject.Singleton
 
 @Module

@@ -6,11 +6,11 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import xyz.miyayu.android.registersimulator.ProductItemDetail
 import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.databinding.ItemSettingItemBinding
-import xyz.miyayu.android.registersimulator.price.Price.Companion.getFormattedString
+import xyz.miyayu.android.registersimulator.model.ProductItemDetail
+import xyz.miyayu.android.registersimulator.model.price.Price.Companion.getFormattedString
+import xyz.miyayu.android.registersimulator.utils.ResourceService
 
 abstract class ItemListAdapter(private val resourceService: ResourceService) :
     ListAdapter<ProductItemDetail, ItemListAdapter.ItemViewHolder>(DiffCallback) {
