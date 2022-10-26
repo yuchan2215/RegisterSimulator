@@ -22,7 +22,7 @@ import xyz.miyayu.android.registersimulator.repository.TaxRateRepository
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
+internal class ItemAddFragment : Fragment(R.layout.item_add_fragment) {
     @Inject
     lateinit var viewModelFactory: ItemAddViewModel.Factory
 

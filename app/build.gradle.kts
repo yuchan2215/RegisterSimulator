@@ -67,9 +67,6 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
-    implementation(project(":utils"))
-    implementation(project(":model"))
-    implementation(project(":data:db"))
     implementation(project(":data:repository"))
     implementation(project(":di"))
     implementation(project(":feature:common"))

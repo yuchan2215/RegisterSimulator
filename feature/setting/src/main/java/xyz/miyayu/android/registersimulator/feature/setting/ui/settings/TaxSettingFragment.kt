@@ -15,7 +15,7 @@ import xyz.miyayu.android.registersimulator.feature.setting.viewmodel.TaxSetting
 import xyz.miyayu.android.registersimulator.utils.SimpleTextWatcher
 
 @AndroidEntryPoint
-class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
+internal class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
     private val taxSettingViewModel: TaxSettingViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val binding = TaxSettingFragmentBinding.bind(view)

@@ -12,7 +12,7 @@ import xyz.miyayu.android.registersimulator.model.ProductItemDetail
 import xyz.miyayu.android.registersimulator.model.price.Price.Companion.getFormattedString
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 
-abstract class ItemListAdapter(private val resourceService: ResourceService) :
+internal abstract class ItemListAdapter(private val resourceService: ResourceService) :
     ListAdapter<ProductItemDetail, ItemListAdapter.ItemViewHolder>(DiffCallback) {
 
     abstract fun onItemClicked(item: ProductItemDetail)

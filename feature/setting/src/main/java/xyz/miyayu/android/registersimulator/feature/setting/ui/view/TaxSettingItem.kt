@@ -9,7 +9,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.google.android.material.textfield.TextInputEditText
 import xyz.miyayu.android.registersimulator.feature.setting.R
 
-class TaxSettingItem(context: Context, attrs: AttributeSet) :
+internal class TaxSettingItem(context: Context, attrs: AttributeSet) :
     ConstraintLayout(context, attrs) {
     init {
         LayoutInflater.from(context).inflate(

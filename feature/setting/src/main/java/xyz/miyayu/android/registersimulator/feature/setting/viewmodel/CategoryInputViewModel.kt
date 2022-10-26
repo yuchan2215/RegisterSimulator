@@ -22,7 +22,7 @@ import xyz.miyayu.android.registersimulator.repository.CategoryRepository
 import xyz.miyayu.android.registersimulator.repository.TaxRateRepository
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 
-class CategoryInputViewModel @AssistedInject constructor(
+internal class CategoryInputViewModel @AssistedInject constructor(
     private val taxRateRepository: TaxRateRepository,
     private val categoryRepository: CategoryRepository,
     private val resourceService: ResourceService,

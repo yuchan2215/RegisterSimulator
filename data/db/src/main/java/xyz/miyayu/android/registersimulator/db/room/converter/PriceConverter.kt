@@ -3,7 +3,7 @@ package xyz.miyayu.android.registersimulator.db.room.converter
 import androidx.room.TypeConverter
 import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice
 
-class PriceConverter {
+internal class PriceConverter {
     @TypeConverter
     fun fromString(value: String?): WithoutTaxPrice? {
         return value?.let { WithoutTaxPrice(value) }

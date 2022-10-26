@@ -7,8 +7,8 @@ import xyz.miyayu.android.registersimulator.repository.ItemRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class ItemListViewModel @Inject constructor(
-    private val itemRepository: ItemRepository
+internal class ItemListViewModel @Inject constructor(
+    itemRepository: ItemRepository
 ) : ViewModel() {
     val allItems = itemRepository.getAllItemDetailsFlow().asLiveData()
 }

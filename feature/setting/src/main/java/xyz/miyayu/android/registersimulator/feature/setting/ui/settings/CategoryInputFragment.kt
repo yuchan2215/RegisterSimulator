@@ -13,7 +13,7 @@ import xyz.miyayu.android.registersimulator.feature.setting.viewmodel.CategoryIn
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
+internal class CategoryInputFragment : Fragment(R.layout.category_input_fragment) {
     @Inject
     lateinit var viewModelFactory: CategoryInputViewModel.Factory
 

@@ -10,7 +10,7 @@ import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.model.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 
-abstract class CategoryListAdapter(private val resourceService: ResourceService) :
+internal abstract class CategoryListAdapter(private val resourceService: ResourceService) :
     ListAdapter<CategoryAndTaxRate, CategoryListAdapter.CategoryViewHolder>(
         DiffCallback
     ) {

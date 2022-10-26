@@ -3,7 +3,7 @@ package xyz.miyayu.android.registersimulator.db.room.converter
 import androidx.room.TypeConverter
 import java.util.Date
 
-class DateConverter {
+internal class DateConverter {
     @TypeConverter
     fun fromTimestamp(value: Long?): Date? {
         return value?.let { Date(it) }

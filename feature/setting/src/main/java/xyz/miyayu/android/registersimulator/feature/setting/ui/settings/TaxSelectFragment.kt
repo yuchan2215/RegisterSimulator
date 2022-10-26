@@ -16,7 +16,7 @@ import xyz.miyayu.android.registersimulator.utils.ResourceService
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class TaxSelectFragment : DialogFragment() {
+internal class TaxSelectFragment : DialogFragment() {
 
     @Inject
     lateinit var resourceService: ResourceService

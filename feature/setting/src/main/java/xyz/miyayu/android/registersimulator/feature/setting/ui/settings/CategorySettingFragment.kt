@@ -24,7 +24,7 @@ import javax.inject.Inject
 import xyz.miyayu.android.registersimulator.feature.common.R as RC
 
 @AndroidEntryPoint
-class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
+internal class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
     private val viewModel: CategorySettingViewModel by viewModels()
 
     @Inject

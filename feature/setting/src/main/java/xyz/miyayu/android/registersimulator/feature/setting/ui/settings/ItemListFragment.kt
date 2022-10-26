@@ -18,7 +18,7 @@ import xyz.miyayu.android.registersimulator.utils.ResourceService
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class ItemListFragment : Fragment(R.layout.item_list_fragment) {
+internal class ItemListFragment : Fragment(R.layout.item_list_fragment) {
     @Inject
     lateinit var resourceService: ResourceService
 

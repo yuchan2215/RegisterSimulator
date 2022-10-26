@@ -12,7 +12,7 @@ import xyz.miyayu.android.registersimulator.repository.TaxRateRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class TaxSettingViewModel @Inject constructor(
+internal class TaxSettingViewModel @Inject constructor(
     private val taxRateRepository: TaxRateRepository
 ) : ViewModel() {
     private val _taxRates: MutableLiveData<List<TaxRate>?> = MutableLiveData(null)

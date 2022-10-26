@@ -32,7 +32,7 @@ import xyz.miyayu.android.registersimulator.repository.TaxRateRepository
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 import java.util.Date
 
-class ItemAddViewModel @AssistedInject constructor(
+internal class ItemAddViewModel @AssistedInject constructor(
     private val itemRepository: ItemRepository,
     private val taxRateRepository: TaxRateRepository,
     private val categoryRepository: CategoryRepository,

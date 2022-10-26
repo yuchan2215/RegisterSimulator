@@ -11,7 +11,7 @@ import xyz.miyayu.android.registersimulator.repository.CategoryRepository
 import javax.inject.Inject
 
 @HiltViewModel
-class CategorySettingViewModel @Inject constructor(
+internal class CategorySettingViewModel @Inject constructor(
     private val categoryRepository: CategoryRepository
 ) : ViewModel() {
     val categoryList = categoryRepository.getCategoriesAndTaxRatesFlow().asLiveData()

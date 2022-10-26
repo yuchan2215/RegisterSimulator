@@ -7,7 +7,7 @@ import androidx.navigation.findNavController
 import xyz.miyayu.android.registersimulator.feature.setting.R
 import xyz.miyayu.android.registersimulator.feature.setting.databinding.SettingFragmentBinding
 
-class SettingFragment : Fragment(R.layout.setting_fragment) {
+internal class SettingFragment : Fragment(R.layout.setting_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         SettingFragmentBinding.bind(view).apply {
             taxSetting.setOnClickListener {

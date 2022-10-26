@@ -9,7 +9,7 @@ import androidx.annotation.DrawableRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import xyz.miyayu.android.registersimulator.feature.setting.R
 
-class IconListItem(context: Context, attrs: AttributeSet) :
+internal class IconListItem(context: Context, attrs: AttributeSet) :
     ConstraintLayout(context, attrs) {
     init {
         LayoutInflater.from(context).inflate(
