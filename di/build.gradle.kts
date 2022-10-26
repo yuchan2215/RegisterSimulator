@@ -1,33 +1,24 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.androidx.safeargs)
-    alias(libs.plugins.kotlin.kapt)
-    alias(libs.plugins.lint.ktlint)
     alias(libs.plugins.hilt)
+    alias(libs.plugins.kotlin.kapt)
     id("kotlin-parcelize")
 }
 
 android {
     compileSdk = libs.versions.targetSdk.get().toInt()
+
     defaultConfig {
-        applicationId = "xyz.miyayu.android.registersimulator"
-        // Zxingが24以上を必要としている
         minSdk = libs.versions.minSdk.get().toInt()
         targetSdk = libs.versions.targetSdk.get().toInt()
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
+            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
     compileOptions {
@@ -35,10 +26,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "11"
-    }
-    buildFeatures {
-        dataBinding = true
+        jvmTarget = "1.8"
     }
 }
 
@@ -50,11 +38,12 @@ dependencies {
     testImplementation(libs.test)
     androidTestImplementation(libs.bundles.androidx.test)
 
-    // Navigation
-    implementation(libs.bundles.navigation)
+    // Lifecycle libraries
+    implementation(libs.bundles.androidx.lifecycle)
 
-    // Zxing
-    implementation(libs.zxing)
+    // hilt
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.compiler)
 
     // Room
     implementation(libs.bundles.androidx.room)
@@ -63,13 +52,6 @@ dependencies {
     // Lifecycle libraries
     implementation(libs.bundles.androidx.lifecycle)
 
-    // hilt
-    implementation(libs.hilt.android)
-    kapt(libs.hilt.compiler)
-
-    implementation(project(":utils"))
-    implementation(project(":model"))
     implementation(project(":data:db"))
-    implementation(project(":data:repository"))
-    implementation(project(":di"))
+    implementation(project(":utils"))
 }
