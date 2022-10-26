@@ -9,10 +9,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
+import xyz.miyayu.android.registersimulator.ProductItemDetail
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.databinding.ItemListFragmentBinding
-import xyz.miyayu.android.registersimulator.model.entity.ProductItemDetail
 import xyz.miyayu.android.registersimulator.viewmodel.ItemListViewModel
 import xyz.miyayu.android.registersimulator.views.adapter.ItemListAdapter
 import javax.inject.Inject

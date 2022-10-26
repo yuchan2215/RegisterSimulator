@@ -13,8 +13,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.TaxRate
 import xyz.miyayu.android.registersimulator.databinding.ItemAddFragmentBinding
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import xyz.miyayu.android.registersimulator.viewmodel.ItemAddViewModel
 import xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySelectFragment

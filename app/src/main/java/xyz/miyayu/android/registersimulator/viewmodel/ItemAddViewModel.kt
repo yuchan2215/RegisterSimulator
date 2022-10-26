@@ -16,16 +16,16 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import xyz.miyayu.android.registersimulator.ProductItem
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.ResourceService
-import xyz.miyayu.android.registersimulator.model.entity.ProductItem
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
-import xyz.miyayu.android.registersimulator.model.entity.price.Price.Companion.getFormattedString
-import xyz.miyayu.android.registersimulator.model.entity.price.TaxIncludedPrice
-import xyz.miyayu.android.registersimulator.model.entity.price.TaxPrice
-import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice
-import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice.Companion.convertToWithOutTaxPrice
+import xyz.miyayu.android.registersimulator.TaxRate
+import xyz.miyayu.android.registersimulator.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.price.Price.Companion.getFormattedString
+import xyz.miyayu.android.registersimulator.price.TaxIncludedPrice
+import xyz.miyayu.android.registersimulator.price.TaxPrice
+import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice
+import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice.Companion.convertToWithOutTaxPrice
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 import xyz.miyayu.android.registersimulator.repositories.ItemRepository
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
@@ -88,7 +88,7 @@ class ItemAddViewModel @AssistedInject constructor(
     // カテゴリ標準の税率
     val categoryTaxRatePreview = categoryDetails.map {
         if (it?.taxRate == null) return@map ""
-        val taxRate = it.taxRate
+        val taxRate = it.taxRate!!
         return@map taxRate.getPreview(resourceService)
     }
 

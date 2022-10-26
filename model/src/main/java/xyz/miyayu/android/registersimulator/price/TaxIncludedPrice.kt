@@ -1,6 +1,6 @@
-package xyz.miyayu.android.registersimulator.model.entity.price
+package xyz.miyayu.android.registersimulator.price
 
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate
+import xyz.miyayu.android.registersimulator.TaxRate
 import java.math.BigDecimal
 
 class TaxIncludedPrice(

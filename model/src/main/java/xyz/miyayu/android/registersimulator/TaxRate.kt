@@ -1,11 +1,9 @@
-package xyz.miyayu.android.registersimulator.model.entity
+package xyz.miyayu.android.registersimulator
 
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
-import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.ResourceService
 import java.math.BigDecimal
 
 /**

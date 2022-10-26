@@ -5,13 +5,15 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import xyz.miyayu.android.registersimulator.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.ResourceService
+import xyz.miyayu.android.registersimulator.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.databinding.CategorySearchItemBinding
-import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate.Companion.getPreview
 
 abstract class CategorySearchItemAdapter(private val resourceService: ResourceService) :
-    ListAdapter<CategoryAndTaxRate, CategorySearchItemAdapter.CategoryViewHolder>(DiffCallback) {
+    ListAdapter<CategoryAndTaxRate, CategorySearchItemAdapter.CategoryViewHolder>(
+        DiffCallback
+    ) {
     abstract fun onItemClicked(item: CategoryAndTaxRate)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoryViewHolder {
@@ -44,15 +46,19 @@ abstract class CategorySearchItemAdapter(private val resourceService: ResourceSe
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<CategoryAndTaxRate>() {
-            override fun areContentsTheSame(
-                oldItem: CategoryAndTaxRate,
-                newItem: CategoryAndTaxRate
-            ) =
-                oldItem == newItem
+        private val DiffCallback =
+            object : DiffUtil.ItemCallback<CategoryAndTaxRate>() {
+                override fun areContentsTheSame(
+                    oldItem: CategoryAndTaxRate,
+                    newItem: CategoryAndTaxRate
+                ) =
+                    oldItem == newItem
 
-            override fun areItemsTheSame(oldItem: CategoryAndTaxRate, newItem: CategoryAndTaxRate) =
-                oldItem.category.categoryId == newItem.category.categoryId
-        }
+                override fun areItemsTheSame(
+                    oldItem: CategoryAndTaxRate,
+                    newItem: CategoryAndTaxRate
+                ) =
+                    oldItem.category.categoryId == newItem.category.categoryId
+            }
     }
 }

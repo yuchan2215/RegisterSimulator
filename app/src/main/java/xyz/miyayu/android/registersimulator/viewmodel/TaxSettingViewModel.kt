@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate
+import xyz.miyayu.android.registersimulator.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import javax.inject.Inject
 

@@ -1,8 +1,8 @@
-package xyz.miyayu.android.registersimulator.model.entity
+package xyz.miyayu.android.registersimulator
 
 import androidx.room.Embedded
 import androidx.room.Relation
-import xyz.miyayu.android.registersimulator.model.entity.price.TaxIncludedPrice
+import xyz.miyayu.android.registersimulator.price.TaxIncludedPrice
 
 data class ProductItemDetail(
     @Embedded val item: ProductItem,

@@ -1,7 +1,7 @@
 package xyz.miyayu.android.registersimulator.model.room.converter
 
 import androidx.room.TypeConverter
-import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice
+import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice
 
 class PriceConverter {
     @TypeConverter

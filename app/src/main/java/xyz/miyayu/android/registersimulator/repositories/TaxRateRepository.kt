@@ -1,7 +1,7 @@
 package xyz.miyayu.android.registersimulator.repositories
 
+import xyz.miyayu.android.registersimulator.TaxRate
 import xyz.miyayu.android.registersimulator.model.dao.TaxRateDao
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate
 import javax.inject.Inject
 import javax.inject.Singleton
 

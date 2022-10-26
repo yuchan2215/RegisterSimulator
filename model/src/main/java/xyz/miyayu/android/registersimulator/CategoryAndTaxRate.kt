@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.model.entity
+package xyz.miyayu.android.registersimulator
 
 import androidx.room.Embedded
 import androidx.room.Relation

@@ -8,8 +8,8 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
-import xyz.miyayu.android.registersimulator.model.entity.Category
-import xyz.miyayu.android.registersimulator.model.entity.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.Category
+import xyz.miyayu.android.registersimulator.CategoryAndTaxRate
 
 @Dao
 interface CategoryDao {

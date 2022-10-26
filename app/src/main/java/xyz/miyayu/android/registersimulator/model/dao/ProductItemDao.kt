@@ -8,8 +8,8 @@ import androidx.room.Query
 import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
-import xyz.miyayu.android.registersimulator.model.entity.ProductItem
-import xyz.miyayu.android.registersimulator.model.entity.ProductItemDetail
+import xyz.miyayu.android.registersimulator.ProductItem
+import xyz.miyayu.android.registersimulator.ProductItemDetail
 
 @Dao
 interface ProductItemDao {

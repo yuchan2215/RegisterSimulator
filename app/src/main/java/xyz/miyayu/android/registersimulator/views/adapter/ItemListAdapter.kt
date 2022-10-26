@@ -6,11 +6,11 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import xyz.miyayu.android.registersimulator.ProductItemDetail
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.databinding.ItemSettingItemBinding
-import xyz.miyayu.android.registersimulator.model.entity.ProductItemDetail
-import xyz.miyayu.android.registersimulator.model.entity.price.Price.Companion.getFormattedString
+import xyz.miyayu.android.registersimulator.price.Price.Companion.getFormattedString
 
 abstract class ItemListAdapter(private val resourceService: ResourceService) :
     ListAdapter<ProductItemDetail, ItemListAdapter.ItemViewHolder>(DiffCallback) {
@@ -60,20 +60,21 @@ abstract class ItemListAdapter(private val resourceService: ResourceService) :
     }
 
     companion object {
-        private val DiffCallback = object : DiffUtil.ItemCallback<ProductItemDetail>() {
-            override fun areContentsTheSame(
-                oldItem: ProductItemDetail,
-                newItem: ProductItemDetail
-            ): Boolean {
-                return oldItem == newItem
-            }
+        private val DiffCallback =
+            object : DiffUtil.ItemCallback<ProductItemDetail>() {
+                override fun areContentsTheSame(
+                    oldItem: ProductItemDetail,
+                    newItem: ProductItemDetail
+                ): Boolean {
+                    return oldItem == newItem
+                }
 
-            override fun areItemsTheSame(
-                oldItem: ProductItemDetail,
-                newItem: ProductItemDetail
-            ): Boolean {
-                return oldItem.item.id == newItem.item.id
+                override fun areItemsTheSame(
+                    oldItem: ProductItemDetail,
+                    newItem: ProductItemDetail
+                ): Boolean {
+                    return oldItem.item.id == newItem.item.id
+                }
             }
-        }
     }
 }

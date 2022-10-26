@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.model.entity.price
+package xyz.miyayu.android.registersimulator.price
 
 import java.math.BigDecimal
 

@@ -1,9 +1,9 @@
-package xyz.miyayu.android.registersimulator.model.entity
+package xyz.miyayu.android.registersimulator
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import xyz.miyayu.android.registersimulator.model.entity.price.WithoutTaxPrice
+import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice
 import java.util.Date
 
 @Entity(tableName = "items")

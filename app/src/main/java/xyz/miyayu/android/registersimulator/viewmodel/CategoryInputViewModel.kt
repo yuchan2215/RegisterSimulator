@@ -13,10 +13,10 @@ import dagger.assisted.Assisted
 import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
+import xyz.miyayu.android.registersimulator.Category
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.ResourceService
-import xyz.miyayu.android.registersimulator.model.entity.Category
-import xyz.miyayu.android.registersimulator.model.entity.TaxRate
+import xyz.miyayu.android.registersimulator.TaxRate
 import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
 import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import xyz.miyayu.android.registersimulator.views.fragments.settings.CategoryInputFragmentArgs
@@ -159,7 +159,8 @@ class CategoryInputViewModel @AssistedInject constructor(
     fun save() {
         val safeCategoryName = categoryName.value!!
         val safeCategoryDefaultTaxRateId = getTaxRateId(choseTaxRateLayoutId.value)
-        val category = Category(categoryId, safeCategoryName, safeCategoryDefaultTaxRateId)
+        val category =
+            Category(categoryId, safeCategoryName, safeCategoryDefaultTaxRateId)
         viewModelScope.launch {
             if (categoryId == null) {
                 categoryRepository.insert(category)

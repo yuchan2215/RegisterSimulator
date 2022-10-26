@@ -94,11 +94,11 @@
         android:label="TaxSelectFragment">
         <argument
             android:name="taxRates"
-            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate[]" />
+            app:argType="xyz.miyayu.android.registersimulator.TaxRate[]"/>
         <argument
             android:name="selectedTaxRate"
             android:defaultValue="@null"
-            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate"
+            app:argType="xyz.miyayu.android.registersimulator.TaxRate"
             app:nullable="true" />
     </dialog>
     <fragment
