@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.views.view
+package xyz.miyayu.android.registersimulator.feature.common.ui.view
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +10,7 @@ import com.google.zxing.client.android.DecodeHintManager
 import com.google.zxing.client.android.Intents
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.DefaultDecoderFactory
-import xyz.miyayu.android.registersimulator.databinding.ReaderViewBinding
+import xyz.miyayu.android.registersimulator.feature.common.databinding.ReaderViewBinding
 
 /**
  * バーコードリーダーのView。レイアウト等を一括管理するためにViewとして管理する。

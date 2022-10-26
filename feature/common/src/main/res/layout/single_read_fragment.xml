@@ -5,8 +5,8 @@
 
     </data>
 
-    <xyz.miyayu.android.registersimulator.views.view.ReaderView
+    <xyz.miyayu.android.registersimulator.feature.common.ui.view.ReaderView
         android:id="@+id/reader_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"/>
 </layout>

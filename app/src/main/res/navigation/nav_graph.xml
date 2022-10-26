@@ -103,11 +103,11 @@
     </dialog>
     <fragment
         android:id="@+id/categorySearchFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySelectFragment"
+        android:name="xyz.miyayu.android.registersimulator.feature.common.ui.fragment.CategorySelectFragment"
         android:label="@string/select_category"
         tools:layout="@layout/category_search_fragment" />
     <fragment
         android:id="@+id/singleReadFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.SingleReadFragment"
+        android:name="xyz.miyayu.android.registersimulator.feature.common.ui.fragment.SingleReadFragment"
         android:label="ほげ" />
 </navigation>

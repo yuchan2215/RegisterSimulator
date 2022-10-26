@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.views.fragments.utils
+package xyz.miyayu.android.registersimulator.feature.common.ui.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -9,12 +9,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import dagger.hilt.android.AndroidEntryPoint
-import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.databinding.CategorySearchFragmentBinding
+import xyz.miyayu.android.registersimulator.feature.common.R
+import xyz.miyayu.android.registersimulator.feature.common.databinding.CategorySearchFragmentBinding
+import xyz.miyayu.android.registersimulator.feature.common.ui.adapter.CategorySearchItemAdapter
+import xyz.miyayu.android.registersimulator.feature.common.viewmodel.CategorySearchViewModel
 import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.utils.ResourceService
-import xyz.miyayu.android.registersimulator.viewmodel.CategorySearchViewModel
-import xyz.miyayu.android.registersimulator.views.adapter.CategorySearchItemAdapter
 import javax.inject.Inject
 
 /**

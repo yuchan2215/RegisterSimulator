@@ -1,11 +1,11 @@
-package xyz.miyayu.android.registersimulator.views.fragments.utils
+package xyz.miyayu.android.registersimulator.feature.common.ui.fragment
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.databinding.SingleReadFragmentBinding
+import xyz.miyayu.android.registersimulator.feature.common.R
+import xyz.miyayu.android.registersimulator.feature.common.databinding.SingleReadFragmentBinding
 
 /**
  * 1回バーコードを読み込むためのフラグメント。

@@ -28,6 +28,9 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
@@ -45,11 +48,21 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
 
+    // Zxing
+    implementation(libs.zxing)
+
     // Room
     implementation(libs.bundles.androidx.room)
     kapt(libs.androidx.room.compiler)
 
-    implementation(project(":data:db"))
+    // Navigation
+    implementation(libs.bundles.navigation)
+
+    // Lifecycle libraries
+    implementation(libs.bundles.androidx.lifecycle)
+
+    implementation(project(":utils"))
+    implementation(project(":data:repository"))
     implementation(project(":model"))
 
 }

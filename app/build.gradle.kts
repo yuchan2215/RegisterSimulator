@@ -72,4 +72,5 @@ dependencies {
     implementation(project(":data:db"))
     implementation(project(":data:repository"))
     implementation(project(":di"))
+    implementation(project(":feature:common"))
 }

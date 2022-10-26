@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.viewmodel
+package xyz.miyayu.android.registersimulator.feature.common.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

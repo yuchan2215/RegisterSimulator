@@ -1,11 +1,11 @@
-package xyz.miyayu.android.registersimulator.views.adapter
+package xyz.miyayu.android.registersimulator.feature.common.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import xyz.miyayu.android.registersimulator.databinding.CategorySearchItemBinding
+import xyz.miyayu.android.registersimulator.feature.common.databinding.CategorySearchItemBinding
 import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.model.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.utils.ResourceService
