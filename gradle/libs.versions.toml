@@ -7,6 +7,7 @@ androidVersion = "7.2.1"
 kotlinVersion = "1.7.20"
 targetSdk = "32"
 minSdk = "24"
+dependencyGraph = "0.8.0"
 
 [libraries]
 navigation-safeargs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navVersion" }
@@ -35,6 +36,7 @@ androidx-lifecycle-livedata = { module = "androidx.lifecycle:lifecycle-livedata-
 hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltVersion" }
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltVersion" }
 #
+dependency-graph = { module = "com.vanniktech:gradle-dependency-graph-generator-plugin", version.ref = "dependencyGraph" }
 
 [bundles]
 navigation = [
@@ -75,3 +77,4 @@ gradle-version-catalog-update = "nl.littlerobots.version-catalog-update:0.7.0"
 androidx-safeargs = { id = "androidx.navigation.safeargs.kotlin", version.ref = "navVersion" }
 #
 kotlin-kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
+dependency-graph = { id = "com.vanniktech.dependency.graph.generator", version.ref = "dependencyGraph" }

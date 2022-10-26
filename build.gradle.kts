@@ -14,6 +14,7 @@ plugins {
     alias(libs.plugins.gradle.version.catalog.update)
     alias(libs.plugins.androidx.safeargs) apply false
     alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.dependency.graph)
 }
 
 buildscript {
@@ -23,6 +24,7 @@ buildscript {
     dependencies {
         // Navigation Safe Args
         classpath(libs.navigation.safeargs)
+        classpath(libs.dependency.graph)
     }
 }
 
