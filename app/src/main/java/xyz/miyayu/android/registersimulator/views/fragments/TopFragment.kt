@@ -26,7 +26,7 @@ class TopFragment : Fragment(R.layout.top_fragment) {
         }
         binding.openSettingsButton.setOnClickListener {
             view.findNavController()
-                .navigate(TopFragmentDirections.actionTopFragmentToSettingFragment())
+                .navigate(TopFragmentDirections.openSetting())
         }
 
         // 税率を初期化しておく。

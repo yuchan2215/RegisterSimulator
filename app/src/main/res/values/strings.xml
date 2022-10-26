@@ -1,43 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RegisterSimulator</string>
     <string name="open_cash_register_button">Cash register</string>
     <string name="open_settings_button">Settings</string>
-    <string name="open_items_setting">Items</string>
-    <string name="open_categories_setting">Categories</string>
-    <string name="open_tax_setting">Tax</string>
-    <string name="tax_name_hint">Tax Title</string>
-    <string name="percent" translatable="false">%</string>
-    <string name="tax_rate_hint">Tax rate</string>
-    <string name="tax_rate_label">Rate %d</string>
-    <string name="home_label">Home</string>
-    <string name="register_label">Cash Register</string>
-    <string name="settings_label">Settings</string>
-    <string name="tax_settings_label">Tax Settings</string>
-    <string name="save_btn_description">Save</string>
-    <string name="cancel_btn_description">Cancel</string>
-    <string name="saved_message">Saved.</string>
-    <string name="add_button_description">Add Button</string>
-    <string name="category_settings_label">Category Settings</string>
-    <string name="category_name_field_title">Category Name</string>
-    <string name="category_tax_choice_message">Choice Tax Rate</string>
-    <string name="category_input_label">Category Input</string>
-    <string name="item_list_label">Items List</string>
-    <string name="add_item_button_description">add item</string>
-    <string name="jan_code_hint">JAN Code</string>
-    <string name="import_jancode_description">Import JanCode from Camera</string>
-    <string name="item_name_hint">Item Name</string>
-    <string name="price_hint">Price</string>
-    <string name="select_tax_section_description">Select Tax section</string>
-    <string name="select_category_description">Select Category</string>
-    <string name="tax_rate_not_set_display">Use category standard tax rates</string>
-    <string name="override_category_taxrate">Overrides the category standard tax rate.</string>
-    <string name="tax_preview">Tax: %s Yen</string>
-    <string name="price_preview">Tax included: %s Yen</string>
-    <string name="select_tax_title">Select Tax</string>
-    <string name="ok_button">OK</string>
-    <string name="cancel_button">Cancel</string>
-    <string name="deselection_option">Deselection</string>
-    <string name="select_category">Select Category</string>
-    <string name="without_tax_price">%s Yen + Tax</string>
-    <string name="category_override_message">Category tax rates are overridden.</string>
 </resources>
