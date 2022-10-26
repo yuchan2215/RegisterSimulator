@@ -1,6 +1,5 @@
-package xyz.miyayu.android.registersimulator.repositories
+package xyz.miyayu.android.registersimulator
 
-import xyz.miyayu.android.registersimulator.Category
 import xyz.miyayu.android.registersimulator.dao.CategoryDao
 import javax.inject.Inject
 import javax.inject.Singleton

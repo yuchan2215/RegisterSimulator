@@ -1,6 +1,5 @@
-package xyz.miyayu.android.registersimulator.repositories
+package xyz.miyayu.android.registersimulator
 
-import xyz.miyayu.android.registersimulator.ProductItem
 import xyz.miyayu.android.registersimulator.dao.ProductItemDao
 import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice
 import java.util.Date

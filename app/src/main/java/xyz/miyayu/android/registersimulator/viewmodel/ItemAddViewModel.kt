@@ -16,19 +16,19 @@ import dagger.assisted.AssistedInject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import xyz.miyayu.android.registersimulator.CategoryRepository
+import xyz.miyayu.android.registersimulator.ItemRepository
 import xyz.miyayu.android.registersimulator.ProductItem
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.TaxRate
 import xyz.miyayu.android.registersimulator.TaxRate.Companion.getPreview
+import xyz.miyayu.android.registersimulator.TaxRateRepository
 import xyz.miyayu.android.registersimulator.price.Price.Companion.getFormattedString
 import xyz.miyayu.android.registersimulator.price.TaxIncludedPrice
 import xyz.miyayu.android.registersimulator.price.TaxPrice
 import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice
 import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice.Companion.convertToWithOutTaxPrice
-import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
-import xyz.miyayu.android.registersimulator.repositories.ItemRepository
-import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragmentArgs
 import java.util.Date
 

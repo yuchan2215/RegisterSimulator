@@ -9,8 +9,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.R
+import xyz.miyayu.android.registersimulator.TaxRateRepository
 import xyz.miyayu.android.registersimulator.databinding.TopFragmentBinding
-import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
 import javax.inject.Inject
 
 @AndroidEntryPoint

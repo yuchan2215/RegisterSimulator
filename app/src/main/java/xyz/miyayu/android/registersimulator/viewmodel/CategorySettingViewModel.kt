@@ -7,7 +7,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.CategoryAndTaxRate
-import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
+import xyz.miyayu.android.registersimulator.CategoryRepository
 import javax.inject.Inject
 
 @HiltViewModel

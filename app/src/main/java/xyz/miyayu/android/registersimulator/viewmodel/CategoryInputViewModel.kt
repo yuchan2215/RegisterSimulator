@@ -14,11 +14,11 @@ import dagger.assisted.AssistedFactory
 import dagger.assisted.AssistedInject
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.Category
+import xyz.miyayu.android.registersimulator.CategoryRepository
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.ResourceService
 import xyz.miyayu.android.registersimulator.TaxRate
-import xyz.miyayu.android.registersimulator.repositories.CategoryRepository
-import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
+import xyz.miyayu.android.registersimulator.TaxRateRepository
 import xyz.miyayu.android.registersimulator.views.fragments.settings.CategoryInputFragmentArgs
 
 class CategoryInputViewModel @AssistedInject constructor(
