@@ -8,5 +8,5 @@
 
     <string name="use_category_standard_tax_rate">Use category standard tax rate.</string>
     <string name="overrides_the_category_standard_tax_rate">Overrides the category standard tax rate.</string>
-    <string name="category_override_message">Category tax rates are overridden.</string>
+    <string name="category_override_message" translatable="false">Category tax rates are overridden.</string>
 </resources>
