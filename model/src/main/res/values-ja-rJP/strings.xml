@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="without_tax_preview">%s 円+税</string>
+    <string name="tax_preview">税: %s 円</string>
+    <string name="tax_included_preview">税込: %s 円</string>
+</resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tax_settings">税設定</string>
+    <string name="category_settings">カテゴリ設定</string>
+    <string name="category_entry">カテゴリ登録</string>
+    <string name="add_item_description">商品追加</string>
+    <string name="import_jancode_description">JANコードをカメラから読み込む</string>
+    <string name="use_category_standard_tax_rate">カテゴリの標準税率を使用</string>
+    <string name="overrides_the_category_standard_tax_rate">カテゴリの標準税率を上書き</string>
+    <string name="category_override_message">カテゴリの標準税率が上書きされています</string>
+</resources>

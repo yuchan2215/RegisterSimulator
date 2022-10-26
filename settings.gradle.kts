@@ -1,3 +1,4 @@
+enableFeaturePreview("VERSION_CATALOGS")
 pluginManagement {
     repositories {
         gradlePluginPortal()
@@ -14,3 +15,10 @@ dependencyResolutionManagement {
 }
 rootProject.name = "RegisterSimulator"
 include(":app")
+include(":utils")
+include(":model")
+include(":data:db")
+include(":data:repository")
+include(":di")
+include(":feature:common")
+include(":feature:setting")

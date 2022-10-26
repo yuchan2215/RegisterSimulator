@@ -1,113 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
-    app:startDestination="@id/topFragment">
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/nav_graph"
+            app:startDestination="@id/topFragment">
+    <include app:graph="@navigation/setting_nav"/>
+
     <fragment
         android:id="@+id/topFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.TopFragment"
-        android:label="@string/home_label"
+        android:label="@string/app_name"
         tools:layout="@layout/top_fragment">
         <action
             android:id="@+id/openRegister"
-            app:destination="@id/registerTopFragment" />
-        <action
-            android:id="@+id/action_topFragment_to_settingFragment"
-            app:destination="@id/settingFragment" />
+            app:destination="@id/registerTopFragment"/>
+        <action android:id="@+id/open_setting" app:destination="@id/setting_nav"/>
     </fragment>
     <fragment
         android:id="@+id/registerTopFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.RegisterTopFragment"
-        android:label="@string/register_label"
-        tools:layout="@layout/register_top_fragment" />
-    <fragment
-        android:id="@+id/settingFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.SettingFragment"
-        android:label="@string/settings_label"
-        tools:layout="@layout/setting_fragment">
-        <action
-            android:id="@+id/openTaxSetting"
-            app:destination="@id/taxSettingFragment" />
-        <action
-            android:id="@+id/openCategorySetting"
-            app:destination="@id/categorySettingFragment" />
-        <action
-            android:id="@+id/openItemList"
-            app:destination="@id/itemListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/taxSettingFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.TaxSettingFragment"
-        android:label="@string/tax_settings_label"
-        tools:layout="@layout/tax_setting_fragment" />
-    <fragment
-        android:id="@+id/categorySettingFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.CategorySettingFragment"
-        android:label="@string/category_settings_label"
-        tools:layout="@layout/category_setting_fragment">
-        <action
-            android:id="@+id/openCategoryInput"
-            app:destination="@id/categoryInputFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/categoryInputFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.CategoryInputFragment"
-        android:label="@string/category_input_label"
-        tools:layout="@layout/category_input_fragment">
-        <argument
-            android:name="categoryId"
-            android:defaultValue="-1"
-            app:argType="integer" />
-    </fragment>
-    <fragment
-        android:id="@+id/itemListFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemListFragment"
-        android:label="@string/item_list_label"
-        tools:layout="@layout/item_list_fragment">
-        <action
-            android:id="@+id/openItemAdd"
-            app:destination="@id/itemAddFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/itemAddFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.ItemAddFragment"
-        android:label="ItemAddFragment"
-        tools:layout="@layout/item_add_fragment">
-        <argument
-            android:name="itemId"
-            android:defaultValue="-1"
-            app:argType="integer" />
-        <action
-            android:id="@+id/action_itemAddFragment_to_taxSelectFragment"
-            app:destination="@id/taxSelectFragment" />
-        <action
-            android:id="@+id/action_itemAddFragment_to_categorySearchFragment"
-            app:destination="@id/categorySearchFragment" />
-        <action
-            android:id="@+id/action_itemAddFragment_to_singleReadFragment"
-            app:destination="@id/singleReadFragment" />
-    </fragment>
-    <dialog
-        android:id="@+id/taxSelectFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.settings.TaxSelectFragment"
-        android:label="TaxSelectFragment">
-        <argument
-            android:name="taxRates"
-            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate[]" />
-        <argument
-            android:name="selectedTaxRate"
-            android:defaultValue="@null"
-            app:argType="xyz.miyayu.android.registersimulator.model.entity.TaxRate"
-            app:nullable="true" />
-    </dialog>
-    <fragment
-        android:id="@+id/categorySearchFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.CategorySelectFragment"
-        android:label="@string/select_category"
-        tools:layout="@layout/category_search_fragment" />
-    <fragment
-        android:id="@+id/singleReadFragment"
-        android:name="xyz.miyayu.android.registersimulator.views.fragments.utils.SingleReadFragment"
-        android:label="ほげ" />
+        android:label="@string/app_name"
+        tools:layout="@layout/register_top_fragment"/>
+
 </navigation>

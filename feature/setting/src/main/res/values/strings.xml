@@ -1,0 +1,12 @@
+<resources>
+    <string name="tax_settings">Tax Settings</string>
+    <string name="category_settings">Category Settings</string>
+    <string name="category_entry">Category Entry</string>
+
+    <string name="add_item_description">add item</string>
+    <string name="import_jancode_description">Import JanCode from Camera</string>
+
+    <string name="use_category_standard_tax_rate">Use category standard tax rate.</string>
+    <string name="overrides_the_category_standard_tax_rate">Overrides the category standard tax rate.</string>
+    <string name="category_override_message" translatable="false">Category tax rates are overridden.</string>
+</resources>
