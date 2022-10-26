@@ -21,9 +21,10 @@ import xyz.miyayu.android.registersimulator.feature.setting.ui.settings.ItemAddF
 import xyz.miyayu.android.registersimulator.model.ProductItem
 import xyz.miyayu.android.registersimulator.model.TaxRate
 import xyz.miyayu.android.registersimulator.model.TaxRate.Companion.getPreview
-import xyz.miyayu.android.registersimulator.model.price.Price.Companion.getFormattedString
 import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice
+import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getTaxIncludedPricePreviewString
 import xyz.miyayu.android.registersimulator.model.price.TaxPrice
+import xyz.miyayu.android.registersimulator.model.price.TaxPrice.Companion.getTaxPreviewString
 import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice
 import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice.Companion.convertToWithOutTaxPrice
 import xyz.miyayu.android.registersimulator.repository.CategoryRepository
@@ -95,7 +96,7 @@ internal class ItemAddViewModel @AssistedInject constructor(
     inner class TaxRateModel(val taxRate: TaxRate?) {
         /**税率名*/
         val name: String = taxRate?.title ?: resourceService.getResources()
-            .getString(R.string.tax_rate_not_set_display)
+            .getString(R.string.use_category_standard_tax_rate)
 
         /**税率のプレビュー*/
         val preview: String? = taxRate?.getPreview(resourceService)
@@ -150,8 +151,7 @@ internal class ItemAddViewModel @AssistedInject constructor(
     }
 
     val taxPriceString = taxPrice.map { taxPrice ->
-        val tax = taxPrice.getFormattedString()
-        resourceService.getResources().getString(R.string.tax_preview, tax)
+        taxPrice.getTaxPreviewString(resourceService)
     }
 
     private val taxIncludedPrice by lazy {
@@ -169,8 +169,7 @@ internal class ItemAddViewModel @AssistedInject constructor(
     }
 
     val taxIncludedPriceString = taxIncludedPrice.map { taxIncludedPrice ->
-        val sum = taxIncludedPrice.getFormattedString()
-        return@map resourceService.getResources().getString(R.string.price_preview, sum)
+        taxIncludedPrice.getTaxIncludedPricePreviewString(resourceService)
     }
 
     val canSave by lazy {
@@ -208,7 +207,7 @@ internal class ItemAddViewModel @AssistedInject constructor(
     }
 
     var oldItem: ProductItem? = null
-    private val isLoaded = MutableLiveData<Boolean>(false)
+    private val isLoaded = MutableLiveData(false)
     fun load() {
         if (isLoaded.value == true) return
         isLoaded.value = true

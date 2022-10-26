@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:layout_margin="16dp"
-            android:contentDescription="@string/add_button_description"
+            android:contentDescription="@string/add"
             android:src="@drawable/add" />
     </FrameLayout>
 </layout>

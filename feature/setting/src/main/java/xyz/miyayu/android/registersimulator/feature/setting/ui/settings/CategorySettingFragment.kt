@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import dagger.hilt.android.AndroidEntryPoint
+import xyz.miyayu.android.registersimulator.feature.common.CommonDrawable
 import xyz.miyayu.android.registersimulator.feature.setting.R
 import xyz.miyayu.android.registersimulator.feature.setting.databinding.CategorySettingFragmentBinding
 import xyz.miyayu.android.registersimulator.feature.setting.ui.adapter.CategoryListAdapter
@@ -21,7 +22,6 @@ import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 import xyz.miyayu.android.registersimulator.utils.ThemeColorUtil
 import javax.inject.Inject
-import xyz.miyayu.android.registersimulator.feature.common.R as RC
 
 @AndroidEntryPoint
 internal class CategorySettingFragment : Fragment(R.layout.category_setting_fragment) {
@@ -112,7 +112,7 @@ internal class CategorySettingFragment : Fragment(R.layout.category_setting_frag
                     val itemView = viewHolder.itemView
                     val background = ColorDrawable(backgroundColor)
 
-                    val deleteIcon = AppCompatResources.getDrawable(requireContext(), RC.drawable.delete)
+                    val deleteIcon = AppCompatResources.getDrawable(requireContext(), CommonDrawable.delete)
                         ?: throw NullPointerException()
 
                     deleteIcon.setTint(iconColor)

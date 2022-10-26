@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">レジシミュレーター</string>
-    <string name="open_cash_register_button">レジ</string>
-    <string name="open_settings_button">設定</string>
-</resources>

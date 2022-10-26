@@ -19,7 +19,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            app:bodyText="@string/open_items_setting"
+            app:bodyText="@string/items"
             app:startIcon="@drawable/category"/>
 
         <xyz.miyayu.android.registersimulator.feature.setting.ui.view.IconListItem
@@ -29,7 +29,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            app:bodyText="@string/open_categories_setting"
+            app:bodyText="@string/categories"
             app:startIcon="@drawable/folder"/>
 
         <xyz.miyayu.android.registersimulator.feature.setting.ui.view.IconListItem
@@ -39,7 +39,7 @@
             android:clickable="true"
             android:focusable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            app:bodyText="@string/open_tax_setting"
+            app:bodyText="@string/tax"
             app:startIcon="@drawable/dollar"/>
 
     </LinearLayout>

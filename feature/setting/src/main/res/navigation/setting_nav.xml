@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/settingFragment"
         android:name="xyz.miyayu.android.registersimulator.feature.setting.ui.settings.SettingFragment"
-        android:label="@string/settings_label"
+        android:label="@string/settings"
         tools:layout="@layout/setting_fragment">
         <action
             android:id="@+id/openTaxSetting"
@@ -22,12 +22,12 @@
     <fragment
         android:id="@+id/taxSettingFragment"
         android:name="xyz.miyayu.android.registersimulator.feature.setting.ui.settings.TaxSettingFragment"
-        android:label="@string/tax_settings_label"
+        android:label="@string/tax_settings"
         tools:layout="@layout/tax_setting_fragment"/>
     <fragment
         android:id="@+id/categorySettingFragment"
         android:name="xyz.miyayu.android.registersimulator.feature.setting.ui.settings.CategorySettingFragment"
-        android:label="@string/category_settings_label"
+        android:label="@string/category_settings"
         tools:layout="@layout/category_setting_fragment">
         <action
             android:id="@+id/openCategoryInput"
@@ -36,7 +36,7 @@
     <fragment
         android:id="@+id/categoryInputFragment"
         android:name="xyz.miyayu.android.registersimulator.feature.setting.ui.settings.CategoryInputFragment"
-        android:label="@string/category_input_label"
+        android:label="@string/category_entry"
         tools:layout="@layout/category_input_fragment">
         <argument
             android:name="categoryId"

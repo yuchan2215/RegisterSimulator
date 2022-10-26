@@ -31,14 +31,14 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="@string/jan_code_hint">
+                    android:hint="@string/jan_code">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/jan_edit_text"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:text="@={viewModel.inputJanCode}" />
+                        android:text="@={viewModel.inputJanCode}"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -73,14 +73,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:hint="@string/price_hint">
+                android:hint="@string/price">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/price_edit_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:text="@={viewModel.inputPrice}" />
+                    android:text="@={viewModel.inputPrice}"/>
             </com.google.android.material.textfield.TextInputLayout>
 
             <LinearLayout
@@ -119,7 +119,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:contentDescription="@string/select_category_description"
+                    android:contentDescription="@string/choice_category"
                     app:icon="@drawable/category"/>
             </LinearLayout>
 
@@ -140,7 +140,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/override_category_taxrate"
+                        android:text="@string/overrides_the_category_standard_tax_rate"
                         android:textAppearance="@style/TextAppearance.Material3.LabelSmall"
                         android:textColor="?attr/colorTertiary"
                         android:visibility="@{viewModel.selectedTaxRate.selectedTaxRateVisibility}" />
@@ -168,7 +168,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
-                    android:contentDescription="@string/select_tax_section_description"
+                    android:contentDescription="@string/choice_tax_rate"
                     app:icon="@drawable/dollar"/>
             </LinearLayout>
             <TextView
@@ -195,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:enabled="@{viewModel.canSave}"
-                android:text="@string/save_btn_description"/>
+                android:text="@string/save"/>
 
 
 

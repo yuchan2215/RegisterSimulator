@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">RegisterSimulator</string>
-    <string name="open_cash_register_button">Cash register</string>
-    <string name="open_settings_button">Settings</string>
 </resources>

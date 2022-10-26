@@ -29,7 +29,7 @@
                 android:id="@+id/category_name_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/category_name_field_title"
+                android:hint="@string/category_name"
                 app:hintAnimationEnabled="false"
                 app:startIconDrawable="@drawable/category">
 
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="@string/category_tax_choice_message"
+                android:text="@string/choice_tax_rate"
                 android:textAppearance="@style/TextAppearance.Material3.TitleMedium" />
 
             <RadioGroup
@@ -84,14 +84,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:enabled="@{viewModel.isValidated}"
-                android:text="@string/save_btn_description" />
+                android:text="@string/save"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/cancel_button"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/cancel_btn_description" />
+                android:text="@string/cancel"/>
         </LinearLayout>
     </ScrollView>
 </layout>

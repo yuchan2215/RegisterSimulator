@@ -1,14 +1,21 @@
 package xyz.miyayu.android.registersimulator.model.price
 
+import xyz.miyayu.android.registersimulator.model.R
 import xyz.miyayu.android.registersimulator.model.TaxRate
+import xyz.miyayu.android.registersimulator.utils.ResourceService
 import java.math.BigDecimal
 
 class TaxIncludedPrice(
-    private val withoutTaxPrice: WithoutTaxPrice?,
-    private val taxRate: TaxRate?
+    withoutTaxPrice: WithoutTaxPrice?,
+    taxRate: TaxRate?
 ) : Price(getTaxIncludedPrice(withoutTaxPrice, taxRate)) {
 
     companion object {
+        fun TaxIncludedPrice?.getTaxIncludedPricePreviewString(resourceService: ResourceService): String {
+            return resourceService.getResources()
+                .getString(R.string.tax_included_preview, this.getFormattedString())
+        }
+
         private fun getTaxIncludedPrice(
             withoutTaxPrice: WithoutTaxPrice?,
             taxRate: TaxRate?

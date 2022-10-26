@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
+import xyz.miyayu.android.registersimulator.feature.common.CommonString
 import xyz.miyayu.android.registersimulator.feature.setting.R
 import xyz.miyayu.android.registersimulator.feature.setting.databinding.TaxSettingFragmentBinding
 import xyz.miyayu.android.registersimulator.feature.setting.viewmodel.TaxSettingViewModel
@@ -27,7 +28,7 @@ internal class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
                 val settingItem = settingItems[index]
                 settingItem.setTitle(taxRate.title)
                 settingItem.setRate(taxRate.rate)
-                settingItem.setLabel(getString(R.string.tax_rate_label, index + 1))
+                settingItem.setLabel(getString(CommonString.tax_rate_position, index + 1))
                 // 読み込みが終わったので見えるようにする
                 settingItem.visibility = View.VISIBLE
 
@@ -51,7 +52,7 @@ internal class TaxSettingFragment : Fragment(R.layout.tax_setting_fragment) {
         binding.floatingSaveButton.setOnClickListener {
             hideKeyboard()
             taxSettingViewModel.saveTaxRates()
-            Snackbar.make(it, R.string.saved_message, Snackbar.LENGTH_LONG).show()
+            Snackbar.make(it, CommonString.saved, Snackbar.LENGTH_LONG).show()
         }
     }
 

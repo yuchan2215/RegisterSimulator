@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/topFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.TopFragment"
-        android:label="@string/home_label"
+        android:label="@string/app_name"
         tools:layout="@layout/top_fragment">
         <action
             android:id="@+id/openRegister"
@@ -19,7 +19,7 @@
     <fragment
         android:id="@+id/registerTopFragment"
         android:name="xyz.miyayu.android.registersimulator.views.fragments.RegisterTopFragment"
-        android:label="@string/register_label"
+        android:label="@string/app_name"
         tools:layout="@layout/register_top_fragment"/>
 
 </navigation>
