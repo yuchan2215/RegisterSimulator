@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.model.room.converter
+package xyz.miyayu.android.registersimulator.room.converter
 
 import androidx.room.TypeConverter
 import xyz.miyayu.android.registersimulator.price.WithoutTaxPrice

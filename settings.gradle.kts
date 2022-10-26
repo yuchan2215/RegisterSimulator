@@ -17,3 +17,4 @@ rootProject.name = "RegisterSimulator"
 include(":app")
 include(":utils")
 include(":model")
+include(":data:db")

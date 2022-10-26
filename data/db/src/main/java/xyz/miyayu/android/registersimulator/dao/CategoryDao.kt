@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.model.dao
+package xyz.miyayu.android.registersimulator.dao
 
 import androidx.room.Dao
 import androidx.room.Delete
