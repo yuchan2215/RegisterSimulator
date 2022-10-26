@@ -50,7 +50,7 @@ internal class CategoryInputViewModel @AssistedInject constructor(
     val categoryName = MutableLiveData<String>(null)
     val choseTaxRateLayoutId = MutableLiveData<Int>(null)
 
-    private val _taxRates: MutableLiveData<List<TaxRate>> = MutableLiveData()
+    private val _taxRates: MutableLiveData<List<TaxRate>?> = MutableLiveData()
 
     /**
      * フォーマットされた税率のリスト
@@ -106,7 +106,7 @@ internal class CategoryInputViewModel @AssistedInject constructor(
     val isValidated = MediatorLiveData<Boolean>().apply {
         this.value = false
 
-        val changedObserver = Observer<Any> {
+        val changedObserver = Observer<Any?> {
             val nameValidate = !categoryName.value.isNullOrEmpty()
             val taxChoiceValidate = choseTaxRateLayoutId.value != null
             this.value = nameValidate && taxChoiceValidate

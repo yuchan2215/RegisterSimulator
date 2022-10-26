@@ -25,7 +25,7 @@
         android:id="@+id/tax_title_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:hint="@string/tax_name_hint"
+        android:hint="@string/tax_title_hint"
         app:layout_constraintEnd_toEndOf="@id/tax_guide_line"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/rate_label">
