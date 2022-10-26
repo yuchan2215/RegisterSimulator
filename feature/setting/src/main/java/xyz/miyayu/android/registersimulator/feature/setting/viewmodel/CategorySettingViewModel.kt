@@ -6,7 +6,7 @@ import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.model.CategoryDetail
 import xyz.miyayu.android.registersimulator.repository.CategoryRepository
 import javax.inject.Inject
 
@@ -16,8 +16,8 @@ internal class CategorySettingViewModel @Inject constructor(
 ) : ViewModel() {
     val categoryList = categoryRepository.getCategoriesAndTaxRatesFlow().asLiveData()
 
-    fun deleteItem(categoryAndTaxRate: CategoryAndTaxRate) {
-        val category = categoryAndTaxRate.category
+    fun deleteItem(categoryDetail: CategoryDetail) {
+        val category = categoryDetail.category
         viewModelScope.launch(Dispatchers.IO) {
             categoryRepository.delete(category)
         }

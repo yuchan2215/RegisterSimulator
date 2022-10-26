@@ -10,7 +10,7 @@ data class ProductItemDetail(
         entity = Category::class,
         parentColumn = "category_id",
         entityColumn = "id"
-    ) val defaultCategoryDetail: CategoryAndTaxRate,
+    ) val defaultCategoryDetail: CategoryDetail,
     @Relation(
         entity = TaxRate::class,
         parentColumn = "tax_id",

@@ -18,7 +18,7 @@ import xyz.miyayu.android.registersimulator.feature.setting.R
 import xyz.miyayu.android.registersimulator.feature.setting.databinding.CategorySettingFragmentBinding
 import xyz.miyayu.android.registersimulator.feature.setting.ui.adapter.CategoryListAdapter
 import xyz.miyayu.android.registersimulator.feature.setting.viewmodel.CategorySettingViewModel
-import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.model.CategoryDetail
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 import xyz.miyayu.android.registersimulator.utils.ThemeColorUtil
 import javax.inject.Inject
@@ -35,7 +35,7 @@ internal class CategorySettingFragment : Fragment(R.layout.category_setting_frag
 
         /**既存のアイテムがタップされたら、[CategoryInputFragment]を開いて編集する。*/
         val adapter = object : CategoryListAdapter(resourceService) {
-            override fun onItemClicked(item: CategoryAndTaxRate) {
+            override fun onItemClicked(item: CategoryDetail) {
                 val categoryId = item.category.categoryId ?: throw NullPointerException("")
                 view.findNavController()
                     .navigate(CategorySettingFragmentDirections.openCategoryInput(categoryId))

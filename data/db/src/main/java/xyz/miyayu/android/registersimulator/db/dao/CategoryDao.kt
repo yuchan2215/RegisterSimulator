@@ -9,7 +9,7 @@ import androidx.room.Transaction
 import androidx.room.Update
 import kotlinx.coroutines.flow.Flow
 import xyz.miyayu.android.registersimulator.model.Category
-import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.model.CategoryDetail
 
 @Dao
 interface CategoryDao {
@@ -30,18 +30,18 @@ interface CategoryDao {
 
     @Transaction
     @Query(GET_CATEGORIES_QUERY)
-    suspend fun getCategoriesAndTaxRates(): List<CategoryAndTaxRate>
+    suspend fun getCategoriesAndTaxRates(): List<CategoryDetail>
 
     @Transaction
     @Query(GET_CATEGORIES_QUERY)
-    fun getCategoriesAndTaxRatesFlow(): Flow<List<CategoryAndTaxRate>>
+    fun getCategoriesAndTaxRatesFlow(): Flow<List<CategoryDetail>>
 
     @Query(GET_CATEGORY_QUERY)
     suspend fun getCategory(categoryId: Int): Category
 
     @Transaction
     @Query(GET_CATEGORY_QUERY)
-    suspend fun getCategoryAndTaxRate(categoryId: Int): CategoryAndTaxRate
+    suspend fun getCategoryAndTaxRate(categoryId: Int): CategoryDetail
 
     companion object {
         const val GET_CATEGORIES_QUERY = "SELECT * FROM categories ORDER BY id ASC"

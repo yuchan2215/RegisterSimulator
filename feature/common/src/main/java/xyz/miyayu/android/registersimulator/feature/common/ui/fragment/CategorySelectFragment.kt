@@ -13,7 +13,7 @@ import xyz.miyayu.android.registersimulator.feature.common.R
 import xyz.miyayu.android.registersimulator.feature.common.databinding.CategorySearchFragmentBinding
 import xyz.miyayu.android.registersimulator.feature.common.ui.adapter.CategorySearchItemAdapter
 import xyz.miyayu.android.registersimulator.feature.common.viewmodel.CategorySearchViewModel
-import xyz.miyayu.android.registersimulator.model.CategoryAndTaxRate
+import xyz.miyayu.android.registersimulator.model.CategoryDetail
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 import javax.inject.Inject
 
@@ -30,7 +30,7 @@ class CategorySelectFragment : Fragment(R.layout.category_search_fragment) {
 
         /**選択されたらナビゲーション経由で選択されたものを返す。*/
         val adapter = object : CategorySearchItemAdapter(resourceService) {
-            override fun onItemClicked(item: CategoryAndTaxRate) {
+            override fun onItemClicked(item: CategoryDetail) {
                 val categoryId = item.category.categoryId ?: throw NullPointerException("")
                 Log.d(this::class.simpleName, categoryId.toString())
                 findNavController().previousBackStackEntry?.savedStateHandle?.set(
