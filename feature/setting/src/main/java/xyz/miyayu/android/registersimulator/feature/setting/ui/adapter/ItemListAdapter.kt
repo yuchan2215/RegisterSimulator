@@ -9,8 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import xyz.miyayu.android.registersimulator.feature.setting.R
 import xyz.miyayu.android.registersimulator.feature.setting.databinding.ItemSettingItemBinding
 import xyz.miyayu.android.registersimulator.model.ProductItemDetail
-import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getTaxIncludedPricePreviewString
-import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice.Companion.getWithOutTaxPreviewString
+import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getPreview
+import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice.Companion.getPreview
 import xyz.miyayu.android.registersimulator.utils.ResourceService
 
 internal abstract class ItemListAdapter(private val resourceService: ResourceService) :
@@ -45,9 +45,9 @@ internal abstract class ItemListAdapter(private val resourceService: ResourceSer
                 janCode.text = item.item.janCode.toString()
 
                 categoryName.text = item.defaultCategoryDetail.category.name
-                price.text = item.item.price.getWithOutTaxPreviewString(resourceService)
+                price.text = item.item.price.getPreview(resourceService)
 
-                priceWithTax.text = item.getTaxIncludedPrice().getTaxIncludedPricePreviewString(resourceService)
+                priceWithTax.text = item.getTaxIncludedPrice().getPreview(resourceService)
 
                 errorText.isVisible = item.taxRate != null
                 errorText.text =

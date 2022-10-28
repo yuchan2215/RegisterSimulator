@@ -22,9 +22,9 @@ import xyz.miyayu.android.registersimulator.model.ProductItem
 import xyz.miyayu.android.registersimulator.model.TaxRate
 import xyz.miyayu.android.registersimulator.model.TaxRate.Companion.getPreview
 import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice
-import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getTaxIncludedPricePreviewString
+import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getPreview
 import xyz.miyayu.android.registersimulator.model.price.TaxPrice
-import xyz.miyayu.android.registersimulator.model.price.TaxPrice.Companion.getTaxPreviewString
+import xyz.miyayu.android.registersimulator.model.price.TaxPrice.Companion.getPreview
 import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice
 import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice.Companion.convertToWithOutTaxPrice
 import xyz.miyayu.android.registersimulator.repository.CategoryRepository
@@ -151,7 +151,7 @@ internal class ItemAddViewModel @AssistedInject constructor(
     }
 
     val taxPriceString = taxPrice.map { taxPrice ->
-        taxPrice.getTaxPreviewString(resourceService)
+        taxPrice.getPreview(resourceService)
     }
 
     private val taxIncludedPrice by lazy {
@@ -169,7 +169,7 @@ internal class ItemAddViewModel @AssistedInject constructor(
     }
 
     val taxIncludedPriceString = taxIncludedPrice.map { taxIncludedPrice ->
-        taxIncludedPrice.getTaxIncludedPricePreviewString(resourceService)
+        taxIncludedPrice.getPreview(resourceService)
     }
 
     val canSave by lazy {
