@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tax_rate_position">税 %d</string>
+    <string name="ok">OK</string>
+    <string name="save">保存</string>
+    <string name="cancel">キャンセル</string>
+    <string name="saved">保存しました。</string>
+    <string name="add">追加</string>
+    <string name="deselection">選択解除</string>
+    <string name="jan_code">JANコード</string>
+    <string name="item_name_hint">商品名</string>
+    <string name="price">価格</string>
+    <string name="items">商品</string>
+    <string name="tax">税</string>
+    <string name="categories">カテゴリ</string>
+    <string name="settings">設定</string>
+    <string name="cash_register">レジ</string>
+    <string name="item_list_label">商品一覧</string>
+    <string name="tax_title">税の名称</string>
+    <string name="tax_rate">税率</string>
+    <string name="choice_tax_rate">税率選択</string>
+    <string name="category_name">カテゴリ名</string>
+    <string name="choice_category">カテゴリ選択</string>
+    <string name="select_category">カテゴリ選択</string>
+    <string name="select_tax_rate">税率選択</string>
+</resources>

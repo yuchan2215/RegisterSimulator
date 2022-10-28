@@ -1,24 +1,42 @@
+import com.github.benmanes.gradle.versions.updates.DependencyUpdatesTask
+
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 plugins {
-    id("com.android.application") version "7.2.1" apply false
-    id("com.android.library") version "7.2.1" apply false
-    id("org.jetbrains.kotlin.android") version "1.7.10" apply false
-    id("org.jlleitschuh.gradle.ktlint") version "11.0.0"
-    id("com.google.dagger.hilt.android") version "2.44" apply false
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.android.library) apply false
+    alias(libs.plugins.kotlin.android) apply false
+
+    alias(libs.plugins.lint.ktlint)
+
+    alias(libs.plugins.hilt) apply false
+
+    alias(libs.plugins.gradle.versions)
+    alias(libs.plugins.gradle.version.catalog.update)
+    alias(libs.plugins.androidx.safeargs) apply false
+    alias(libs.plugins.kotlin.kapt) apply false
+    alias(libs.plugins.dependency.graph)
 }
 
 buildscript {
-    val navVersion by extra("2.5.1")
-
     repositories {
         google()
     }
     dependencies {
         // Navigation Safe Args
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$navVersion")
+        classpath(libs.navigation.safeargs)
+        classpath(libs.dependency.graph)
     }
 }
 
-task<Delete>("clean") {
-    delete(rootProject.buildDir)
+fun isStable(version: String): Boolean {
+    val stableKeyword = listOf("RELEASE", "FINAL", "GA").any { version.toUpperCase().contains(it) }
+    val regex = "^[0-9,.v-]+(-r)?$".toRegex()
+    val isStable = stableKeyword || regex.matches(version)
+    return isStable
+}
+
+tasks.withType<DependencyUpdatesTask> {
+    rejectVersionIf {
+        isStable(currentVersion) && !isStable(candidate.version)
+    }
 }

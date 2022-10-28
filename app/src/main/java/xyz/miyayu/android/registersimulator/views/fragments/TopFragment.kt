@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import xyz.miyayu.android.registersimulator.R
 import xyz.miyayu.android.registersimulator.databinding.TopFragmentBinding
-import xyz.miyayu.android.registersimulator.repositories.TaxRateRepository
+import xyz.miyayu.android.registersimulator.repository.TaxRateRepository
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -26,7 +26,7 @@ class TopFragment : Fragment(R.layout.top_fragment) {
         }
         binding.openSettingsButton.setOnClickListener {
             view.findNavController()
-                .navigate(TopFragmentDirections.actionTopFragmentToSettingFragment())
+                .navigate(TopFragmentDirections.openSetting())
         }
 
         // 税率を初期化しておく。
