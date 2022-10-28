@@ -25,7 +25,7 @@ buildscript {
         // Navigation Safe Args
         classpath(libs.navigation.safeargs)
         classpath(libs.dependency.graph)
-        classpath("com.android.tools.build:gradle:7.3.0")
+        classpath(libs.android.gradle)
     }
 }
 
