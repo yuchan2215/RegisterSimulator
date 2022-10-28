@@ -2,6 +2,7 @@ package xyz.miyayu.android.registersimulator.repository
 
 import xyz.miyayu.android.registersimulator.db.dao.ProductItemDao
 import xyz.miyayu.android.registersimulator.model.ProductItem
+import xyz.miyayu.android.registersimulator.model.ProductItemDetail
 import xyz.miyayu.android.registersimulator.model.price.WithoutTaxPrice
 import java.util.Date
 import javax.inject.Inject
@@ -14,6 +15,12 @@ class ItemRepository @Inject constructor(
     fun getAllItemDetailsFlow() = productItemDao.getAllItemDetailsFlow()
 
     suspend fun getItem(id: Int) = productItemDao.getItem(id)
+    suspend fun getNewestItemFromJan(jan: Long): ProductItemDetail? {
+        val items = productItemDao.getItemDetails(jan)
+        return items.maxByOrNull { item ->
+            item.item.updateDate.time
+        }
+    }
 
     suspend fun addItem(
         itemId: Int? = null,
