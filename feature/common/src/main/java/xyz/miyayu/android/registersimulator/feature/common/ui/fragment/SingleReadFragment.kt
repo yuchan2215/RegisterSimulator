@@ -23,6 +23,7 @@ class SingleReadFragment : Fragment(R.layout.single_read_fragment) {
             )
             findNavController().popBackStack()
         }
+        binding.readerView.onViewCreated(requireActivity())
     }
 
     override fun onResume() {

@@ -8,6 +8,7 @@ kotlinVersion = "1.7.20"
 targetSdk = "32"
 minSdk = "24"
 dependencyGraph = "0.8.0"
+composeVersion = "1.2.1"
 
 [libraries]
 navigation-safeargs = { module = "androidx.navigation:navigation-safe-args-gradle-plugin", version.ref = "navVersion" }
@@ -37,6 +38,15 @@ hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hiltV
 hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hiltVersion" }
 #
 dependency-graph = { module = "com.vanniktech:gradle-dependency-graph-generator-plugin", version.ref = "dependencyGraph" }
+#
+androidx-activity-compose = { module = "androidx.activity:activity-compose", version = "1.5.1" }
+androidx-lifecycle-compose = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycleVersion" }
+material-compose = "com.google.android.material:compose-theme-adapter:1.1.16"
+androidx-compose-ui = { module = "androidx.compose.ui:ui-tooling", version.ref = "composeVersion" }
+androidx-compose-material = { module = "androidx.compose.material:material", version.ref = "composeVersion" }
+androidx-compose-livedata = { module = "androidx.compose.runtime:runtime-livedata", version.ref = "composeVersion" }
+androidx-compose-animation = { module = "androidx.compose.animation:animation", version.ref = "composeVersion" }
+
 
 [bundles]
 navigation = [
@@ -59,6 +69,14 @@ androidx-room = [
 androidx-lifecycle = [
     "androidx-lifecycle-livedata",
     "androidx-lifecycle-viewmodel",
+]
+androidx-compose = [
+    "androidx-activity-compose",
+    "androidx-lifecycle-compose",
+    "material-compose",
+    "androidx-compose-ui",
+    "androidx-compose-material",
+    "androidx-compose-livedata"
 ]
 
 #
