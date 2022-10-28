@@ -23,4 +23,6 @@
     <string name="choice_category">カテゴリ選択</string>
     <string name="select_category">カテゴリ選択</string>
     <string name="select_tax_rate">税率選択</string>
+    <string name="please_allow_camera_permission_message">デバイス設定でカメラ権限を許可してください。</string>
+    <string name="open_setting">設定を開く</string>
 </resources>

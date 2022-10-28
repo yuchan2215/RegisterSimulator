@@ -16,6 +16,7 @@ class RegisterTopFragment : Fragment(R.layout.register_top_fragment), BarcodeCal
         val binding = RegisterTopFragmentBinding.bind(view)
         _barcodeView = binding.readerView
         binding.readerView.setBarcodeCallback(this)
+        barcodeView.onViewCreated(requireActivity())
     }
 
     override fun onResume() {
