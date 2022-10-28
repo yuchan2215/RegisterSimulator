@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/register_graph"
+    app:startDestination="@id/registerTopFragment">
+
+    <fragment
+        android:id="@+id/registerTopFragment"
+        android:name="xyz.miyayu.android.registersimulator.register.RegisterTopFragment"
+        android:label="@string/cash_register"
+        tools:layout="@layout/register_top_fragment" />
+</navigation>
