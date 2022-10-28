@@ -13,7 +13,7 @@ class WithoutTaxPrice(amount: BigDecimal) : Price(amount) {
 
     companion object {
 
-        fun WithoutTaxPrice?.getWithOutTaxPreviewString(resourceService: ResourceService): String {
+        fun WithoutTaxPrice?.getPreview(resourceService: ResourceService): String {
             return resourceService.getResources()
                 .getString(R.string.without_tax_preview, this.getFormattedString())
         }

@@ -21,7 +21,7 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import dagger.hilt.android.AndroidEntryPoint
 import xyz.miyayu.android.registersimulator.feature.common.ui.view.ReaderView
-import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getTaxIncludedPricePreviewString
+import xyz.miyayu.android.registersimulator.model.price.TaxIncludedPrice.Companion.getPreview
 import xyz.miyayu.android.registersimulator.register.databinding.RegisterTopFragmentBinding
 import xyz.miyayu.android.registersimulator.register.viewmodel.RegisterTopViewModel
 import xyz.miyayu.android.registersimulator.utils.ResourceService
@@ -47,7 +47,7 @@ class RegisterTopFragment : Fragment(R.layout.register_top_fragment), BarcodeCal
             val item = viewModel.lastLoadItem.observeAsState()
             val itemName = item.value?.item?.itemName ?: ""
             val price =
-                item.value?.getTaxIncludedPrice().getTaxIncludedPricePreviewString(resourceService)
+                item.value?.getTaxIncludedPrice().getPreview(resourceService)
             val categoryName = item.value?.defaultCategoryDetail?.category?.name ?: ""
             DetailView(itemName, price, categoryName)
         }

@@ -13,7 +13,7 @@ class TaxPrice(
 ) : Price(getTaxBigDecimal(withoutTaxPrice, taxRate)) {
 
     companion object {
-        fun TaxPrice?.getTaxPreviewString(resourceService: ResourceService): String {
+        fun TaxPrice?.getPreview(resourceService: ResourceService): String {
             return resourceService.getResources()
                 .getString(R.string.tax_preview, this.getFormattedString())
         }

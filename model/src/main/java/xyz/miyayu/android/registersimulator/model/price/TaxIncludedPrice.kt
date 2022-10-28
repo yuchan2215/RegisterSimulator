@@ -11,7 +11,7 @@ class TaxIncludedPrice(
 ) : Price(getTaxIncludedPrice(withoutTaxPrice, taxRate)) {
 
     companion object {
-        fun TaxIncludedPrice?.getTaxIncludedPricePreviewString(resourceService: ResourceService): String {
+        fun TaxIncludedPrice?.getPreview(resourceService: ResourceService): String {
             return resourceService.getResources()
                 .getString(R.string.tax_included_preview, this.getFormattedString())
         }
