@@ -31,6 +31,10 @@ android {
     }
     buildFeatures {
         dataBinding = true
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
     }
 }
 
@@ -66,5 +70,7 @@ dependencies {
     implementation(project(":data:repository"))
     implementation(project(":model"))
     implementation(project(":feature:common"))
+
+    implementation(libs.bundles.androidx.compose)
 
 }
