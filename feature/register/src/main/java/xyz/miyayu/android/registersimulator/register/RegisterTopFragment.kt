@@ -1,4 +1,4 @@
-package xyz.miyayu.android.registersimulator.views.fragments
+package xyz.miyayu.android.registersimulator.register
 
 import android.os.Bundle
 import android.util.Log
@@ -6,9 +6,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
-import xyz.miyayu.android.registersimulator.R
-import xyz.miyayu.android.registersimulator.databinding.RegisterTopFragmentBinding
-import xyz.miyayu.android.registersimulator.views.view.ReaderView
+import xyz.miyayu.android.registersimulator.feature.common.ui.view.ReaderView
+import xyz.miyayu.android.registersimulator.register.databinding.RegisterTopFragmentBinding
 
 class RegisterTopFragment : Fragment(R.layout.register_top_fragment), BarcodeCallback {
     private var _barcodeView: ReaderView? = null
